@@ -1,0 +1,2297 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RefertoFIP</title>
+<link href="referto.css" rel="stylesheet">
+</head>
+<body class="bianco">
+
+ <!-- inizio pagina referto -->
+ <div id="princ" class="centerbox">
+
+  <!-- inizio col-firme -->
+  <div class="col-firme">
+   <div class="firma-all firma-all-a" data-sq="a">
+    <input id="falla" type="hidden" value="">
+    <canvas id="cfalla" width="20" height="80" class="firmav"></canvas>
+   </div>
+   <div class="firma-all-c" data-sq="a">
+    <div class="ruotato firma-all-t">Firma&nbsp;allenatore</div>
+   </div>
+   <div class="firma-all firma-all-b" data-sq="b">
+    <input id="fallb" type="hidden" value="">
+    <canvas id="cfallb" width="20" height="80" class="firmav"></canvas>
+   </div>
+   <div class="firma-all-c" data-sq="b">
+    <div class="ruotato firma-all-t">Firma&nbsp;allenatore</div>
+   </div>
+  </div>
+  <!-- fine col-firme -->
+
+  <!-- inizio col-ref -->
+  <div class="col-ref">
+
+   <!-- inizio header1 -->
+   <div class="base header1 w100 b1b">
+
+    <!-- inizio logo FIP -->
+    <div class="base h100 w25 pd15">
+     <img id="logofip" class="h100" src="fip.svg" alt="logo FIP">
+    </div>
+    <!-- fine logo FIP -->
+
+    <div class="base w75">
+
+     <!-- inizio riga1 -->
+     <div class="base w80">
+      <div class="f12b pdref">
+       REFERTO UFFICIALE DI GARA
+      </div>
+     </div>
+
+     <div class="base w20 lh13 f9 b1b b1l pdgara">
+       <table class="risparz">
+        <tr>
+         <td>GARA&nbsp;N.</td>
+         <td id="ngara" class="b1bd f10i tac w100 blu"></td>
+        </tr>
+       </table>
+     </div>
+     <!-- fine riga1 -->
+
+     <!-- inizio riga2 -->
+     <div class="base w100 lh13 pdl18">
+
+      <div class="intest">
+
+       <div class="intestb">
+
+        <table class="risparz">
+        <colgroup>
+         <col>
+         <col class="w50">
+         <col>
+         <col class="w50">
+        </colgroup>
+        <tr>
+         <td><strong>A</strong></td>
+         <td id="nsoca" class="b1bd f10i blu"></td>
+         <td><strong>B</strong></td>
+         <td id="nsocb" class="b1bd f10i blu"></td>
+        </tr>
+        <tr>
+         <td>1&ordm;&nbsp;Sponsor</td>
+         <td class="b1bd f10i">
+          <div class="h1lh c-rel">
+           <div id="nsponsora" class="w100 h100 oh-nw blu"></div>
+          </div>
+         </td>
+         <td>1&ordm;&nbsp;Sponsor</td>
+         <td class="b1bd f10i">
+          <div class="h1lh c-rel">
+           <div id="nsponsorb" class="w100 h100 oh-nw blu"></div>
+          </div>
+         </td>
+        </tr>
+        <tr>
+         <td>Ulteriori&nbsp;Sponsor</td>
+         <td class="b1bd f10i">
+          <div class="h1lh c-rel">
+           <div id="nusponsora" class="w100 h100 oh-nw blu"></div>
+          </div>
+         </td>
+         <td>Ulteriori&nbsp;Sponsor</td>
+         <td class="b1bd f10i">
+          <div class="h1lh c-rel">
+           <div id="nusponsorb" class="w100 h100 oh-nw blu"></div>
+          </div>
+         </td>
+        </tr>
+       </table>
+       </div>
+      </div>
+
+     </div>
+     <!-- fine riga2 -->
+
+    </div>
+
+   </div>
+   <!-- fine header1 -->
+
+   <!-- inizio header2 -->
+   <div class="base header2 w100 b1b">
+
+    <!-- inizio dati gara -->
+    <div class="base w60 lh13 pddatig">
+
+     <table class="risparz">
+      <colgroup>
+       <col>
+       <col class="w50">
+       <col>
+       <col class="w50">
+      </colgroup>
+      <tr>
+       <td>Campionato</td>
+       <td class="b1bd f10i">
+        <div class="h1lh c-rel">
+         <div id="ncampio" class="w100 h100 oh-nw blu"></div>
+        </div>
+       </td>
+       <td>
+        Località
+       </td>
+       <td class="b1bd f10i">
+        <div class="h1lh c-rel">
+         <div id="nlocal" class="w100 h100 oh-nw blu"></div>
+        </div>
+       </td>
+      </tr>
+     </table>
+
+     <table class="risparz">
+      <colgroup>
+       <col>
+       <col class="w30">
+       <col>
+       <col class="w70">
+      </colgroup>
+      <tr>
+       <td>Data</td>
+       <td class="b1bd f10i">
+        <div class="h1lh c-rel">
+         <div id="ndata" class="w100 h100 oh-nw blu"></div>
+        </div>
+       </td>
+       <td>Girone</td>
+       <td class="b1bd f10i">
+        <div class="h1lh c-rel">
+         <div id="ngir" class="w100 h100 oh-nw blu"></div>
+        </div>
+       </td>
+      </tr>
+     </table>
+
+     <table class="risparz">
+      <colgroup>
+       <col>
+       <col class="w75">
+       <col>
+       <col class="w25">
+      </colgroup>
+      <tr>
+       <td>Campo</td>
+       <td class="b1bd f10i">
+        <div class="h1lh c-rel">
+         <div id="ncampo" class="w100 h100 oh-nw blu"></div>
+        </div>
+       </td>
+       <td>Ore</td>
+       <td class="b1bd f10i">
+        <div class="h1lh c-rel">
+         <div id="nore" class="w100 h100 oh-nw blu"></div>
+        </div>
+       </td>
+      </tr>
+     </table>
+
+    </div>
+    <!-- fine dati gara -->
+
+    <!-- inizio arbitri -->
+    <div class="base w30 b1r lh13 pddatig">
+
+     <table class="risparz">
+      <colgroup>
+       <col>
+       <col class="w100">
+      </colgroup>
+      <tr>
+       <td>1&ordm;&nbsp;Arbitro</td>
+       <td class="b1bd f10i">
+        <div class="h1lh c-rel">
+         <div id="narb1" class="w100 h100 oh-nw blu"></div>
+        </div>
+       </td>
+      </tr>
+      <tr>
+       <td>Arbitro</td>
+       <td class="b1bd f10i">
+        <div class="h1lh c-rel">
+         <div id="narb2" class="w100 h100 oh-nw blu"></div>
+        </div>
+       </td>
+      </tr>
+      <tr>
+       <td>Arbitro</td>
+       <td class="b1bd f10i">
+        <div class="h1lh c-rel">
+         <div id="narb3" class="w100 h100 oh-nw blu"></div>
+        </div>
+       </td>
+      </tr>
+     </table>
+
+    </div>
+    <!-- fine arbitri -->
+
+    <!-- inizio pagamento -->
+    <div class="base w10 tac">
+
+     <div class="f6 pdpaga">
+      Ingresso a<br>pagamento
+     </div>
+
+     <div class="base w50">
+      <div id="paga_si" class="centerbox b1all no-si">
+       SI
+      </div>
+     </div>
+
+     <div class="base w50">
+      <div id="paga_no" class="centerbox b1all no-si">
+       NO
+      </div>
+     </div>
+
+    </div>
+    <!-- fine pagamento -->
+
+   </div>
+   <!-- fine header2 -->
+
+   <!-- inizio corporef -->
+   <div class="corporef">
+
+    <!-- inizio squadre -->
+    <div class="base h100 b2r colcorpo">
+     <table class="squadre">
+      <colgroup>
+       <col class="colsq">
+       <col class="colsq">
+       <col class="colsq">
+       <col class="colsq">
+       <col class="colsq">
+       <col class="colsq">
+       <col class="colsq">
+       <col class="colsq">
+       <col class="colsq">
+       <col class="colsq">
+       <col class="colsq">
+       <col class="colsq">
+       <col class="colsq">
+       <col class="colsq">
+       <col class="colsq">
+       <col class="colsq">
+       <col class="colsq">
+       <col class="colsq">
+       <col class="colsq">
+       <col class="colsq">
+       <col class="colsq grigio">
+       <col class="colsq">
+      </colgroup>
+      <tbody>
+       <tr class="colore">
+        <td colspan="16" class="tal f9 sqa">
+         <strong>SQUADRA&nbsp;A</strong>
+         <span id="nsqa" class="blu f10i"></span>
+        </td>
+        <td colspan="6" rowspan="5" class="f8 nobb">
+         FALLI
+         <table class="fallisq">
+          <colgroup>
+           <col class="w20">
+           <col class="w20">
+           <col class="w20">
+           <col class="w20">
+           <col class="w20">
+          </colgroup>
+          <tr>
+           <td class="nob">1Q</td>
+           <td id="sqat1f1">1</td>
+           <td id="sqat1f2">2</td>
+           <td id="sqat1f3">3</td>
+           <td id="sqat1f4">4</td>
+          </tr>
+          <tr>
+           <td class="nob">2Q</td>
+           <td id="sqat2f1">1</td>
+           <td id="sqat2f2">2</td>
+           <td id="sqat2f3">3</td>
+           <td id="sqat2f4">4</td>
+          </tr>
+          <tr>
+           <td class="nob">3Q</td>
+           <td id="sqat3f1">1</td>
+           <td id="sqat3f2">2</td>
+           <td id="sqat3f3">3</td>
+           <td id="sqat3f4">4</td>
+          </tr>
+          <tr>
+           <td class="nob">4Q</td>
+           <td id="sqat4f1">1</td>
+           <td id="sqat4f2">2</td>
+           <td id="sqat4f3">3</td>
+           <td id="sqat4f4">4</td>
+          </tr>
+         </table>
+        </td>
+       </tr>
+       <tr class="colore">
+        <td colspan="16" class="tal f9 sqa">
+         COLORE&nbsp;MAGLIA
+         <span id="ncolsqa" class="blu f10i"></span>
+        </td>
+       </tr>
+       <tr>
+        <td id="sospa" colspan="14" class="timeout tac f9">
+         SOSPENSIONI
+        </td>
+        <td id="hcca" colspan="2" class="hcc timeout tac f9 chcc">
+         HCC
+        </td>
+       </tr>
+       <tr class="f9">
+        <td id="to1a" colspan="2" class="timeout">1T</td>
+        <td id="to11a" class="timeout f10i"></td>
+        <td id="to12a" class="timeout f10i"></td>
+        <td id="to2a" colspan="2" class="timeout">2T</td>
+        <td id="to21a" class="timeout f10i"></td>
+        <td id="to22a" class="timeout f10i"></td>
+        <td id="to23a" class="timeout f10i"></td>
+        <td id="tosa" colspan="2" class="timeout">S</td>
+        <td id="to51a" class="timeout">
+         <div class="togrigio f8">1
+          <div id="tos1a" class="tos blu w100 tac f10i"></div>
+         </div>
+        </td>
+        <td id="to61a" class="timeout">
+         <div class="togrigio f8">2
+          <div id="tos2a" class="tos blu w100 tac f10i"></div>
+         </div>
+        </td>
+        <td id="to71a" class="timeout">
+         <div class="togrigio f8">3
+          <div id="tos3a" class="tos blu w100 tac f10i"></div>
+         </div>
+        </td>
+        <td id="hcc1a" class="hcc timeout f10i"></td>
+        <td id="hcc2a" class="hcc timeout f10i"></td>
+       </tr>
+       <tr class="f9">
+        <td colspan="2" rowspan="2">
+         ANNO<br>NASC.
+        </td>
+        <td colspan="12" class="nobb">
+         ATLETI
+        </td>
+        <td class="nobb"></td>
+        <td class="nobb"></td>
+       </tr>
+       <tr class="f9">
+        <td colspan="6" class="nobt nobr">Cognome</td>
+        <td colspan="6" class="nobt nobl">Nome</td>
+        <td class="nobt">N.</td>
+        <td class="nobt">E.</td>
+        <td id="lga" class="nobt">1</td>
+        <td class="nobt">2</td>
+        <td class="nobt">3</td>
+        <td class="nobt">4</td>
+        <td class="nobt">5</td>
+        <td class="nobt"></td>
+       </tr>
+      </tbody>
+
+      <tbody>
+       <tr id="ra1" class="f9i">
+        <td id="xa1anno" colspan="2" class="blu sqa"></td>
+        <td id="xa1cogn" colspan="8" class="tal nobr blu sqa"></td>
+        <td id="xa1cap" colspan="2" class="nobl nobr blu sqa"></td>
+        <td id="xa1nome" colspan="2" class="nobl blu sqa"></td>
+        <td id="xa1num" class="blu f9ib sqa"></td>
+        <td id="na1ent" class="enta"></td>
+        <td id="na1f1" class="fa"></td>
+        <td id="na1f2" class="fa"></td>
+        <td id="na1f3" class="fa"></td>
+        <td id="na1f4" class="fa"></td>
+        <td id="na1f5" class="fa"></td>
+        <td id="na1f6" class="fa"></td>
+       </tr>
+       <tr id="ra2" class="f9i">
+        <td id="xa2anno" colspan="2" class="blu sqa"></td>
+        <td id="xa2cogn" colspan="8" class="tal nobr blu sqa"></td>
+        <td id="xa2cap" colspan="2" class="nobl nobr blu sqa"></td>
+        <td id="xa2nome" colspan="2" class="nobl blu sqa"></td>
+        <td id="xa2num" class="blu f9ib sqa"></td>
+        <td id="na2ent" class="enta"></td>
+        <td id="na2f1" class="fa"></td>
+        <td id="na2f2" class="fa"></td>
+        <td id="na2f3" class="fa"></td>
+        <td id="na2f4" class="fa"></td>
+        <td id="na2f5" class="fa"></td>
+        <td id="na2f6" class="fa"></td>
+       </tr>
+       <tr id="ra3" class="f9i">
+        <td id="xa3anno" colspan="2" class="blu sqa"></td>
+        <td id="xa3cogn" colspan="8" class="tal nobr blu sqa"></td>
+        <td id="xa3cap" colspan="2" class="nobl nobr blu sqa"></td>
+        <td id="xa3nome" colspan="2" class="nobl blu sqa"></td>
+        <td id="xa3num" class="blu f9ib sqa"></td>
+        <td id="na3ent" class="enta"></td>
+        <td id="na3f1" class="fa"></td>
+        <td id="na3f2" class="fa"></td>
+        <td id="na3f3" class="fa"></td>
+        <td id="na3f4" class="fa"></td>
+        <td id="na3f5" class="fa"></td>
+        <td id="na3f6" class="fa"></td>
+       </tr>
+       <tr id="ra4" class="f9i">
+        <td id="xa4anno" colspan="2" class="blu sqa"></td>
+        <td id="xa4cogn" colspan="8" class="tal nobr blu sqa"></td>
+        <td id="xa4cap" colspan="2" class="nobl nobr blu sqa"></td>
+        <td id="xa4nome" colspan="2" class="nobl blu sqa"></td>
+        <td id="xa4num" class="blu f9ib sqa"></td>
+        <td id="na4ent" class="enta"></td>
+        <td id="na4f1" class="fa"></td>
+        <td id="na4f2" class="fa"></td>
+        <td id="na4f3" class="fa"></td>
+        <td id="na4f4" class="fa"></td>
+        <td id="na4f5" class="fa"></td>
+        <td id="na4f6" class="fa"></td>
+       </tr>
+       <tr id="ra5" class="f9i">
+        <td id="xa5anno" colspan="2" class="blu sqa"></td>
+        <td id="xa5cogn" colspan="8" class="tal nobr blu sqa"></td>
+        <td id="xa5cap" colspan="2" class="nobl nobr blu sqa"></td>
+        <td id="xa5nome" colspan="2" class="nobl blu sqa"></td>
+        <td id="xa5num" class="blu f9ib sqa"></td>
+        <td id="na5ent" class="enta"></td>
+        <td id="na5f1" class="fa"></td>
+        <td id="na5f2" class="fa"></td>
+        <td id="na5f3" class="fa"></td>
+        <td id="na5f4" class="fa"></td>
+        <td id="na5f5" class="fa"></td>
+        <td id="na5f6" class="fa"></td>
+       </tr>
+       <tr id="ra6" class="f9i">
+        <td id="xa6anno" colspan="2" class="blu sqa"></td>
+        <td id="xa6cogn" colspan="8" class="tal nobr blu sqa"></td>
+        <td id="xa6cap" colspan="2" class="nobl nobr blu sqa"></td>
+        <td id="xa6nome" colspan="2" class="nobl blu sqa"></td>
+        <td id="xa6num" class="blu f9ib sqa"></td>
+        <td id="na6ent" class="enta"></td>
+        <td id="na6f1" class="fa"></td>
+        <td id="na6f2" class="fa"></td>
+        <td id="na6f3" class="fa"></td>
+        <td id="na6f4" class="fa"></td>
+        <td id="na6f5" class="fa"></td>
+        <td id="na6f6" class="fa"></td>
+       </tr>
+       <tr id="ra7" class="f9i">
+        <td id="xa7anno" colspan="2" class="blu sqa"></td>
+        <td id="xa7cogn" colspan="8" class="tal nobr blu sqa"></td>
+        <td id="xa7cap" colspan="2" class="nobl nobr blu sqa"></td>
+        <td id="xa7nome" colspan="2" class="nobl blu sqa"></td>
+        <td id="xa7num" class="blu f9ib sqa"></td>
+        <td id="na7ent" class="enta"></td>
+        <td id="na7f1" class="fa"></td>
+        <td id="na7f2" class="fa"></td>
+        <td id="na7f3" class="fa"></td>
+        <td id="na7f4" class="fa"></td>
+        <td id="na7f5" class="fa"></td>
+        <td id="na7f6" class="fa"></td>
+       </tr>
+       <tr id="ra8" class="f9i">
+        <td id="xa8anno" colspan="2" class="blu sqa"></td>
+        <td id="xa8cogn" colspan="8" class="tal nobr blu sqa"></td>
+        <td id="xa8cap" colspan="2" class="nobl nobr blu sqa"></td>
+        <td id="xa8nome" colspan="2" class="nobl blu sqa"></td>
+        <td id="xa8num" class="blu f9ib sqa"></td>
+        <td id="na8ent" class="enta"></td>
+        <td id="na8f1" class="fa"></td>
+        <td id="na8f2" class="fa"></td>
+        <td id="na8f3" class="fa"></td>
+        <td id="na8f4" class="fa"></td>
+        <td id="na8f5" class="fa"></td>
+        <td id="na8f6" class="fa"></td>
+       </tr>
+       <tr id="ra9" class="f9i">
+        <td id="xa9anno" colspan="2" class="blu sqa"></td>
+        <td id="xa9cogn" colspan="8" class="tal nobr blu sqa"></td>
+        <td id="xa9cap" colspan="2" class="nobl nobr blu sqa"></td>
+        <td id="xa9nome" colspan="2" class="nobl blu sqa"></td>
+        <td id="xa9num" class="blu f9ib sqa"></td>
+        <td id="na9ent" class="enta"></td>
+        <td id="na9f1" class="fa"></td>
+        <td id="na9f2" class="fa"></td>
+        <td id="na9f3" class="fa"></td>
+        <td id="na9f4" class="fa"></td>
+        <td id="na9f5" class="fa"></td>
+        <td id="na9f6" class="fa"></td>
+       </tr>
+       <tr id="ra10" class="f9i">
+        <td id="xa10anno" colspan="2" class="blu sqa"></td>
+        <td id="xa10cogn" colspan="8" class="tal nobr blu sqa"></td>
+        <td id="xa10cap" colspan="2" class="nobl nobr blu sqa"></td>
+        <td id="xa10nome" colspan="2" class="nobl blu sqa"></td>
+        <td id="xa10num" class="blu f9ib sqa"></td>
+        <td id="na10ent" class="enta"></td>
+        <td id="na10f1" class="fa"></td>
+        <td id="na10f2" class="fa"></td>
+        <td id="na10f3" class="fa"></td>
+        <td id="na10f4" class="fa"></td>
+        <td id="na10f5" class="fa"></td>
+        <td id="na10f6" class="fa"></td>
+       </tr>
+       <tr id="ra11" class="f9i">
+        <td id="xa11anno" colspan="2" class="blu sqa"></td>
+        <td id="xa11cogn" colspan="8" class="tal nobr blu sqa"></td>
+        <td id="xa11cap" colspan="2" class="nobl nobr blu sqa"></td>
+        <td id="xa11nome" colspan="2" class="nobl blu sqa"></td>
+        <td id="xa11num" class="blu f9ib sqa"></td>
+        <td id="na11ent" class="enta"></td>
+        <td id="na11f1" class="fa"></td>
+        <td id="na11f2" class="fa"></td>
+        <td id="na11f3" class="fa"></td>
+        <td id="na11f4" class="fa"></td>
+        <td id="na11f5" class="fa"></td>
+        <td id="na11f6" class="fa"></td>
+       </tr>
+       <tr id="ra12" class="f9i">
+        <td id="xa12anno" colspan="2" class="blu sqa"></td>
+        <td id="xa12cogn" colspan="8" class="tal nobr blu sqa"></td>
+        <td id="xa12cap" colspan="2" class="nobl nobr blu sqa"></td>
+        <td id="xa12nome" colspan="2" class="nobl blu sqa"></td>
+        <td id="xa12num" class="blu f9ib sqa"></td>
+        <td id="na12ent" class="enta"></td>
+        <td id="na12f1" class="fa"></td>
+        <td id="na12f2" class="fa"></td>
+        <td id="na12f3" class="fa"></td>
+        <td id="na12f4" class="fa"></td>
+        <td id="na12f5" class="fa"></td>
+        <td id="na12f6" class="fa"></td>
+       </tr>
+       <tr id="raall">
+        <td colspan="12" class="tal nobr sqa">All.re <span id="yaallcogn" class="blu f9i"></span></td>
+        <td colspan="2" class="nobl sqa"><span id="yaallnome" class="blu f9i"></span></td>
+        <td colspan="4" class="tal sqa">Tess. <span id="yaalltess" class="tess blu f9i"></span></td>
+        <td id="naallf1" class="f9i fa"></td>
+        <td id="naallf2" class="f9i fa"></td>
+        <td id="naallf3" class="f9i fa"></td>
+        <td id="naallf4" class="f9i fa"></td>
+       </tr>
+       <tr id="raaall">
+        <td colspan="12" class="tal nobr sqa">1°ass.all.re <span id="yaaallcogn" class="blu f9i"></span></td>
+        <td colspan="2" class="nobl sqa"><span id="yaaallnome" class="blu f9i"></span></td>
+        <td colspan="4" class="tal sqa">Tess. <span id="yaaalltess" class="tess blu f9i"></span></td>
+        <td id="naaallf1" class="f9i fa"></td>
+        <td id="naaallf2" class="f9i fa"></td>
+        <td id="naaallf3" class="f9i fa"></td>
+        <td id="naaallf4" class="f9i fa"></td>
+       </tr>
+       <tr id="raacc">
+        <td colspan="12" class="tal nobr sqa">Accompagnatore <span id="zaacccogn" class="blu f9i"></span></td>
+        <td colspan="2" class="nobl nobr sqa"><span id="zaaccnome" class="blu f9i"></span></td>
+        <td colspan="7" class="nobl sqa"></td>
+        <td id="naaccf1" class="f9i fa"></td>
+       </tr>
+       <tr id="ramed">
+        <td colspan="12" class="tal nobr sqa">Medico <span id="zamedcogn" class="blu f9i"></span></td>
+        <td colspan="2" class="nobl nobr sqa"><span id="zamednome" class="blu f9i"></span></td>
+        <td colspan="7" class="nobl sqa"></td>
+        <td id="namedf1" class="f9i fa"></td>
+       </tr>
+       <tr id="raadd">
+        <td colspan="12" class="tal nobr sqa">Addetto&nbsp;arb.&nbsp;e&nbsp;UdC <span id="zaaddcogn" class="blu f9i"></span></td>
+        <td colspan="2" class="nobl nobr sqa"><span id="zaaddnome" class="blu f9i"></span></td>
+        <td colspan="7" class="nobl sqa"></td>
+        <td id="naaddf1" class="f9i fa"></td>
+       </tr>
+       <tr id="ra2dir">
+        <td colspan="12" class="tal nobr sqa">2&ordm;Dirigente <span id="za2dircogn" class="blu f9i"></span></td>
+        <td colspan="2" class="nobl nobr sqa"><span id="za2dirnome" class="blu f9i"></span></td>
+        <td colspan="7" class="nobl sqa"></td>
+        <td id="na2dirf1" class="f9i fa"></td>
+       </tr>
+       <tr id="ramass">
+        <td colspan="12" class="tal nobr sqa">Massaggiatore <span id="zamasscogn" class="blu f9i"></span></td>
+        <td colspan="2" class="nobl nobr sqa"><span id="zamassnome" class="blu f9i"></span></td>
+        <td colspan="7" class="nobl sqa"></td>
+        <td id="namassf1" class="f9i fa"></td>
+       </tr>
+       <tr id="ra2aall">
+        <td colspan="12" class="tal nobr sqa">2&ordm;ass.all.re/Add.Stat. <span id="ya2aallcogn" class="blu f9i"></span></td>
+        <td colspan="2" class="nobl nobr sqa"><span id="ya2aallnome" class="blu f9i"></span></td>
+        <td colspan="3" class="nobl sqa"></td>
+        <td colspan="4" class="tal sqa">Tess. <span id="ya2aalltess" class="tess blu f9i"></span></td>
+        <td id="na2aallf1" class="f9i fa"></td>
+       </tr>
+       <tr id="ra3aall">
+        <td colspan="12" class="tal nobr sqa">3&ordm;ass.all.re <span id="ya3aallcogn" class="blu f9i"></span></td>
+        <td colspan="2" class="nobl nobr sqa"><span id="ya3aallnome" class="blu f9i"></span></td>
+        <td colspan="3" class="nobl sqa"></td>
+        <td colspan="4" class="tal sqa">Tess. <span id="ya3aalltess" class="tess blu f9i"></span></td>
+        <td id="na3aallf1" class="f9i fa"></td>
+       </tr>
+       <tr id="raprep">
+        <td colspan="12" class="tal nobr sqa">Preparatore&nbsp;fisico <span id="yaprepcogn" class="blu f9i"></span></td>
+        <td colspan="2" class="nobl nobr sqa"><span id="yaprepnome" class="blu f9i"></span></td>
+        <td colspan="3" class="nobl sqa"></td>
+        <td colspan="4" class="tal sqa">Tess. <span id="yapreptess" class="tess blu f9i"></span></td>
+        <td id="naprepf1" class="f9i fa"></td>
+       </tr>
+      </tbody>
+      <tbody>
+       <tr class="colore">
+        <td colspan="16" class="tal f9 sqb">
+         <strong>SQUADRA&nbsp;B</strong>
+         <span id="nsqb" class="blu f10i"></span>
+        </td>
+        <td colspan="6" rowspan="5" class="f8 nobb">
+         FALLI
+         <table class="fallisq">
+          <colgroup>
+           <col class="w20">
+           <col class="w20">
+           <col class="w20">
+           <col class="w20">
+           <col class="w20">
+          </colgroup>
+          <tr>
+           <td class="nob">1Q</td>
+           <td id="sqbt1f1">1</td>
+           <td id="sqbt1f2">2</td>
+           <td id="sqbt1f3">3</td>
+           <td id="sqbt1f4">4</td>
+          </tr>
+          <tr>
+           <td class="nob">2Q</td>
+           <td id="sqbt2f1">1</td>
+           <td id="sqbt2f2">2</td>
+           <td id="sqbt2f3">3</td>
+           <td id="sqbt2f4">4</td>
+          </tr>
+          <tr>
+           <td class="nob">3Q</td>
+           <td id="sqbt3f1">1</td>
+           <td id="sqbt3f2">2</td>
+           <td id="sqbt3f3">3</td>
+           <td id="sqbt3f4">4</td>
+          </tr>
+          <tr>
+           <td class="nob">4Q</td>
+           <td id="sqbt4f1">1</td>
+           <td id="sqbt4f2">2</td>
+           <td id="sqbt4f3">3</td>
+           <td id="sqbt4f4">4</td>
+          </tr>
+         </table>
+        </td>
+       </tr>
+       <tr class="colore">
+        <td colspan="16" class="tal f9 sqb">
+         COLORE&nbsp;MAGLIA
+         <span id="ncolsqb" class="blu f10i"></span>
+        </td>
+       </tr>
+       <tr>
+        <td id="sospb" colspan="14" class="timeout tac f9">
+         SOSPENSIONI
+        </td>
+        <td id="hccb" colspan="2" class="hcc timeout tac f9 chcc">
+         HCC
+        </td>
+       </tr>
+       <tr class="f9">
+        <td id="to1b" colspan="2" class="timeout">1T</td>
+        <td id="to11b" class="timeout f10i"></td>
+        <td id="to12b" class="timeout f10i"></td>
+        <td id="to2b" colspan="2" class="timeout">2T</td>
+        <td id="to21b" class="timeout f10i"></td>
+        <td id="to22b" class="timeout f10i"></td>
+        <td id="to23b" class="timeout f10i"></td>
+        <td id="tosb" colspan="2" class="timeout">S</td>
+        <td id="to51b" class="timeout">
+         <div class="togrigio f8">1
+          <div id="tos1b" class="tos blu w100 tac f10i"></div>
+         </div>
+        </td>
+        <td id="to61b" class="timeout">
+         <div class="togrigio f8">2
+          <div id="tos2b" class="tos blu w100 tac f10i"></div>
+         </div>
+        </td>
+        <td id="to71b" class="timeout">
+         <div class="togrigio f8">3
+          <div id="tos3b" class="tos blu w100 tac f10i"></div>
+         </div>
+        </td>
+        <td id="hcc1b" class="hcc timeout f10i"></td>
+        <td id="hcc2b" class="hcc timeout f10i"></td>
+       </tr>
+       <tr class="f9">
+        <td colspan="2" rowspan="2">
+         ANNO<br>NASC.
+        </td>
+        <td colspan="12" class="nobb">
+         ATLETI
+        </td>
+        <td class="nobb"></td>
+        <td class="nobb"></td>
+       </tr>
+       <tr class="f9">
+        <td colspan="6" class="nobt nobr">Cognome</td>
+        <td colspan="6" class="nobt nobl">Nome</td>
+        <td class="nobt">N.</td>
+        <td class="nobt">E.</td>
+        <td id="lgb" class="nobt">1</td>
+        <td class="nobt">2</td>
+        <td class="nobt">3</td>
+        <td class="nobt">4</td>
+        <td class="nobt">5</td>
+        <td class="nobt"></td>
+       </tr>
+      </tbody>
+
+      <tbody>
+       <tr id="rb1" class="f9i">
+        <td id="xb1anno" colspan="2" class="blu sqb"></td>
+        <td id="xb1cogn" colspan="8" class="tal nobr blu sqb"></td>
+        <td id="xb1cap" colspan="2" class="nobl nobr blu sqb"></td>
+        <td id="xb1nome" colspan="2" class="nobl blu sqb"></td>
+        <td id="xb1num" class="blu f9ib sqb"></td>
+        <td id="nb1ent" class="entb"></td>
+        <td id="nb1f1" class="fa"></td>
+        <td id="nb1f2" class="fa"></td>
+        <td id="nb1f3" class="fa"></td>
+        <td id="nb1f4" class="fa"></td>
+        <td id="nb1f5" class="fa"></td>
+        <td id="nb1f6" class="fa"></td>
+       </tr>
+       <tr id="rb2" class="f9i">
+        <td id="xb2anno" colspan="2" class="blu sqb"></td>
+        <td id="xb2cogn" colspan="8" class="tal nobr blu sqb"></td>
+        <td id="xb2cap" colspan="2" class="nobl nobr blu sqb"></td>
+        <td id="xb2nome" colspan="2" class="nobl blu sqb"></td>
+        <td id="xb2num" class="blu f9ib sqb"></td>
+        <td id="nb2ent" class="entb"></td>
+        <td id="nb2f1" class="fa"></td>
+        <td id="nb2f2" class="fa"></td>
+        <td id="nb2f3" class="fa"></td>
+        <td id="nb2f4" class="fa"></td>
+        <td id="nb2f5" class="fa"></td>
+        <td id="nb2f6" class="fa"></td>
+       </tr>
+       <tr id="rb3" class="f9i">
+        <td id="xb3anno" colspan="2" class="blu sqb"></td>
+        <td id="xb3cogn" colspan="8" class="tal nobr blu sqb"></td>
+        <td id="xb3cap" colspan="2" class="nobl nobr blu sqb"></td>
+        <td id="xb3nome" colspan="2" class="nobl blu sqb"></td>
+        <td id="xb3num" class="blu f9ib sqb"></td>
+        <td id="nb3ent" class="entb"></td>
+        <td id="nb3f1" class="fa"></td>
+        <td id="nb3f2" class="fa"></td>
+        <td id="nb3f3" class="fa"></td>
+        <td id="nb3f4" class="fa"></td>
+        <td id="nb3f5" class="fa"></td>
+        <td id="nb3f6" class="fa"></td>
+       </tr>
+       <tr id="rb4" class="f9i">
+        <td id="xb4anno" colspan="2" class="blu sqb"></td>
+        <td id="xb4cogn" colspan="8" class="tal nobr blu sqb"></td>
+        <td id="xb4cap" colspan="2" class="nobl nobr blu sqb"></td>
+        <td id="xb4nome" colspan="2" class="nobl blu sqb"></td>
+        <td id="xb4num" class="blu f9ib sqb"></td>
+        <td id="nb4ent" class="entb"></td>
+        <td id="nb4f1" class="fa"></td>
+        <td id="nb4f2" class="fa"></td>
+        <td id="nb4f3" class="fa"></td>
+        <td id="nb4f4" class="fa"></td>
+        <td id="nb4f5" class="fa"></td>
+        <td id="nb4f6" class="fa"></td>
+       </tr>
+       <tr id="rb5" class="f9i">
+        <td id="xb5anno" colspan="2" class="blu sqb"></td>
+        <td id="xb5cogn" colspan="8" class="tal nobr blu sqb"></td>
+        <td id="xb5cap" colspan="2" class="nobl nobr blu sqb"></td>
+        <td id="xb5nome" colspan="2" class="nobl blu sqb"></td>
+        <td id="xb5num" class="blu f9ib sqb"></td>
+        <td id="nb5ent" class="entb"></td>
+        <td id="nb5f1" class="fa"></td>
+        <td id="nb5f2" class="fa"></td>
+        <td id="nb5f3" class="fa"></td>
+        <td id="nb5f4" class="fa"></td>
+        <td id="nb5f5" class="fa"></td>
+        <td id="nb5f6" class="fa"></td>
+       </tr>
+       <tr id="rb6" class="f9i">
+        <td id="xb6anno" colspan="2" class="blu sqb"></td>
+        <td id="xb6cogn" colspan="8" class="tal nobr blu sqb"></td>
+        <td id="xb6cap" colspan="2" class="nobl nobr blu sqb"></td>
+        <td id="xb6nome" colspan="2" class="nobl blu sqb"></td>
+        <td id="xb6num" class="blu f9ib sqb"></td>
+        <td id="nb6ent" class="entb"></td>
+        <td id="nb6f1" class="fa"></td>
+        <td id="nb6f2" class="fa"></td>
+        <td id="nb6f3" class="fa"></td>
+        <td id="nb6f4" class="fa"></td>
+        <td id="nb6f5" class="fa"></td>
+        <td id="nb6f6" class="fa"></td>
+       </tr>
+       <tr id="rb7" class="f9i">
+        <td id="xb7anno" colspan="2" class="blu sqb"></td>
+        <td id="xb7cogn" colspan="8" class="tal nobr blu sqb"></td>
+        <td id="xb7cap" colspan="2" class="nobl nobr blu sqb"></td>
+        <td id="xb7nome" colspan="2" class="nobl blu sqb"></td>
+        <td id="xb7num" class="blu f9ib sqb"></td>
+        <td id="nb7ent" class="entb"></td>
+        <td id="nb7f1" class="fa"></td>
+        <td id="nb7f2" class="fa"></td>
+        <td id="nb7f3" class="fa"></td>
+        <td id="nb7f4" class="fa"></td>
+        <td id="nb7f5" class="fa"></td>
+        <td id="nb7f6" class="fa"></td>
+       </tr>
+       <tr id="rb8" class="f9i">
+        <td id="xb8anno" colspan="2" class="blu sqb"></td>
+        <td id="xb8cogn" colspan="8" class="tal nobr blu sqb"></td>
+        <td id="xb8cap" colspan="2" class="nobl nobr blu sqb"></td>
+        <td id="xb8nome" colspan="2" class="nobl blu sqb"></td>
+        <td id="xb8num" class="blu f9ib sqb"></td>
+        <td id="nb8ent" class="entb"></td>
+        <td id="nb8f1" class="fa"></td>
+        <td id="nb8f2" class="fa"></td>
+        <td id="nb8f3" class="fa"></td>
+        <td id="nb8f4" class="fa"></td>
+        <td id="nb8f5" class="fa"></td>
+        <td id="nb8f6" class="fa"></td>
+       </tr>
+       <tr id="rb9" class="f9i">
+        <td id="xb9anno" colspan="2" class="blu sqb"></td>
+        <td id="xb9cogn" colspan="8" class="tal nobr blu sqb"></td>
+        <td id="xb9cap" colspan="2" class="nobl nobr blu sqb"></td>
+        <td id="xb9nome" colspan="2" class="nobl blu sqb"></td>
+        <td id="xb9num" class="blu f9ib sqb"></td>
+        <td id="nb9ent" class="entb"></td>
+        <td id="nb9f1" class="fa"></td>
+        <td id="nb9f2" class="fa"></td>
+        <td id="nb9f3" class="fa"></td>
+        <td id="nb9f4" class="fa"></td>
+        <td id="nb9f5" class="fa"></td>
+        <td id="nb9f6" class="fa"></td>
+       </tr>
+       <tr id="rb10" class="f9i">
+        <td id="xb10anno" colspan="2" class="blu sqb"></td>
+        <td id="xb10cogn" colspan="8" class="tal nobr blu sqb"></td>
+        <td id="xb10cap" colspan="2" class="nobl nobr blu sqb"></td>
+        <td id="xb10nome" colspan="2" class="nobl blu sqb"></td>
+        <td id="xb10num" class="blu f9ib sqb"></td>
+        <td id="nb10ent" class="entb"></td>
+        <td id="nb10f1" class="fa"></td>
+        <td id="nb10f2" class="fa"></td>
+        <td id="nb10f3" class="fa"></td>
+        <td id="nb10f4" class="fa"></td>
+        <td id="nb10f5" class="fa"></td>
+        <td id="nb10f6" class="fa"></td>
+       </tr>
+       <tr id="rb11" class="f9i">
+        <td id="xb11anno" colspan="2" class="blu sqb"></td>
+        <td id="xb11cogn" colspan="8" class="tal nobr blu sqb"></td>
+        <td id="xb11cap" colspan="2" class="nobl nobr blu sqb"></td>
+        <td id="xb11nome" colspan="2" class="nobl blu sqb"></td>
+        <td id="xb11num" class="blu f9ib sqb"></td>
+        <td id="nb11ent" class="entb"></td>
+        <td id="nb11f1" class="fa"></td>
+        <td id="nb11f2" class="fa"></td>
+        <td id="nb11f3" class="fa"></td>
+        <td id="nb11f4" class="fa"></td>
+        <td id="nb11f5" class="fa"></td>
+        <td id="nb11f6" class="fa"></td>
+       </tr>
+       <tr id="rb12" class="f9i">
+        <td id="xb12anno" colspan="2" class="blu sqb"></td>
+        <td id="xb12cogn" colspan="8" class="tal nobr blu sqb"></td>
+        <td id="xb12cap" colspan="2" class="nobl nobr blu sqb"></td>
+        <td id="xb12nome" colspan="2" class="nobl blu sqb"></td>
+        <td id="xb12num" class="blu f9ib sqb"></td>
+        <td id="nb12ent" class="entb"></td>
+        <td id="nb12f1" class="fa"></td>
+        <td id="nb12f2" class="fa"></td>
+        <td id="nb12f3" class="fa"></td>
+        <td id="nb12f4" class="fa"></td>
+        <td id="nb12f5" class="fa"></td>
+        <td id="nb12f6" class="fa"></td>
+       </tr>
+       <tr id="rball">
+        <td colspan="12" class="tal nobr sqb">All.re <span id="yballcogn" class="blu f9i"></span></td>
+        <td colspan="2" class="nobl sqb"><span id="yballnome" class="blu f9i"></span></td>
+        <td colspan="4" class="tal sqb">Tess. <span id="yballtess" class="tess blu f9i"></span></td>
+        <td id="nballf1" class="f9i fa"></td>
+        <td id="nballf2" class="f9i fa"></td>
+        <td id="nballf3" class="f9i fa"></td>
+        <td id="nballf4" class="f9i fa"></td>
+       </tr>
+       <tr id="rbaall">
+        <td colspan="12" class="tal nobr sqb">1°ass.all.re <span id="ybaallcogn" class="blu f9i"></span></td>
+        <td colspan="2" class="nobl sqb"><span id="ybaallnome" class="blu f9i"></span></td>
+        <td colspan="4" class="tal sqb">Tess. <span id="ybaalltess" class="tess blu f9i"></span></td>
+        <td id="nbaallf1" class="f9i fa"></td>
+        <td id="nbaallf2" class="f9i fa"></td>
+        <td id="nbaallf3" class="f9i fa"></td>
+        <td id="nbaallf4" class="f9i fa"></td>
+       </tr>
+       <tr id="rbacc">
+        <td colspan="12" class="tal nobr sqb">Accompagnatore <span id="zbacccogn" class="blu f9i"></span></td>
+        <td colspan="2" class="nobl nobr sqb"><span id="zbaccnome" class="blu f9i"></span></td>
+        <td colspan="7" class="nobl sqb"></td>
+        <td id="nbaccf1" class="f9i fa"></td>
+       </tr>
+       <tr id="rbmed">
+        <td colspan="12" class="tal nobr sqb">Medico <span id="zbmedcogn" class="blu f9i"></span></td>
+        <td colspan="2" class="nobl nobr sqb"><span id="zbmednome" class="blu f9i"></span></td>
+        <td colspan="7" class="nobl sqb"></td>
+        <td id="nbmedf1" class="f9i fa"></td>
+       </tr>
+       <tr id="rbadd" hidden>
+        <td colspan="12" class="tal nobr sqb">Addetto&nbsp;arb.&nbsp;e&nbsp;UdC <span id="zbaddcogn" class="blu f9i"></span></td>
+        <td colspan="2" class="nobl nobr sqb"><span id="zbaddnome" class="blu f9i"></span></td>
+        <td colspan="7" class="nobl sqb"></td>
+        <td id="nbaddf1" class="f9i fa"></td>
+       </tr>
+       <tr id="rb2dir">
+        <td colspan="12" class="tal nobr sqb">2&ordm;Dirigente <span id="zb2dircogn" class="blu f9i"></span></td>
+        <td colspan="2" class="nobl nobr sqb"><span id="zb2dirnome" class="blu f9i"></span></td>
+        <td colspan="7" class="nobl sqb"></td>
+        <td id="nb2dirf1" class="f9i fa"></td>
+       </tr>
+       <tr id="rbmass">
+        <td colspan="12" class="tal nobr sqb">Massaggiatore <span id="zbmasscogn" class="blu f9i"></span></td>
+        <td colspan="2" class="nobl nobr sqb"><span id="zbmassnome" class="blu f9i"></span></td>
+        <td colspan="7" class="nobl sqb"></td>
+        <td id="nbmassf1" class="f9i fa"></td>
+       </tr>
+       <tr id="rb2aall">
+        <td colspan="12" class="tal nobr sqb">2&ordm;ass.all.re/Add.Stat. <span id="yb2aallcogn" class="blu f9i"></span></td>
+        <td colspan="2" class="nobl nobr sqb"><span id="yb2aallnome" class="blu f9i"></span></td>
+        <td colspan="3" class="nobl sqb"></td>
+        <td colspan="4" class="tal sqb">Tess. <span id="yb2aalltess" class="tess blu f9i"></span></td>
+        <td id="nb2aallf1" class="f9i fa"></td>
+       </tr>
+       <tr id="rb3aall">
+        <td colspan="12" class="tal nobr sqb">3&ordm;ass.all.re <span id="yb3aallcogn" class="blu f9i"></span></td>
+        <td colspan="2" class="nobl nobr sqb"><span id="yb3aallnome" class="blu f9i"></span></td>
+        <td colspan="3" class="nobl sqb"></td>
+        <td colspan="4" class="tal sqb">Tess. <span id="yb3aalltess" class="tess blu f9i"></span></td>
+        <td id="nb3aallf1" class="f9i fa"></td>
+       </tr>
+       <tr id="rbprep">
+        <td colspan="12" class="tal nobr sqb nobb">Preparatore&nbsp;fisico <span id="ybprepcogn" class="blu f9i"></span></td>
+        <td colspan="2" class="nobl nobr sqb nobb"><span id="ybprepnome" class="blu f9i"></span></td>
+        <td colspan="3" class="nobl sqb nobb"></td>
+        <td colspan="4" class="tal sqb nobb">Tess. <span id="ybpreptess" class="tess blu f9i"></span></td>
+        <td id="nbprepf1" class="f9i fa nobb"></td>
+       </tr>
+      </tbody>
+     </table>
+
+    </div>
+    <!-- fine squadre -->
+
+    <div class="base h100 b1t colcorpodiv">
+    </div>
+
+    <!-- inizio punti -->
+    <div class="base f9 tac colcorpo h100 b1t">
+     <div id="punteggio">
+      <div class="h12p">
+       PUNTEGGIO PROGRESSIVO
+      </div>
+      <div id="punteggio1" class="base w25 b2l b2t">
+       <table class="punti">
+        <colgroup>
+         <col class="b1r w23">
+         <col class="b1r w27">
+         <col class="b1l w27">
+         <col class="b1l w23">
+        </colgroup>
+        <thead>
+         <tr><td colspan="2">A</td><td colspan="2">B</td></tr>
+        </thead>
+        <tbody>
+         <tr><td id="gpa1" class="punt f10i"></td><td id="pa1" class="punt"><div>1</div></td><td id="pb1" class="punt"><div>1</div></td><td id="gpb1" class="punt f10i"></td></tr>
+        <tr><td id="gpa2" class="punt f10i"></td><td id="pa2" class="punt"><div>2</div></td><td id="pb2" class="punt"><div>2</div></td><td id="gpb2" class="punt f10i"></td></tr>
+        <tr><td id="gpa3" class="punt f10i"></td><td id="pa3" class="punt"><div>3</div></td><td id="pb3" class="punt"><div>3</div></td><td id="gpb3" class="punt f10i"></td></tr>
+        <tr><td id="gpa4" class="punt f10i"></td><td id="pa4" class="punt"><div>4</div></td><td id="pb4" class="punt"><div>4</div></td><td id="gpb4" class="punt f10i"></td></tr>
+        <tr><td id="gpa5" class="punt f10i"></td><td id="pa5" class="punt"><div>5</div></td><td id="pb5" class="punt"><div>5</div></td><td id="gpb5" class="punt f10i"></td></tr>
+        <tr><td id="gpa6" class="punt f10i"></td><td id="pa6" class="punt"><div>6</div></td><td id="pb6" class="punt"><div>6</div></td><td id="gpb6" class="punt f10i"></td></tr>
+        <tr><td id="gpa7" class="punt f10i"></td><td id="pa7" class="punt"><div>7</div></td><td id="pb7" class="punt"><div>7</div></td><td id="gpb7" class="punt f10i"></td></tr>
+        <tr><td id="gpa8" class="punt f10i"></td><td id="pa8" class="punt"><div>8</div></td><td id="pb8" class="punt"><div>8</div></td><td id="gpb8" class="punt f10i"></td></tr>
+        <tr><td id="gpa9" class="punt f10i"></td><td id="pa9" class="punt"><div>9</div></td><td id="pb9" class="punt"><div>9</div></td><td id="gpb9" class="punt f10i"></td></tr>
+        <tr><td id="gpa10" class="punt f10i"></td><td id="pa10" class="punt"><div>10</div></td><td id="pb10" class="punt"><div>10</div></td><td id="gpb10" class="punt f10i"></td></tr>
+        <tr><td id="gpa11" class="punt f10i"></td><td id="pa11" class="punt"><div>11</div></td><td id="pb11" class="punt"><div>11</div></td><td id="gpb11" class="punt f10i"></td></tr>
+        <tr><td id="gpa12" class="punt f10i"></td><td id="pa12" class="punt"><div>12</div></td><td id="pb12" class="punt"><div>12</div></td><td id="gpb12" class="punt f10i"></td></tr>
+        <tr><td id="gpa13" class="punt f10i"></td><td id="pa13" class="punt"><div>13</div></td><td id="pb13" class="punt"><div>13</div></td><td id="gpb13" class="punt f10i"></td></tr>
+        <tr><td id="gpa14" class="punt f10i"></td><td id="pa14" class="punt"><div>14</div></td><td id="pb14" class="punt"><div>14</div></td><td id="gpb14" class="punt f10i"></td></tr>
+        <tr><td id="gpa15" class="punt f10i"></td><td id="pa15" class="punt"><div>15</div></td><td id="pb15" class="punt"><div>15</div></td><td id="gpb15" class="punt f10i"></td></tr>
+        <tr><td id="gpa16" class="punt f10i"></td><td id="pa16" class="punt"><div>16</div></td><td id="pb16" class="punt"><div>16</div></td><td id="gpb16" class="punt f10i"></td></tr>
+        <tr><td id="gpa17" class="punt f10i"></td><td id="pa17" class="punt"><div>17</div></td><td id="pb17" class="punt"><div>17</div></td><td id="gpb17" class="punt f10i"></td></tr>
+        <tr><td id="gpa18" class="punt f10i"></td><td id="pa18" class="punt"><div>18</div></td><td id="pb18" class="punt"><div>18</div></td><td id="gpb18" class="punt f10i"></td></tr>
+        <tr><td id="gpa19" class="punt f10i"></td><td id="pa19" class="punt"><div>19</div></td><td id="pb19" class="punt"><div>19</div></td><td id="gpb19" class="punt f10i"></td></tr>
+        <tr><td id="gpa20" class="punt f10i"></td><td id="pa20" class="punt"><div>20</div></td><td id="pb20" class="punt"><div>20</div></td><td id="gpb20" class="punt f10i"></td></tr>
+        <tr><td id="gpa21" class="punt f10i"></td><td id="pa21" class="punt"><div>21</div></td><td id="pb21" class="punt"><div>21</div></td><td id="gpb21" class="punt f10i"></td></tr>
+        <tr><td id="gpa22" class="punt f10i"></td><td id="pa22" class="punt"><div>22</div></td><td id="pb22" class="punt"><div>22</div></td><td id="gpb22" class="punt f10i"></td></tr>
+        <tr><td id="gpa23" class="punt f10i"></td><td id="pa23" class="punt"><div>23</div></td><td id="pb23" class="punt"><div>23</div></td><td id="gpb23" class="punt f10i"></td></tr>
+        <tr><td id="gpa24" class="punt f10i"></td><td id="pa24" class="punt"><div>24</div></td><td id="pb24" class="punt"><div>24</div></td><td id="gpb24" class="punt f10i"></td></tr>
+        <tr><td id="gpa25" class="punt f10i"></td><td id="pa25" class="punt"><div>25</div></td><td id="pb25" class="punt"><div>25</div></td><td id="gpb25" class="punt f10i"></td></tr>
+        <tr><td id="gpa26" class="punt f10i"></td><td id="pa26" class="punt"><div>26</div></td><td id="pb26" class="punt"><div>26</div></td><td id="gpb26" class="punt f10i"></td></tr>
+        <tr><td id="gpa27" class="punt f10i"></td><td id="pa27" class="punt"><div>27</div></td><td id="pb27" class="punt"><div>27</div></td><td id="gpb27" class="punt f10i"></td></tr>
+        <tr><td id="gpa28" class="punt f10i"></td><td id="pa28" class="punt"><div>28</div></td><td id="pb28" class="punt"><div>28</div></td><td id="gpb28" class="punt f10i"></td></tr>
+        <tr><td id="gpa29" class="punt f10i"></td><td id="pa29" class="punt"><div>29</div></td><td id="pb29" class="punt"><div>29</div></td><td id="gpb29" class="punt f10i"></td></tr>
+        <tr><td id="gpa30" class="punt f10i"></td><td id="pa30" class="punt"><div>30</div></td><td id="pb30" class="punt"><div>30</div></td><td id="gpb30" class="punt f10i"></td></tr>
+        <tr><td id="gpa31" class="punt f10i"></td><td id="pa31" class="punt"><div>31</div></td><td id="pb31" class="punt"><div>31</div></td><td id="gpb31" class="punt f10i"></td></tr>
+        <tr><td id="gpa32" class="punt f10i"></td><td id="pa32" class="punt"><div>32</div></td><td id="pb32" class="punt"><div>32</div></td><td id="gpb32" class="punt f10i"></td></tr>
+        <tr><td id="gpa33" class="punt f10i"></td><td id="pa33" class="punt"><div>33</div></td><td id="pb33" class="punt"><div>33</div></td><td id="gpb33" class="punt f10i"></td></tr>
+        <tr><td id="gpa34" class="punt f10i"></td><td id="pa34" class="punt"><div>34</div></td><td id="pb34" class="punt"><div>34</div></td><td id="gpb34" class="punt f10i"></td></tr>
+        <tr><td id="gpa35" class="punt f10i"></td><td id="pa35" class="punt"><div>35</div></td><td id="pb35" class="punt"><div>35</div></td><td id="gpb35" class="punt f10i"></td></tr>
+        <tr><td id="gpa36" class="punt f10i"></td><td id="pa36" class="punt"><div>36</div></td><td id="pb36" class="punt"><div>36</div></td><td id="gpb36" class="punt f10i"></td></tr>
+        <tr><td id="gpa37" class="punt f10i"></td><td id="pa37" class="punt"><div>37</div></td><td id="pb37" class="punt"><div>37</div></td><td id="gpb37" class="punt f10i"></td></tr>
+        <tr><td id="gpa38" class="punt f10i"></td><td id="pa38" class="punt"><div>38</div></td><td id="pb38" class="punt"><div>38</div></td><td id="gpb38" class="punt f10i"></td></tr>
+        <tr><td id="gpa39" class="punt f10i"></td><td id="pa39" class="punt"><div>39</div></td><td id="pb39" class="punt"><div>39</div></td><td id="gpb39" class="punt f10i"></td></tr>
+        <tr><td id="gpa40" class="punt f10i"></td><td id="pa40" class="punt"><div>40</div></td><td id="pb40" class="punt"><div>40</div></td><td id="gpb40" class="punt f10i"></td></tr>
+        </tbody>
+       </table>
+      </div>
+      <div id="punteggio2" class="base w25 b2l b2t">
+       <table class="punti">
+        <colgroup>
+         <col class="b1r w23">
+         <col class="b1r w27">
+         <col class="b1l w27">
+         <col class="b1l w23">
+        </colgroup>
+        <thead>
+         <tr><td colspan="2">A</td><td colspan="2">B</td></tr>
+        </thead>
+        <tbody>
+         <tr><td id="gpa41" class="punt f10i"></td><td id="pa41" class="punt"><div>41</div></td><td id="pb41" class="punt"><div>41</div></td><td id="gpb41" class="punt f10i"></td></tr>
+        <tr><td id="gpa42" class="punt f10i"></td><td id="pa42" class="punt"><div>42</div></td><td id="pb42" class="punt"><div>42</div></td><td id="gpb42" class="punt f10i"></td></tr>
+        <tr><td id="gpa43" class="punt f10i"></td><td id="pa43" class="punt"><div>43</div></td><td id="pb43" class="punt"><div>43</div></td><td id="gpb43" class="punt f10i"></td></tr>
+        <tr><td id="gpa44" class="punt f10i"></td><td id="pa44" class="punt"><div>44</div></td><td id="pb44" class="punt"><div>44</div></td><td id="gpb44" class="punt f10i"></td></tr>
+        <tr><td id="gpa45" class="punt f10i"></td><td id="pa45" class="punt"><div>45</div></td><td id="pb45" class="punt"><div>45</div></td><td id="gpb45" class="punt f10i"></td></tr>
+        <tr><td id="gpa46" class="punt f10i"></td><td id="pa46" class="punt"><div>46</div></td><td id="pb46" class="punt"><div>46</div></td><td id="gpb46" class="punt f10i"></td></tr>
+        <tr><td id="gpa47" class="punt f10i"></td><td id="pa47" class="punt"><div>47</div></td><td id="pb47" class="punt"><div>47</div></td><td id="gpb47" class="punt f10i"></td></tr>
+        <tr><td id="gpa48" class="punt f10i"></td><td id="pa48" class="punt"><div>48</div></td><td id="pb48" class="punt"><div>48</div></td><td id="gpb48" class="punt f10i"></td></tr>
+        <tr><td id="gpa49" class="punt f10i"></td><td id="pa49" class="punt"><div>49</div></td><td id="pb49" class="punt"><div>49</div></td><td id="gpb49" class="punt f10i"></td></tr>
+        <tr><td id="gpa50" class="punt f10i"></td><td id="pa50" class="punt"><div>50</div></td><td id="pb50" class="punt"><div>50</div></td><td id="gpb50" class="punt f10i"></td></tr>
+        <tr><td id="gpa51" class="punt f10i"></td><td id="pa51" class="punt"><div>51</div></td><td id="pb51" class="punt"><div>51</div></td><td id="gpb51" class="punt f10i"></td></tr>
+        <tr><td id="gpa52" class="punt f10i"></td><td id="pa52" class="punt"><div>52</div></td><td id="pb52" class="punt"><div>52</div></td><td id="gpb52" class="punt f10i"></td></tr>
+        <tr><td id="gpa53" class="punt f10i"></td><td id="pa53" class="punt"><div>53</div></td><td id="pb53" class="punt"><div>53</div></td><td id="gpb53" class="punt f10i"></td></tr>
+        <tr><td id="gpa54" class="punt f10i"></td><td id="pa54" class="punt"><div>54</div></td><td id="pb54" class="punt"><div>54</div></td><td id="gpb54" class="punt f10i"></td></tr>
+        <tr><td id="gpa55" class="punt f10i"></td><td id="pa55" class="punt"><div>55</div></td><td id="pb55" class="punt"><div>55</div></td><td id="gpb55" class="punt f10i"></td></tr>
+        <tr><td id="gpa56" class="punt f10i"></td><td id="pa56" class="punt"><div>56</div></td><td id="pb56" class="punt"><div>56</div></td><td id="gpb56" class="punt f10i"></td></tr>
+        <tr><td id="gpa57" class="punt f10i"></td><td id="pa57" class="punt"><div>57</div></td><td id="pb57" class="punt"><div>57</div></td><td id="gpb57" class="punt f10i"></td></tr>
+        <tr><td id="gpa58" class="punt f10i"></td><td id="pa58" class="punt"><div>58</div></td><td id="pb58" class="punt"><div>58</div></td><td id="gpb58" class="punt f10i"></td></tr>
+        <tr><td id="gpa59" class="punt f10i"></td><td id="pa59" class="punt"><div>59</div></td><td id="pb59" class="punt"><div>59</div></td><td id="gpb59" class="punt f10i"></td></tr>
+        <tr><td id="gpa60" class="punt f10i"></td><td id="pa60" class="punt"><div>60</div></td><td id="pb60" class="punt"><div>60</div></td><td id="gpb60" class="punt f10i"></td></tr>
+        <tr><td id="gpa61" class="punt f10i"></td><td id="pa61" class="punt"><div>61</div></td><td id="pb61" class="punt"><div>61</div></td><td id="gpb61" class="punt f10i"></td></tr>
+        <tr><td id="gpa62" class="punt f10i"></td><td id="pa62" class="punt"><div>62</div></td><td id="pb62" class="punt"><div>62</div></td><td id="gpb62" class="punt f10i"></td></tr>
+        <tr><td id="gpa63" class="punt f10i"></td><td id="pa63" class="punt"><div>63</div></td><td id="pb63" class="punt"><div>63</div></td><td id="gpb63" class="punt f10i"></td></tr>
+        <tr><td id="gpa64" class="punt f10i"></td><td id="pa64" class="punt"><div>64</div></td><td id="pb64" class="punt"><div>64</div></td><td id="gpb64" class="punt f10i"></td></tr>
+        <tr><td id="gpa65" class="punt f10i"></td><td id="pa65" class="punt"><div>65</div></td><td id="pb65" class="punt"><div>65</div></td><td id="gpb65" class="punt f10i"></td></tr>
+        <tr><td id="gpa66" class="punt f10i"></td><td id="pa66" class="punt"><div>66</div></td><td id="pb66" class="punt"><div>66</div></td><td id="gpb66" class="punt f10i"></td></tr>
+        <tr><td id="gpa67" class="punt f10i"></td><td id="pa67" class="punt"><div>67</div></td><td id="pb67" class="punt"><div>67</div></td><td id="gpb67" class="punt f10i"></td></tr>
+        <tr><td id="gpa68" class="punt f10i"></td><td id="pa68" class="punt"><div>68</div></td><td id="pb68" class="punt"><div>68</div></td><td id="gpb68" class="punt f10i"></td></tr>
+        <tr><td id="gpa69" class="punt f10i"></td><td id="pa69" class="punt"><div>69</div></td><td id="pb69" class="punt"><div>69</div></td><td id="gpb69" class="punt f10i"></td></tr>
+        <tr><td id="gpa70" class="punt f10i"></td><td id="pa70" class="punt"><div>70</div></td><td id="pb70" class="punt"><div>70</div></td><td id="gpb70" class="punt f10i"></td></tr>
+        <tr><td id="gpa71" class="punt f10i"></td><td id="pa71" class="punt"><div>71</div></td><td id="pb71" class="punt"><div>71</div></td><td id="gpb71" class="punt f10i"></td></tr>
+        <tr><td id="gpa72" class="punt f10i"></td><td id="pa72" class="punt"><div>72</div></td><td id="pb72" class="punt"><div>72</div></td><td id="gpb72" class="punt f10i"></td></tr>
+        <tr><td id="gpa73" class="punt f10i"></td><td id="pa73" class="punt"><div>73</div></td><td id="pb73" class="punt"><div>73</div></td><td id="gpb73" class="punt f10i"></td></tr>
+        <tr><td id="gpa74" class="punt f10i"></td><td id="pa74" class="punt"><div>74</div></td><td id="pb74" class="punt"><div>74</div></td><td id="gpb74" class="punt f10i"></td></tr>
+        <tr><td id="gpa75" class="punt f10i"></td><td id="pa75" class="punt"><div>75</div></td><td id="pb75" class="punt"><div>75</div></td><td id="gpb75" class="punt f10i"></td></tr>
+        <tr><td id="gpa76" class="punt f10i"></td><td id="pa76" class="punt"><div>76</div></td><td id="pb76" class="punt"><div>76</div></td><td id="gpb76" class="punt f10i"></td></tr>
+        <tr><td id="gpa77" class="punt f10i"></td><td id="pa77" class="punt"><div>77</div></td><td id="pb77" class="punt"><div>77</div></td><td id="gpb77" class="punt f10i"></td></tr>
+        <tr><td id="gpa78" class="punt f10i"></td><td id="pa78" class="punt"><div>78</div></td><td id="pb78" class="punt"><div>78</div></td><td id="gpb78" class="punt f10i"></td></tr>
+        <tr><td id="gpa79" class="punt f10i"></td><td id="pa79" class="punt"><div>79</div></td><td id="pb79" class="punt"><div>79</div></td><td id="gpb79" class="punt f10i"></td></tr>
+        <tr><td id="gpa80" class="punt f10i"></td><td id="pa80" class="punt"><div>80</div></td><td id="pb80" class="punt"><div>80</div></td><td id="gpb80" class="punt f10i"></td></tr>
+        </tbody>
+       </table>
+      </div>
+      <div id="punteggio3" class="base w25 b2l b2t">
+       <table class="punti">
+        <colgroup>
+         <col class="b1r w23">
+         <col class="b1r w27">
+         <col class="b1l w27">
+         <col class="b1l w23">
+        </colgroup>
+        <thead>
+         <tr><td colspan="2">A</td><td colspan="2">B</td></tr>
+        </thead>
+        <tbody>
+         <tr><td id="gpa81" class="punt f10i"></td><td id="pa81" class="punt"><div>81</div></td><td id="pb81" class="punt"><div>81</div></td><td id="gpb81" class="punt f10i"></td></tr>
+        <tr><td id="gpa82" class="punt f10i"></td><td id="pa82" class="punt"><div>82</div></td><td id="pb82" class="punt"><div>82</div></td><td id="gpb82" class="punt f10i"></td></tr>
+        <tr><td id="gpa83" class="punt f10i"></td><td id="pa83" class="punt"><div>83</div></td><td id="pb83" class="punt"><div>83</div></td><td id="gpb83" class="punt f10i"></td></tr>
+        <tr><td id="gpa84" class="punt f10i"></td><td id="pa84" class="punt"><div>84</div></td><td id="pb84" class="punt"><div>84</div></td><td id="gpb84" class="punt f10i"></td></tr>
+        <tr><td id="gpa85" class="punt f10i"></td><td id="pa85" class="punt"><div>85</div></td><td id="pb85" class="punt"><div>85</div></td><td id="gpb85" class="punt f10i"></td></tr>
+        <tr><td id="gpa86" class="punt f10i"></td><td id="pa86" class="punt"><div>86</div></td><td id="pb86" class="punt"><div>86</div></td><td id="gpb86" class="punt f10i"></td></tr>
+        <tr><td id="gpa87" class="punt f10i"></td><td id="pa87" class="punt"><div>87</div></td><td id="pb87" class="punt"><div>87</div></td><td id="gpb87" class="punt f10i"></td></tr>
+        <tr><td id="gpa88" class="punt f10i"></td><td id="pa88" class="punt"><div>88</div></td><td id="pb88" class="punt"><div>88</div></td><td id="gpb88" class="punt f10i"></td></tr>
+        <tr><td id="gpa89" class="punt f10i"></td><td id="pa89" class="punt"><div>89</div></td><td id="pb89" class="punt"><div>89</div></td><td id="gpb89" class="punt f10i"></td></tr>
+        <tr><td id="gpa90" class="punt f10i"></td><td id="pa90" class="punt"><div>90</div></td><td id="pb90" class="punt"><div>90</div></td><td id="gpb90" class="punt f10i"></td></tr>
+        <tr><td id="gpa91" class="punt f10i"></td><td id="pa91" class="punt"><div>91</div></td><td id="pb91" class="punt"><div>91</div></td><td id="gpb91" class="punt f10i"></td></tr>
+        <tr><td id="gpa92" class="punt f10i"></td><td id="pa92" class="punt"><div>92</div></td><td id="pb92" class="punt"><div>92</div></td><td id="gpb92" class="punt f10i"></td></tr>
+        <tr><td id="gpa93" class="punt f10i"></td><td id="pa93" class="punt"><div>93</div></td><td id="pb93" class="punt"><div>93</div></td><td id="gpb93" class="punt f10i"></td></tr>
+        <tr><td id="gpa94" class="punt f10i"></td><td id="pa94" class="punt"><div>94</div></td><td id="pb94" class="punt"><div>94</div></td><td id="gpb94" class="punt f10i"></td></tr>
+        <tr><td id="gpa95" class="punt f10i"></td><td id="pa95" class="punt"><div>95</div></td><td id="pb95" class="punt"><div>95</div></td><td id="gpb95" class="punt f10i"></td></tr>
+        <tr><td id="gpa96" class="punt f10i"></td><td id="pa96" class="punt"><div>96</div></td><td id="pb96" class="punt"><div>96</div></td><td id="gpb96" class="punt f10i"></td></tr>
+        <tr><td id="gpa97" class="punt f10i"></td><td id="pa97" class="punt"><div>97</div></td><td id="pb97" class="punt"><div>97</div></td><td id="gpb97" class="punt f10i"></td></tr>
+        <tr><td id="gpa98" class="punt f10i"></td><td id="pa98" class="punt"><div>98</div></td><td id="pb98" class="punt"><div>98</div></td><td id="gpb98" class="punt f10i"></td></tr>
+        <tr><td id="gpa99" class="punt f10i"></td><td id="pa99" class="punt"><div>99</div></td><td id="pb99" class="punt"><div>99</div></td><td id="gpb99" class="punt f10i"></td></tr>
+        <tr><td id="gpa100" class="punt f10i"></td><td id="pa100" class="punt"><div>100</div></td><td id="pb100" class="punt"><div>100</div></td><td id="gpb100" class="punt f10i"></td></tr>
+        <tr><td id="gpa101" class="punt f10i"></td><td id="pa101" class="punt"><div>101</div></td><td id="pb101" class="punt"><div>101</div></td><td id="gpb101" class="punt f10i"></td></tr>
+        <tr><td id="gpa102" class="punt f10i"></td><td id="pa102" class="punt"><div>102</div></td><td id="pb102" class="punt"><div>102</div></td><td id="gpb102" class="punt f10i"></td></tr>
+        <tr><td id="gpa103" class="punt f10i"></td><td id="pa103" class="punt"><div>103</div></td><td id="pb103" class="punt"><div>103</div></td><td id="gpb103" class="punt f10i"></td></tr>
+        <tr><td id="gpa104" class="punt f10i"></td><td id="pa104" class="punt"><div>104</div></td><td id="pb104" class="punt"><div>104</div></td><td id="gpb104" class="punt f10i"></td></tr>
+        <tr><td id="gpa105" class="punt f10i"></td><td id="pa105" class="punt"><div>105</div></td><td id="pb105" class="punt"><div>105</div></td><td id="gpb105" class="punt f10i"></td></tr>
+        <tr><td id="gpa106" class="punt f10i"></td><td id="pa106" class="punt"><div>106</div></td><td id="pb106" class="punt"><div>106</div></td><td id="gpb106" class="punt f10i"></td></tr>
+        <tr><td id="gpa107" class="punt f10i"></td><td id="pa107" class="punt"><div>107</div></td><td id="pb107" class="punt"><div>107</div></td><td id="gpb107" class="punt f10i"></td></tr>
+        <tr><td id="gpa108" class="punt f10i"></td><td id="pa108" class="punt"><div>108</div></td><td id="pb108" class="punt"><div>108</div></td><td id="gpb108" class="punt f10i"></td></tr>
+        <tr><td id="gpa109" class="punt f10i"></td><td id="pa109" class="punt"><div>109</div></td><td id="pb109" class="punt"><div>109</div></td><td id="gpb109" class="punt f10i"></td></tr>
+        <tr><td id="gpa110" class="punt f10i"></td><td id="pa110" class="punt"><div>110</div></td><td id="pb110" class="punt"><div>110</div></td><td id="gpb110" class="punt f10i"></td></tr>
+        <tr><td id="gpa111" class="punt f10i"></td><td id="pa111" class="punt"><div>111</div></td><td id="pb111" class="punt"><div>111</div></td><td id="gpb111" class="punt f10i"></td></tr>
+        <tr><td id="gpa112" class="punt f10i"></td><td id="pa112" class="punt"><div>112</div></td><td id="pb112" class="punt"><div>112</div></td><td id="gpb112" class="punt f10i"></td></tr>
+        <tr><td id="gpa113" class="punt f10i"></td><td id="pa113" class="punt"><div>113</div></td><td id="pb113" class="punt"><div>113</div></td><td id="gpb113" class="punt f10i"></td></tr>
+        <tr><td id="gpa114" class="punt f10i"></td><td id="pa114" class="punt"><div>114</div></td><td id="pb114" class="punt"><div>114</div></td><td id="gpb114" class="punt f10i"></td></tr>
+        <tr><td id="gpa115" class="punt f10i"></td><td id="pa115" class="punt"><div>115</div></td><td id="pb115" class="punt"><div>115</div></td><td id="gpb115" class="punt f10i"></td></tr>
+        <tr><td id="gpa116" class="punt f10i"></td><td id="pa116" class="punt"><div>116</div></td><td id="pb116" class="punt"><div>116</div></td><td id="gpb116" class="punt f10i"></td></tr>
+        <tr><td id="gpa117" class="punt f10i"></td><td id="pa117" class="punt"><div>117</div></td><td id="pb117" class="punt"><div>117</div></td><td id="gpb117" class="punt f10i"></td></tr>
+        <tr><td id="gpa118" class="punt f10i"></td><td id="pa118" class="punt"><div>118</div></td><td id="pb118" class="punt"><div>118</div></td><td id="gpb118" class="punt f10i"></td></tr>
+        <tr><td id="gpa119" class="punt f10i"></td><td id="pa119" class="punt"><div>119</div></td><td id="pb119" class="punt"><div>119</div></td><td id="gpb119" class="punt f10i"></td></tr>
+        <tr><td id="gpa120" class="punt f10i"></td><td id="pa120" class="punt"><div>120</div></td><td id="pb120" class="punt"><div>120</div></td><td id="gpb120" class="punt f10i"></td></tr>
+        </tbody>
+       </table>
+      </div>
+      <div id="punteggio4" class="base w25 b2l b2t">
+       <table class="punti">
+        <colgroup>
+         <col class="b1r w23">
+         <col class="b1r w27">
+         <col class="b1l w27">
+         <col class="b1l w23">
+        </colgroup>
+        <thead>
+         <tr><td colspan="2">A</td><td colspan="2">B</td></tr>
+        </thead>
+        <tbody>
+         <tr><td id="gpa121" class="punt f10i"></td><td id="pa121" class="punt"><div>121</div></td><td id="pb121" class="punt"><div>121</div></td><td id="gpb121" class="punt f10i"></td></tr>
+        <tr><td id="gpa122" class="punt f10i"></td><td id="pa122" class="punt"><div>122</div></td><td id="pb122" class="punt"><div>122</div></td><td id="gpb122" class="punt f10i"></td></tr>
+        <tr><td id="gpa123" class="punt f10i"></td><td id="pa123" class="punt"><div>123</div></td><td id="pb123" class="punt"><div>123</div></td><td id="gpb123" class="punt f10i"></td></tr>
+        <tr><td id="gpa124" class="punt f10i"></td><td id="pa124" class="punt"><div>124</div></td><td id="pb124" class="punt"><div>124</div></td><td id="gpb124" class="punt f10i"></td></tr>
+        <tr><td id="gpa125" class="punt f10i"></td><td id="pa125" class="punt"><div>125</div></td><td id="pb125" class="punt"><div>125</div></td><td id="gpb125" class="punt f10i"></td></tr>
+        <tr><td id="gpa126" class="punt f10i"></td><td id="pa126" class="punt"><div>126</div></td><td id="pb126" class="punt"><div>126</div></td><td id="gpb126" class="punt f10i"></td></tr>
+        <tr><td id="gpa127" class="punt f10i"></td><td id="pa127" class="punt"><div>127</div></td><td id="pb127" class="punt"><div>127</div></td><td id="gpb127" class="punt f10i"></td></tr>
+        <tr><td id="gpa128" class="punt f10i"></td><td id="pa128" class="punt"><div>128</div></td><td id="pb128" class="punt"><div>128</div></td><td id="gpb128" class="punt f10i"></td></tr>
+        <tr><td id="gpa129" class="punt f10i"></td><td id="pa129" class="punt"><div>129</div></td><td id="pb129" class="punt"><div>129</div></td><td id="gpb129" class="punt f10i"></td></tr>
+        <tr><td id="gpa130" class="punt f10i"></td><td id="pa130" class="punt"><div>130</div></td><td id="pb130" class="punt"><div>130</div></td><td id="gpb130" class="punt f10i"></td></tr>
+        <tr><td id="gpa131" class="punt f10i"></td><td id="pa131" class="punt"><div>131</div></td><td id="pb131" class="punt"><div>131</div></td><td id="gpb131" class="punt f10i"></td></tr>
+        <tr><td id="gpa132" class="punt f10i"></td><td id="pa132" class="punt"><div>132</div></td><td id="pb132" class="punt"><div>132</div></td><td id="gpb132" class="punt f10i"></td></tr>
+        <tr><td id="gpa133" class="punt f10i"></td><td id="pa133" class="punt"><div>133</div></td><td id="pb133" class="punt"><div>133</div></td><td id="gpb133" class="punt f10i"></td></tr>
+        <tr><td id="gpa134" class="punt f10i"></td><td id="pa134" class="punt"><div>134</div></td><td id="pb134" class="punt"><div>134</div></td><td id="gpb134" class="punt f10i"></td></tr>
+        <tr><td id="gpa135" class="punt f10i"></td><td id="pa135" class="punt"><div>135</div></td><td id="pb135" class="punt"><div>135</div></td><td id="gpb135" class="punt f10i"></td></tr>
+        <tr><td id="gpa136" class="punt f10i"></td><td id="pa136" class="punt"><div>136</div></td><td id="pb136" class="punt"><div>136</div></td><td id="gpb136" class="punt f10i"></td></tr>
+        <tr><td id="gpa137" class="punt f10i"></td><td id="pa137" class="punt"><div>137</div></td><td id="pb137" class="punt"><div>137</div></td><td id="gpb137" class="punt f10i"></td></tr>
+        <tr><td id="gpa138" class="punt f10i"></td><td id="pa138" class="punt"><div>138</div></td><td id="pb138" class="punt"><div>138</div></td><td id="gpb138" class="punt f10i"></td></tr>
+        <tr><td id="gpa139" class="punt f10i"></td><td id="pa139" class="punt"><div>139</div></td><td id="pb139" class="punt"><div>139</div></td><td id="gpb139" class="punt f10i"></td></tr>
+        <tr><td id="gpa140" class="punt f10i"></td><td id="pa140" class="punt"><div>140</div></td><td id="pb140" class="punt"><div>140</div></td><td id="gpb140" class="punt f10i"></td></tr>
+        <tr><td id="gpa141" class="punt f10i"></td><td id="pa141" class="punt"><div>141</div></td><td id="pb141" class="punt"><div>141</div></td><td id="gpb141" class="punt f10i"></td></tr>
+        <tr><td id="gpa142" class="punt f10i"></td><td id="pa142" class="punt"><div>142</div></td><td id="pb142" class="punt"><div>142</div></td><td id="gpb142" class="punt f10i"></td></tr>
+        <tr><td id="gpa143" class="punt f10i"></td><td id="pa143" class="punt"><div>143</div></td><td id="pb143" class="punt"><div>143</div></td><td id="gpb143" class="punt f10i"></td></tr>
+        <tr><td id="gpa144" class="punt f10i"></td><td id="pa144" class="punt"><div>144</div></td><td id="pb144" class="punt"><div>144</div></td><td id="gpb144" class="punt f10i"></td></tr>
+        <tr><td id="gpa145" class="punt f10i"></td><td id="pa145" class="punt"><div>145</div></td><td id="pb145" class="punt"><div>145</div></td><td id="gpb145" class="punt f10i"></td></tr>
+        <tr><td id="gpa146" class="punt f10i"></td><td id="pa146" class="punt"><div>146</div></td><td id="pb146" class="punt"><div>146</div></td><td id="gpb146" class="punt f10i"></td></tr>
+        <tr><td id="gpa147" class="punt f10i"></td><td id="pa147" class="punt"><div>147</div></td><td id="pb147" class="punt"><div>147</div></td><td id="gpb147" class="punt f10i"></td></tr>
+        <tr><td id="gpa148" class="punt f10i"></td><td id="pa148" class="punt"><div>148</div></td><td id="pb148" class="punt"><div>148</div></td><td id="gpb148" class="punt f10i"></td></tr>
+        <tr><td id="gpa149" class="punt f10i"></td><td id="pa149" class="punt"><div>149</div></td><td id="pb149" class="punt"><div>149</div></td><td id="gpb149" class="punt f10i"></td></tr>
+        <tr><td id="gpa150" class="punt f10i"></td><td id="pa150" class="punt"><div>150</div></td><td id="pb150" class="punt"><div>150</div></td><td id="gpb150" class="punt f10i"></td></tr>
+        <tr><td id="gpa151" class="punt f10i"></td><td id="pa151" class="punt"><div>151</div></td><td id="pb151" class="punt"><div>151</div></td><td id="gpb151" class="punt f10i"></td></tr>
+        <tr><td id="gpa152" class="punt f10i"></td><td id="pa152" class="punt"><div>152</div></td><td id="pb152" class="punt"><div>152</div></td><td id="gpb152" class="punt f10i"></td></tr>
+        <tr><td id="gpa153" class="punt f10i"></td><td id="pa153" class="punt"><div>153</div></td><td id="pb153" class="punt"><div>153</div></td><td id="gpb153" class="punt f10i"></td></tr>
+        <tr><td id="gpa154" class="punt f10i"></td><td id="pa154" class="punt"><div>154</div></td><td id="pb154" class="punt"><div>154</div></td><td id="gpb154" class="punt f10i"></td></tr>
+        <tr><td id="gpa155" class="punt f10i"></td><td id="pa155" class="punt"><div>155</div></td><td id="pb155" class="punt"><div>155</div></td><td id="gpb155" class="punt f10i"></td></tr>
+        <tr><td id="gpa156" class="punt f10i"></td><td id="pa156" class="punt"><div>156</div></td><td id="pb156" class="punt"><div>156</div></td><td id="gpb156" class="punt f10i"></td></tr>
+        <tr><td id="gpa157" class="punt f10i"></td><td id="pa157" class="punt"><div>157</div></td><td id="pb157" class="punt"><div>157</div></td><td id="gpb157" class="punt f10i"></td></tr>
+        <tr><td id="gpa158" class="punt f10i"></td><td id="pa158" class="punt"><div>158</div></td><td id="pb158" class="punt"><div>158</div></td><td id="gpb158" class="punt f10i"></td></tr>
+        <tr><td id="gpa159" class="punt f10i"></td><td id="pa159" class="punt"><div>159</div></td><td id="pb159" class="punt"><div>159</div></td><td id="gpb159" class="punt f10i"></td></tr>
+        <tr><td id="gpa160" class="punt f10i"></td><td id="pa160" class="punt"><div>160</div></td><td id="pb160" class="punt"><div>160</div></td><td id="gpb160" class="punt f10i"></td></tr>
+        </tbody>
+       </table>
+      </div>
+     </div>
+    </div>
+    <!-- fine punti -->
+
+   </div>
+   <!-- fine corporef -->
+
+   <!-- inizio footer1 -->
+   <div class="base w100 b2t b1b">
+
+    <div class="base w60">
+
+     <!-- inizio risultato -->
+     <div class="lh13">
+      <table class="ris f9">
+       <colgroup>
+        <col class="w40">
+        <col class="w10">
+        <col class="w50">
+       </colgroup>
+       <tr>
+        <td colspan="2" class="tac">RISULTATO&nbsp;FINALE</td>
+        <td class="tac">SQUADRA&nbsp;VINCENTE</td>
+       </tr>
+       <tr>
+        <td class="vab">
+         <strong>A</strong>
+         <span id="nrsqa" class="blu f10i"></span>
+        </td>
+        <td class="tac vab">
+         <span id="npsqa" class="blu f10i"></span>
+        </td>
+        <td rowspan="2" class="tac">
+         <span id="nsqvin" class="blu f10i"></span>
+        </td>
+       </tr>
+       <tr>
+        <td class="vab">
+         <strong>B</strong>
+         <span id="nrsqb" class="blu f10i"></span>
+        </td>
+        <td class="tac vab">
+         <span id="npsqb" class="blu f10i"></span>
+        </td>
+       </tr>
+      </table>
+     </div>
+     <!-- fine risultato -->
+
+     <!-- inizio reclamo -->
+     <div class="pddatig">
+      <table class="risparz">
+       <colgroup>
+        <col>
+        <col class="w50">
+        <col>
+        <col class="w50">
+       </colgroup>
+       <tr>
+        <td colspan="4">
+         Firma del capitano della squadra che intende inoltrare istanza avverso il risultato di gara
+        </td>
+       </tr>
+       <tr class="hrecl vab">
+        <td class="frecl1">Per&nbsp;la&nbsp;Società</td>
+        <td id="nsqrecl" class="b1bd blu f10i frecl1"></td>
+        <td class="frecl2">il&nbsp;capitano</td>
+        <td class="b1bd frecl2">
+         <div class="c-rel h100">
+          <input id="frecl" type="hidden" value="">
+          <canvas id="cfrecl" width="80" height="20" class="firmal"></canvas>
+         </div>
+        </td>
+       </tr>
+      </table>
+     </div>
+     <!-- fine reclamo -->
+
+    </div>
+
+    <div class="base w40 tac">
+
+     <!-- inizio parziali -->
+     <div class="base w60 b1l b1r pddatig">
+      <table class="risparz">
+       <colgroup>
+        <col>
+        <col>
+        <col class="w50">
+        <col>
+        <col class="w50">
+       </colgroup>
+       <tr>
+        <td></td>
+        <td colspan="4">RISULTATI&nbsp;PARZIALI</td>
+       </tr>
+       <tr>
+        <td class="tal">1&ordm;Quarto</td>
+        <td>A</td>
+        <td id="nrq1a" class="b1bd blu f10i"></td>
+        <td>B</td>
+        <td id="nrq1b" class="b1bd blu f10i"></td>
+       </tr>
+       <tr>
+        <td class="tal">2&ordm;Quarto</td>
+        <td>A</td>
+        <td id="nrq2a" class="b1bd blu f10i"></td>
+        <td>B</td>
+        <td id="nrq2b" class="b1bd blu f10i"></td>
+       </tr>
+       <tr>
+        <td class="tal">3&ordm;Quarto</td>
+        <td>A</td>
+        <td id="nrq3a" class="b1bd blu f10i"></td>
+        <td>B</td>
+        <td id="nrq3b" class="b1bd blu f10i"></td>
+       </tr>
+       <tr>
+        <td class="tal">4&ordm;Quarto</td>
+        <td>A</td>
+        <td id="nrq4a" class="b1bd blu f10i"></td>
+        <td>B</td>
+        <td id="nrq4b" class="b1bd blu f10i"></td>
+       </tr>
+       <tr>
+        <td class="tal">Supplem.</td>
+        <td>A</td>
+        <td id="nrq5a" class="b1bd blu f10i"></td>
+        <td>B</td>
+        <td id="nrq5b" class="b1bd blu f10i"></td>
+       </tr>
+      </table>
+     </div>
+     <!-- fine parziali -->
+
+     <!-- inizio orari -->
+     <div class="base w20 pddatig b1r">
+      <table class="risparz">
+       <colgroup>
+        <col class="w100">
+       </colgroup>
+       <tr>
+        <td>INIZIO</td>
+       </tr>
+       <tr>
+        <td id="dora1i" class="tora rosso b1bd f10i"></td>
+       </tr>
+       <tr>
+        <td id="dora2i" class="tora blu b1bd f10i"></td>
+       </tr>
+       <tr>
+        <td id="dora3i" class="tora rosso b1bd f10i"></td>
+       </tr>
+       <tr>
+        <td id="dora4i" class="tora blu b1bd f10i"></td>
+       </tr>
+       <tr>
+        <td id="dora5i" class="tora blu b1bd f10i"></td>
+       </tr>
+      </table>
+     </div>
+     <div class="base w20 pddatig">
+      <table class="risparz">
+       <colgroup>
+        <col class="w100">
+       </colgroup>
+       <tr>
+        <td>FINE</td>
+       </tr>
+       <tr>
+        <td id="dora1f" class="tora rosso b1bd f10i"></td>
+       </tr>
+       <tr>
+        <td id="dora2f" class="tora blu b1bd f10i"></td>
+       </tr>
+       <tr>
+        <td id="dora3f" class="tora rosso b1bd f10i"></td>
+       </tr>
+       <tr>
+        <td id="dora4f" class="tora blu b1bd f10i"></td>
+       </tr>
+       <tr>
+        <td id="dora5f" class="tora blu b1bd f10i"></td>
+       </tr>
+      </table>
+     </div>
+     <!-- fine orari -->
+
+    </div>
+
+   </div>
+   <!-- fine footer1 -->
+
+   <!-- inizio footer2 -->
+   <div class="base w100 tac">
+
+    <!-- inizio udc nomi -->
+    <div class="base w30 b1r udc">
+     <div class="w100 b1b">
+      UFFICIALI&nbsp;DI&nbsp;CAMPO
+     </div>
+     <div class="pdgiudici">
+      <table class="risparz tal">
+       <colgroup>
+        <col>
+        <col class="w100">
+       </colgroup>
+       <tr>
+        <td>Cronometr.</td>
+        <td id="ncrono" class="b1bd blu f10i"></td>
+       </tr>
+       <tr>
+        <td>Segnapunti</td>
+        <td id="nsegna" class="b1bd blu f10i"></td>
+       </tr>
+       <tr>
+        <td>Addetto&nbsp;24&Prime;</td>
+        <td id="nadd24" class="b1bd blu f10i"></td>
+       </tr>
+      </table>
+     </div>
+    </div>
+    <!-- fine udc nomi -->
+
+    <!-- inizio udc tess -->
+    <div class="base w7 b1r udc">
+     <div class="w100 b1b">
+      TESS.&nbsp;CIA
+     </div>
+     <div class="pdgiudici">
+      <table class="risparz">
+       <colgroup>
+        <col class="w100">
+       </colgroup>
+       <tr>
+        <td id="ntcrono" class="b1bd blu f10i"></td>
+       </tr>
+       <tr>
+        <td id="ntsegna" class="b1bd blu f10i"></td>
+       </tr>
+       <tr>
+        <td id="ntadd24" class="b1bd blu f10i"></td>
+       </tr>
+      </table>
+     </div>
+    </div>
+    <!-- fine udc tess -->
+
+    <!-- inizio udc firme -->
+    <div class="base w25 b1r">
+     <div class="w100 b1b">
+      FIRME
+     </div>
+     <div class="pdgiudici">
+      <table class="risparz">
+       <colgroup>
+        <col class="w100">
+       </colgroup>
+       <tr class="fudc">
+        <td class="b1bd">
+         <div class="c-rel h100">
+          <input id="fcrono" type="hidden" value="">
+          <canvas id="cfcrono" width="80" height="20" class="firmal"></canvas>
+         </div>
+        </td>
+       </tr>
+       <tr class="fudc">
+        <td class="b1bd">
+         <div class="c-rel h100">
+          <input id="fsegna" type="hidden" value="">
+          <canvas id="cfsegna" width="80" height="20" class="firmar"></canvas>
+         </div>
+        </td>
+       </tr>
+       <tr class="fudc">
+        <td class="b1bd">
+         <div class="c-rel h100">
+          <input id="fadd24" type="hidden" value="">
+          <canvas id="cfadd24" width="80" height="20" class="firmal"></canvas>
+         </div>
+        </td>
+       </tr>
+      </table>
+     </div>
+    </div>
+    <!-- fine udc firme -->
+
+    <!-- inizio arb firme -->
+    <div class="base w30 b1r">
+     <div class="w100 b1b">
+      ARBITRI
+     </div>
+     <div class="pdgiudici">
+      <table class="risparz">
+       <colgroup>
+        <col>
+        <col class="w100">
+       </colgroup>
+       <tr class="farb">
+        <td class="tal">Firma&nbsp;1&ordm;&nbsp;Arbitro</td>
+        <td class="b1bd">
+         <div class="c-rel h100">
+          <input id="farb1" type="hidden" value="">
+          <canvas id="cfarb1" width="80" height="20" class="firmal"></canvas>
+         </div>
+        </td>
+       </tr>
+       <tr class="farb">
+        <td class="tal">Firma&nbsp;Arbitro</td>
+        <td class="b1bd">
+         <div class="c-rel h100">
+          <input id="farb2" type="hidden" value="">
+          <canvas id="cfarb2" width="80" height="20" class="firmar"></canvas>
+         </div>
+        </td>
+       </tr>
+       <tr class="farb">
+        <td class="tal">Firma&nbsp;Arbitro</td>
+        <td class="b1bd">
+         <div class="c-rel h100">
+          <input id="farb3" type="hidden" value="">
+          <canvas id="cfarb3" width="80" height="20" class="firmal"></canvas>
+         </div>
+        </td>
+       </tr>
+      </table>
+     </div>
+    </div>
+    <!-- fine arb firme -->
+
+    <!-- inizio arb tess -->
+    <div class="base w7 tarb">
+     <div class="w100 b1b">
+      TESS.&nbsp;CIA
+     </div>
+     <div class="pdgiudici">
+      <table class="risparz">
+       <colgroup>
+        <col class="w100">
+       </colgroup>
+       <tr>
+        <td id="ntarb1" class="b1bd f10i blu"></td>
+       </tr>
+       <tr>
+        <td id="ntarb2" class="b1bd f10i blu"></td>
+       </tr>
+       <tr>
+        <td id="ntarb3" class="b1bd f10i blu"></td>
+       </tr>
+      </table>
+     </div>
+    </div>
+    <!-- inizio arb tess -->
+
+   </div>
+   <!-- fine footer2 -->
+
+  </div>
+  <!-- fine col-ref -->
+
+  <!-- inizio col-firme -->
+  <div class="col-firme">
+   <div id="copia" class="ruotato colcopia">
+    1)&nbsp;Copia&nbsp;per&nbsp;l'Ente&nbsp;Organizzatore
+   </div>
+  </div>
+  <!-- fine col-firme -->
+
+ </div>
+ <!-- fine pagina referto -->
+
+ <!-- inizio nuova pagina -->
+ <div class="pagina"></div>
+ <div id="newpage" class="centerbox">
+  <div class="col-ref nob pdpaga mal2_5">
+   <div id="annotaz" class="base colcorpo hidden">
+    <div class="tac f12">ANNOTAZIONI</div>
+    <div id="npnote" class="f9">
+     <ul>
+     </ul>
+    </div>
+   </div>
+   <div class="base f9 tac colcorpo mal0_6">
+    <div id="estens" class="base w25 hidden">
+     <div>ESTENSIONE<br>PUNTEGGIO</div>
+     <div id="punteggio5" class="w100 b1all">
+      <table class="punti">
+       <colgroup>
+        <col class="b1r w23">
+        <col class="b1r w27">
+        <col class="b1l w27">
+        <col class="b1l w23">
+       </colgroup>
+       <thead>
+        <tr><td colspan="2">A</td><td colspan="2">B</td></tr>
+       </thead>
+       <tbody>
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>   
+  </div>
+ </div>
+ <!-- fine nuova pagina --> 
+
+ <!-- inizio moduli -->
+
+ <!-- inizio modulo menu principale -->
+ <div id="modMenu" class="mod-ol f12">
+  <div class="mod-box w50">
+   <button class="mod-cls">×</button>
+   <h3>Menù principale</h3>
+    <div class="responsive">
+     <p><button id="menu05">Annulla l'ultima riga (<span id="ultimariga"></span>) immessa (<strong><span id="ultimodato"></span></strong>)</button></p>
+     <p><button id="menu10">Chiudi primo timeout Q4</button></p>
+     <p><button id="menu15">Inizio tempo supplementare oltre il primo</button></p>
+     <p><button id="menu20">Fine tempo supplementare oltre il primo</button></p>
+     <p><button id="menu25">Aggiungi nota</button></p>
+     <p><button id="menu30">Chiusura gara</button></p>
+     <p><button id="menu35">Salva gara</button></p>
+     <p><button id="menu40">Carica gara salvata</button></p>
+     <p><button id="menu45">Stampa referto</button></p>
+     <p><button id="menu50">Lista/Modifica gara</button></p>
+     <p>Copia
+      <button id="menu55">Bianca</button>,
+      <button id="menu60">Verde</button>,
+      <button id="menu65">Rosa</button>,
+      <button id="menu70">Gialla</button>
+     </p>
+     <p><button id="menu80">Nuova gara</button></p>
+    </div>
+  </div>
+ </div>
+ <!-- fine modulo menu principale -->
+
+ <!-- inizio modulo carica gara salvata -->
+ <div id="modCaricaGS" class="mod-ol f12">
+  <div class="mod-box w30">
+   <button class="mod-cls">×</button>
+   <h3>Carica Gara Salvata</h3>
+    <div class="responsive">
+     <input type="file" id="fileInput">
+    </div>
+  </div>
+ </div>
+ <!-- fine modulo carica gara salvata -->
+
+ <!-- inizio modulo entrate iniziali -->
+ <div id="modEntIniz" class="mod-ol f12">
+  <div class="mod-box w30">
+   <button class="mod-cls">×</button>
+   <h3>Entrate Iniziali Squadra <span id="meiord">A</span></h3>
+   <form name="entiniz">
+    <div class="responsive">
+     <table class="tabmod">
+     </table>
+    </div>
+    <input type="submit" value="INVIO">
+   </form>
+  </div>
+ </div>
+ <!-- fine modulo entrate iniziali -->
+
+ <!-- inizio modulo falli -->
+ <div id="modFalli" class="mod-ol f12">
+  <div class="mod-box w60">
+   <button class="mod-cls">×</button>
+   <h3><span id="mfagioc"></span> squadra <span id="mfasq">A</span> <span id="mfaord">1</span>&ordm;FALLO</h3>
+   <form name="falform">
+    <input type="hidden" name="giocref" value="">
+    <div class="responsive">
+     <table class="tabmod">
+      <tr>
+       <th>Tipo</th>
+       <th>Tiri liberi</th>
+       <th></th>
+       <th></th>
+      </tr>
+      <tr>
+       <td>
+        <label>
+         <input type="radio" name="tipof" value="P" checked>
+         (P) personale
+        </label><br>
+        <label>
+         <input type="radio" name="tipof" value="T">
+         (T) tecnico
+        </label><br>
+        <label>
+         <input type="radio" name="tipof" value="C">
+         (C) allenatore
+        </label><br>
+        <label>
+         <input type="radio" name="tipof" value="B">
+         (B) panchina
+        </label><br>
+        <label>
+         <input type="radio" name="tipof" value="BD">
+         (BD) delegazione in panchina
+        </label><br>
+        <label>
+         <input type="radio" name="tipof" value="DI">
+         (DI) tattico
+        </label><br>
+        <label>
+         <input type="radio" name="tipof" value="FL">
+         (FL) flagrante
+        </label><br>
+        <label>
+         <input type="radio" name="tipof" value="D">
+         (D) espulsione
+        </label><br>
+        <label>
+         <input type="radio" name="tipof" value="GD">
+         (GD) allontanamento
+        </label><br>
+        <label>
+         <input type="checkbox" name="tiporis" value="F">
+         (F) rissa
+        </label>
+       </td>
+       <td>
+        <label>
+         <input type="radio" name="pedice" value="" checked>
+         Nessuno
+        </label><br>
+        <label>
+         <input type="radio" name="pedice" value="1">
+         1 libero
+        </label><br>
+        <label>
+         <input type="radio" name="pedice" value="2">
+         2 liberi
+        </label><br>
+        <label>
+         <input type="radio" name="pedice" value="3">
+         3 liberi
+        </label><br>
+        <label>
+         <input type="radio" name="pedice" value="C">
+         Compensato
+        </label>
+       </td>
+       <td>
+        <label>
+         <input type="checkbox" name="cerchiato" value="C">
+         Cerchiato
+        </label>
+       </td>
+       <td>
+        <label>
+        <input type="checkbox" name="disq" value="SQ" checked>
+        Fallo di squadra
+        </label>
+       </td>
+      </tr>
+     </table>
+    </div>
+    <input type="submit" value="INVIO">
+   </form>
+  </div>
+ </div>
+ <!-- fine modulo falli -->
+
+ <!-- inizio modulo firma grafometrica -->
+ <div id="modFirmaG" class="mod-ol f12">
+  <div class="mod-box w80">
+   <button class="mod-cls">×</button>
+   <h3>Firma <span id="mfgord">Allenatore A</span></h3>
+   <form name="fg">
+    <input type="hidden" name="dati" value="">
+    <button id="fgcan">CANCELLA</button>&nbsp;<button id="fgind">INDIETRO</button>
+    <div class="responsive">
+     <div class="firma1">
+      <div class="firma2"></div>
+      <canvas id="firmadis" width="600" height="150" class="firma3"></canvas>
+     </div>
+    </div>
+    <input type="submit" value="INVIO">
+   </form>
+  </div>
+ </div>
+ <!-- fine modulo firma grafometrica -->
+
+ <!-- inizio modulo prima intestazione -->
+ <div id="modHeader1" class="mod-ol f12">
+  <div class="mod-box w50">
+   <button class="mod-cls">×</button>
+   <h3>Dati Prima Intestazione</h3>
+   <form name="hea1">
+    <label>
+     Numero Gara
+     <input type="text" name="ingara">
+    </label>
+    <br>
+    <label>
+     Società A <input type="text" name="insoca" class="ima">
+    </label>
+    <br>
+    <label>
+     1&ordm; Sponsor A <input type="text" name="insponsora" class="ima">
+    </label>
+    <br>
+    <label>
+     Ulteriori Sponsor A <input type="text" name="inusponsora" class="ima">
+    </label>
+    <br>
+    <label>
+     Società B <input type="text" name="insocb" class="ima">
+    </label>
+    <br>
+    <label>
+     1&ordm; Sponsor B <input type="text" name="insponsorb" class="ima">
+    </label>
+    <br>
+    <label>
+     Ulteriori Sponsor B <input type="text" name="inusponsorb" class="ima">
+    </label>
+    <br>
+    <input type="submit" value="INVIO">
+   </form>
+  </div>
+ </div>
+ <!-- fine modulo prima intestazione -->
+
+ <!-- inizio modulo seconda intestazione -->
+ <div id="modHeader2" class="mod-ol f12">
+  <div class="mod-box w50">
+   <button class="mod-cls">×</button>
+   <h3>Dati Seconda Intestazione</h3>
+   <form name="hea2">
+    <label>
+     Campionato
+     <input type="text" name="incampio" class="ima">
+    </label>
+    <br>
+    <label>
+     Località
+     <input type="text" name="inlocal" class="ima">
+    </label>
+    <br>
+    <label>
+     Data
+     <input type="text" name="indata">
+    </label>
+    <br>
+    <label>
+     Girone
+     <input type="text" name="ingir" class="ima">
+    </label>
+    <br>
+    <label>
+     Campo
+     <input type="text" name="incampo" class="ima">
+    </label>
+    <br>
+    <label>
+     Ore
+     <input type="text" name="inore" class="ior">
+    </label>
+    <br>
+    <label>
+     1&ordm;&nbsp;Arbitro
+     <input type="text" name="inarb1" class="ima">
+    </label>
+    <br>
+    <label>
+     Arbitro 2
+     <input type="text" name="inarb2" class="ima">
+    </label>
+    <br>
+    <label>
+     Arbitro 3
+     <input type="text" name="inarb3" class="ima">
+    </label>
+    <br>
+    <label>
+     Ingresso a pagamento
+     <input type="checkbox" name="inpaga">
+    </label>
+    <br>
+    <label>
+     HCC disponibile
+     <input type="checkbox" name="idhcc">
+    </label>
+    <br>
+    <input type="submit" value="INVIO">
+   </form>
+  </div>
+ </div>
+ <!-- fine modulo seconda intestazione -->
+
+ <!-- inizio modulo ListaN -->
+ <div id="modListaN" class="mod-ol f12">
+  <div class="mod-box w40">
+   <button class="mod-cls">×</button>
+   <h3><span id="mlnord">Lista Righe Referto</span></h3>
+   <ul>
+   </ul>
+  </div>
+ </div>
+ <!-- fine modulo ListaN -->
+
+ <!-- inizio modulo Orario -->
+ <div id="modOrario" class="mod-ol f12">
+  <div class="mod-box w40">
+   <button class="mod-cls">×</button>
+   <h3><span class="oratipo">Inizio</span> Tempo <span id="morario"></span></h3>
+   <form name="oraform">
+    <div class="responsive">
+     <table class="tabmod">
+     </table>
+    </div>
+    <label>
+     Orario <span class="oratipo">Inizio</span>
+     <input type="text" name="iorario" class="ior">
+     <input type="hidden" name="riforario">
+    </label>
+    <br>
+    <input type="submit" value="INVIO">
+   </form>
+  </div>
+ </div>
+ <!-- fine modulo Orario -->
+
+ <!-- inizio modulo Presenta -->
+ <div id="modPres" class="mod-ol f12">
+  <div class="mod-box w60">
+   <button class="mod-cls">×</button>
+   <h3>Referto digitale in stile FIP<br><span class="f8">Autore: Fabrizio Fellini</span></h3>
+    <div class="responsive">
+     <p>Per il menù cliccare l'immagine del logo FIP.</p>
+     <p>Qualsiasi altro elemento cliccato permetterà di modificarne il contenuto.</p>
+     <p>Una volta preparate le intestazioni (basta cliccarci sopra), e poi immessi i dati delle squadre,
+      per iniziare ad immettere falli, punti, ecc.,
+      cliccare la casella dell'orario d'inizio del tempo.</p>
+     <p>Alla fine di un tempo di gioco, cliccare la casella dell'orario di fine tempo per chiuderlo.</p>
+     <p>Per chiudere la gara, usare l'apposita voce del menù principale dopo la chiusura di un tempo.
+      &Egrave; possibile utilizzarla anche prima dell'inizio del primo tempo (mancato arrivo di una squadra),
+      oppure prima di chiudere un tempo di gioco (in caso di gara sospesa):
+      le chiusure varieranno di conseguenza.</p>
+     <p>Le annotazioni verranno elencate al di sotto del referto e poi stampate in una seconda pagina.</p>
+     <p>In caso di superamento dei 160 punti, una colonna di punteggio aggiuntiva
+      comparirà in questa seconda pagina.</p>
+    </div>
+  </div>
+ </div>
+ <!-- fine modulo Presenta -->
+
+ <!-- inizio modulo Punti -->
+ <div id="modPunti" class="mod-ol f12">
+  <div class="mod-box w40">
+   <button class="mod-cls">×</button>
+   <h3>Punti per Squadra <span id="mpuord">A</span></h3>
+   <form name="punform">
+    <div class="responsive">
+     <table class="tabmod">
+     </table>
+    </div>
+    <input type="submit" value="INVIO">
+   </form>
+  </div>
+ </div>
+ <!-- fine modulo Punti -->
+
+ <!-- inizio modulo squadra -->
+ <div id="modSq" class="mod-ol f12">
+  <div class="mod-box w60">
+   <button class="mod-cls">×</button>
+   <h3>Dati Squadra <span id="msord">A</span></h3>
+   <form name="sqform">
+    <label>
+     Nome squadra
+     <input type="text" name="insq" class="ima">
+    </label>
+    <br>
+    <label>
+     Colore Maglia
+     <input type="text" name="incolsq" class="ima">
+    </label>
+    <div class="responsive">
+     <table class="tabmod">
+
+      <tr>
+       <th></th><th>Anno</th><th>Cognome</th><th>CAP</th><th>Nome</th><th>Numero<br>maglia</th><th>Tessera</th>
+      </tr>
+      <tr id="j1">
+       <th>Gioc.1</th>
+       <td><input type="text" name="j1anno" class="ian" size="2"></td>
+       <td><input type="text" name="j1cogn" class="ima" size="15"></td>
+       <td><input type="radio" name="jcap" value="1"></td>
+       <td><input type="text" name="j1nome" class="ima" size="2"></td>
+       <td><input type="text" name="j1num" class="inm" size="2"></td>
+      </tr>
+      <tr id="j2">
+       <th>Gioc.2</th>
+       <td><input type="text" name="j2anno" class="ian" size="2"></td>
+       <td><input type="text" name="j2cogn" class="ima" size="15"></td>
+       <td><input type="radio" name="jcap" value="2"></td>
+       <td><input type="text" name="j2nome" class="ima" size="2"></td>
+       <td><input type="text" name="j2num" class="inm" size="2"></td>
+      </tr>
+      <tr id="j3">
+       <th>Gioc.3</th>
+       <td><input type="text" name="j3anno" class="ian" size="2"></td>
+       <td><input type="text" name="j3cogn" class="ima" size="15"></td>
+       <td><input type="radio" name="jcap" value="3"></td>
+       <td><input type="text" name="j3nome" class="ima" size="2"></td>
+       <td><input type="text" name="j3num" class="inm" size="2"></td>
+      </tr>
+      <tr id="j4">
+       <th>Gioc.4</th>
+       <td><input type="text" name="j4anno" class="ian" size="2"></td>
+       <td><input type="text" name="j4cogn" class="ima" size="15"></td>
+       <td><input type="radio" name="jcap" value="4"></td>
+       <td><input type="text" name="j4nome" class="ima" size="2"></td>
+       <td><input type="text" name="j4num" class="inm" size="2"></td>
+      </tr>
+      <tr id="j5">
+       <th>Gioc.5</th>
+       <td><input type="text" name="j5anno" class="ian" size="2"></td>
+       <td><input type="text" name="j5cogn" class="ima" size="15"></td>
+       <td><input type="radio" name="jcap" value="5"></td>
+       <td><input type="text" name="j5nome" class="ima" size="2"></td>
+       <td><input type="text" name="j5num" class="inm" size="2"></td>
+      </tr>
+      <tr id="j6">
+       <th>Gioc.6</th>
+       <td><input type="text" name="j6anno" class="ian" size="2"></td>
+       <td><input type="text" name="j6cogn" class="ima" size="15"></td>
+       <td><input type="radio" name="jcap" value="6"></td>
+       <td><input type="text" name="j6nome" class="ima" size="2"></td>
+       <td><input type="text" name="j6num" class="inm" size="2"></td>
+      </tr>
+      <tr id="j7">
+       <th>Gioc.7</th>
+       <td><input type="text" name="j7anno" class="ian" size="2"></td>
+       <td><input type="text" name="j7cogn" class="ima" size="15"></td>
+       <td><input type="radio" name="jcap" value="7"></td>
+       <td><input type="text" name="j7nome" class="ima" size="2"></td>
+       <td><input type="text" name="j7num" class="inm" size="2"></td>
+      </tr>
+      <tr id="j8">
+       <th>Gioc.8</th>
+       <td><input type="text" name="j8anno" class="ian" size="2"></td>
+       <td><input type="text" name="j8cogn" class="ima" size="15"></td>
+       <td><input type="radio" name="jcap" value="8"></td>
+       <td><input type="text" name="j8nome" class="ima" size="2"></td>
+       <td><input type="text" name="j8num" class="inm" size="2"></td>
+      </tr>
+      <tr id="j9">
+       <th>Gioc.9</th>
+       <td><input type="text" name="j9anno" class="ian" size="2"></td>
+       <td><input type="text" name="j9cogn" class="ima" size="15"></td>
+       <td><input type="radio" name="jcap" value="9"></td>
+       <td><input type="text" name="j9nome" class="ima" size="2"></td>
+       <td><input type="text" name="j9num" class="inm" size="2"></td>
+      </tr>
+      <tr id="j10">
+       <th>Gioc.10</th>
+       <td><input type="text" name="j10anno" class="ian" size="2"></td>
+       <td><input type="text" name="j10cogn" class="ima" size="15"></td>
+       <td><input type="radio" name="jcap" value="10"></td>
+       <td><input type="text" name="j10nome" class="ima" size="2"></td>
+       <td><input type="text" name="j10num" class="inm" size="2"></td>
+      </tr>
+      <tr id="j11">
+       <th>Gioc.11</th>
+       <td><input type="text" name="j11anno" class="ian" size="2"></td>
+       <td><input type="text" name="j11cogn" class="ima" size="15"></td>
+       <td><input type="radio" name="jcap" value="11"></td>
+       <td><input type="text" name="j11nome" class="ima" size="2"></td>
+       <td><input type="text" name="j11num" class="inm" size="2"></td>
+      </tr>
+      <tr id="j12">
+       <th>Gioc.12</th>
+       <td><input type="text" name="j12anno" class="ian" size="2"></td>
+       <td><input type="text" name="j12cogn" class="ima" size="15"></td>
+       <td><input type="radio" name="jcap" value="12"></td>
+       <td><input type="text" name="j12nome" class="ima" size="2"></td>
+       <td><input type="text" name="j12num" class="inm" size="2"></td>
+      </tr>
+      <tr id="kall">
+       <th>All.re</th>
+       <td></td>
+       <td><input type="text" name="kallcogn" class="ima" size="15"></td>
+       <td></td>
+       <td><input type="text" name="kallnome" class="ima" size="2"></td>
+       <td></td>
+       <td><input type="text" name="kalltess" class="int" size="5"></td>
+      </tr>
+      <tr id="kaall">
+       <th>1&ordm;ass.all.</th>
+       <td></td>
+       <td><input type="text" name="kaallcogn" class="ima" size="15"></td>
+       <td></td>
+       <td><input type="text" name="kaallnome" class="ima" size="2"></td>
+       <td></td>
+       <td><input type="text" name="kaalltess" class="int" size="5"></td>
+      </tr>
+      <tr id="lacc">
+       <th>Acc.</th>
+       <td></td>
+       <td><input type="text" name="lacccogn" class="ima" size="15"></td>
+       <td></td>
+       <td><input type="text" name="laccnome" class="ima" size="2"></td>
+      </tr>
+      <tr id="lmed">
+       <th>Medico</th>
+       <td></td>
+       <td><input type="text" name="lmedcogn" class="ima" size="15"></td>
+       <td></td>
+       <td><input type="text" name="lmednome" class="ima" size="2"></td>
+      </tr>
+      <tr id="ladd">
+       <th>Add.arb.</th>
+       <td></td>
+       <td><input type="text" name="laddcogn" class="ima" size="15"></td>
+       <td></td>
+       <td><input type="text" name="laddnome" class="ima" size="2"></td>
+      </tr>
+      <tr id="l2dir">
+       <th>2&ordm;Dir.</th>
+       <td></td>
+       <td><input type="text" name="l2dircogn" class="ima" size="15"></td>
+       <td></td>
+       <td><input type="text" name="l2dirnome" class="ima" size="2"></td>
+      </tr>
+      <tr id="lmass">
+       <th>Mass.</th>
+       <td></td>
+       <td><input type="text" name="lmasscogn" class="ima" size="15"></td>
+       <td></td>
+       <td><input type="text" name="lmassnome" class="ima" size="2"></td>
+      </tr>
+      <tr id="k2aall">
+       <th>2&ordm;ass.all.</th>
+       <td></td>
+       <td><input type="text" name="k2aallcogn" class="ima" size="15"></td>
+       <td></td>
+       <td><input type="text" name="k2aallnome" class="ima" size="2"></td>
+       <td></td>
+       <td><input type="text" name="k2aalltess" class="int" size="5"></td>
+      </tr>
+      <tr id="k3aall">
+       <th>3&ordm;ass.all.</th>
+       <td></td>
+       <td><input type="text" name="k3aallcogn" class="ima" size="15"></td>
+       <td></td>
+       <td><input type="text" name="k3aallnome" class="ima" size="2"></td>
+       <td></td>
+       <td><input type="text" name="k3aalltess" class="int" size="5"></td>
+      </tr>
+      <tr id="kprep">
+       <th>Prep.</th>
+       <td></td>
+       <td><input type="text" name="kprepcogn" class="ima" size="15"></td>
+       <td></td>
+       <td><input type="text" name="kprepnome" class="ima" size="2"></td>
+       <td></td>
+       <td><input type="text" name="kpreptess" class="int" size="5"></td>
+      </tr>
+     </table>
+    </div>
+    <input type="submit" value="INVIO">
+   </form>
+  </div>
+ </div>
+ <!-- fine modulo squadra -->
+
+ <!-- inizio modulo TessArb -->
+ <div id="modTessArb" class="mod-ol f12">
+  <div class="mod-box w20">
+   <button class="mod-cls">×</button>
+   <h3>Tessere Arbitri</h3>
+   <form name="tarbform">
+    <div class="responsive">
+     <table class="tabmod">
+      <tr>
+       <th>Arbitro</th>
+       <th>Tessera</th>
+      </tr>
+      <tr>
+       <td id="lnarb1"></td>
+       <td><input type="text" name="intarb1" class="int" size="5"></td>
+      </tr>
+      <tr>
+       <td id="lnarb2"></td>
+       <td><input type="text" name="intarb2" class="int" size="5"></td>
+      </tr>
+      <tr>
+       <td id="lnarb3"></td>
+       <td><input type="text" name="intarb3" class="int" size="5"></td>
+      </tr>
+     </table>
+    </div>
+    <input type="submit" value="INVIO">
+   </form>
+  </div>
+ </div>
+ <!-- fine modulo TessArb -->
+
+ <!-- inizio modulo Timeout e HCC -->
+ <div id="modTO" class="mod-ol f12">
+  <div class="mod-box w40">
+   <button class="mod-cls">×</button>
+   <h3><span id="mtoord">Timeout</span>: minuto</h3>
+   <form name="toform">
+    <label>
+     Minuto
+     <input type="text" name="tomin" class="imi">
+    </label>
+    <br>
+    <input type="hidden" name="tosq" value="">
+    <input type="submit" value="INVIO">
+   </form>
+  </div>
+ </div>
+ <!-- fine modulo Timeout e HCC -->
+
+ <!-- inizio modulo UdC -->
+ <div id="modUdC" class="mod-ol f12">
+  <div class="mod-box w60">
+   <button class="mod-cls">×</button>
+   <h3>Ufficiali di Campo</h3>
+   <form name="udcform">
+    <div class="responsive">
+     <table class="tabmod">
+      <tr>
+       <th></th>
+       <th>Cognome e Nome</th>
+       <th>Tessera</th>
+      </tr>
+      <tr>
+       <th>Cronometrista</th>
+       <td><input type="text" name="incrono" class="ima"></td>
+       <td><input type="text" name="intcrono" class="int" size="5"></td>
+      </tr>
+      <tr>
+       <th>Segnapunti</th>
+       <td><input type="text" name="insegna" class="ima"></td>
+       <td><input type="text" name="intsegna" class="int" size="5"></td>
+      </tr>
+      <tr>
+       <th>Addetto 24&Prime;</th>
+       <td><input type="text" name="inadd24" class="ima"></td>
+       <td><input type="text" name="intadd24" class="int" size="5"></td>
+      </tr>
+     </table>
+    </div>
+    <input type="submit" value="INVIO">
+   </form>
+  </div>
+ </div>
+ <!-- fine modulo UdC -->
+
+ <!-- fine moduli -->
+ 
+<script src="jquery.min.js"></script>
+<script src="ctrldata.js"></script>
+<script src="firmag.js"></script>
+<script src="referto.js"></script>
+
+</body>
+</html>

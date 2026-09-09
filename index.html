@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>Referto elettronico</title>
+<link rel="manifest" href="manifest.json">
+<link rel="shortcut icon" href="basket.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+</head>
+<body>
+	
+<div>
+ <h1>RefertoFIP</h1>
+ <p>Web App per la compilazione del referto cartaceo in stile FIP</p>
+ <p>Se si vuole fare l'installazione offline, è obbligatorio utilizzare il protocollo https:// nell'indirizzo di questa pagina.</p>
+ <h5>
+  Autore: Fabrizio Fellini<br>
+  <span id="versione">Versione</span> - <span id="offlinestate">OFFLINE non disponibile</span><br>
+ </h5>
+ <button id="apriRef">Vai al referto</button>
+ <button id="manualUpdate" hidden>Controllo aggiornamenti online</button>
+ <button id="olInstall" hidden>Installazione offline</button><br>
+ <div id="cacheProgress"><i>Caricamento pagina</i><br></div>
+</div>
+
+<script src="jquery.min.js"></script>
+<script>
+const
+ pronto='OFFLINE pronta',
+ nonpronto='OFFLINE non disponibile';
+
+var acOK,rfStatus,cacheProgress,cacheProperties,firstrun,mu,nomeCache,offlineState,swOK,tipoCache,version,versionRF;
+
+$(function(){
+ try{
+  if (localStorage.getItem('rfstatus')===null){
+   rfStatus=0;
+  } else {
+   rfStatus=parseInt(localStorage.rfstatus,10);
+  }
+ }catch(e){
+  alert('Errore LS '+e);
+ }
+
+ cacheProgress=$('#cacheProgress');
+ cacheProperties={
+  filesDownloaded:0,
+  totalFiles:0,
+  fileNames:[]
+ };
+ version=$('#versione');
+ offlineState=$('#offlinestate');
+ firstrun=true;
+ swOK=('serviceWorker' in navigator);
+ acOK=('applicationCache' in window);
+ if (rfStatus==0){
+  $.ajax({
+   type:"head",
+   url:"./rfip.appcache",
+   dataType:"text",
+   success:function(content,status,xhr){
+    if (xhr.getResponseHeader('content-type')!='text/cache-manifest') acOK=false;
+   }
+  });
+ }
+ tipoCache=['',' SW',' AC'][(rfStatus&3)];
+ mu=$('#manualUpdate');
+ mu.on('click',function(event){
+  event.preventDefault();
+  getTotalFiles();
+ });
+ getTotalFiles();
+
+ $('#apriRef').on('click',function(){
+  location.href='referto.html';
+ });
+ checkOL();
+});
+
+function displayProgress(str){
+ if (str) {
+  cacheProgress.append(str+'<br>');
+  console.log(str);
+  return;
+ }
+ cacheProperties.filesDownloaded++;
+ if (cacheProperties.totalFiles){//conosco i files totali
+  str='Progresso: '+cacheProperties.filesDownloaded+' di '+cacheProperties.totalFiles+' files caricati';
+  cacheProgress.append(str+'<br>');
+  console.log(str);
+ } else {//non conosco i files totali
+  str=cacheProperties.filesDownloaded+' files caricati';
+  cacheProgress.append(str+'<br>');
+  console.log(str);
+ }
+}
+
+function getTotalFiles(){
+ cacheProgress.text('');
+ displayProgress('Caricamento versione corrente');
+ offlineReady(false);
+ cacheProperties.filesDownloaded=0;
+ cacheProperties.totalFiles=0;
+ $.ajax({
+  type:"get",
+  url:"./rfip2.appcache",
+  dataType:"text",
+  success:function(content){
+   //cerco la versione
+   var p,r;
+   p=content.indexOf('#Versione');
+   r=content.indexOf('\n',p);
+   versionRF=content.substring(p+10,r);
+   nomeCache='rfip_v'+versionRF;
+   version.text('Versione '+versionRF+tipoCache);
+   if ((rfStatus&3)!=0) getTotalFilesCB();
+  }
+ });
+
+ function getTotalFilesCB(){
+  if ((firstrun)&&((rfStatus&3)!=0)) displayProgress('Acquisizione lista files');
+  else displayProgress('Ricerca nuova versione');
+  offlineReady(false);
+  $.ajax({
+   type:"get",
+   url:"./rfip.appcache",
+   dataType:"text",
+   cache:false,
+   success:function(content){
+    //cerco la versione
+    var p,r;
+    p=content.indexOf('#Versione');
+    r=content.indexOf('\n',p);
+    versionRF=content.substring(p+10,r);
+    nomeCache='rfip_v'+versionRF;
+    //elimina le righe non di cache
+    content=content.replace(new RegExp('(NETWORK|FALLBACK):'+'((?!(NETWORK|FALLBACK|CACHE):)[\\w\\W]*)','gi'),'');
+    //elimina i commenti
+    content=content.replace(new RegExp('#[^\\r\\n]*(\\r\\n?|\\n)','g'),'');
+    //elimina la testata e le righe che finiscono con /
+    content=content.replace(new RegExp('CACHE MANIFEST\\s*|\\s*$','g'),'');
+    //sostituisce i ritorni a capo con #
+    content=content.replace(new RegExp('[\\r\\n]+','g'),'#');
+    //trova il numero di files
+    cacheProperties.fileNames=content.split("#");
+    cacheProperties.totalFiles=cacheProperties.fileNames.length+1;
+    //lancio swInstall
+    if (firstrun){
+     firstrun=false;
+     if ((rfStatus&3)==1) swLoad();
+     else acLoad();
+    } else if ((rfStatus&3)==1) swInizia();
+   },
+   error:function(){
+    displayProgress('Errore nel controllo');
+    offlineReady((rfStatus&3)!=0);
+   }
+  });
+ }
+}
+
+function checkOL(){
+ switch(rfStatus&3){
+  case 1://SW
+   mu.attr('hidden',false);
+   $('#olInstall').attr('hidden',true);
+   break;
+  case 2://AC
+   mu.attr('hidden',false);
+   $('#olInstall').attr('hidden',true);
+   break;
+  default:
+   $('#olInstall')
+   .on('click',function(event){
+    var v;
+    event.preventDefault();
+    v=(acOK)?2:((swOK)?1:0);
+    rfStatus=v;
+    localStorage.rfstatus=rfStatus;
+    if (v>0){
+     tipoCache=['',' SW',' AC'][(rfStatus&3)];
+     getTotalFiles();
+    } else alert('Installazione OffLine non possibile!');
+   })
+   .attr('hidden',false);
+ }
+}
+
+function offlineReady(state,ac){
+ console.log('offlineReady',state);
+ offlineState.text(state?pronto:nonpronto);
+}
+
+function acLoad(){
+ var iframe=document.createElement('iframe');
+ $('#manualUpdate').off('click');
+ console.log('Test ApplicationCache');
+ iframe.setAttribute('style','width:0px;height:0px;visibility:hidden;position:absolute;border:none');
+ iframe.src='manifest.html';
+ iframe.id='appcacheloader';
+ document.body.appendChild(iframe);
+}
+
+function swLoad(){
+ console.log('Test Service Worker');
+ navigator.serviceWorker.register('sw.js')
+ .then(function(registration){
+  console.log("Registrazione service worker riuscita, l'ambito è:", registration.scope);
+  navigator.serviceWorker.ready.then(function(reg){
+   console.log('navigator.serviceWorker.ready concluso, e navigator.serviceWorker.controller è',navigator.serviceWorker.controller);
+   if (navigator.serviceWorker.controller){
+    swInizia();
+   } else {
+    navigator.serviceWorker.addEventListener('controllerchange',function(event){
+     console.log('OK, ora navigator.serviceWorker.controller è',navigator.serviceWorker.controller);
+     swInizia();
+    });
+   }
+  });
+ });
+}
+
+function swInizia(){
+ var aggiornati,eliminati;
+ aggiornati=eliminati=false;
+ caches.keys()
+ .then(function(keyList){
+  return Promise.all(keyList.map(function(key){
+   if (nomeCache!=key){
+    eliminati=true;
+    displayProgress('Elimino i vecchi files');
+    console.log('Cancello',key);
+    return caches.delete(key)
+    .then(function(bool){
+     if (bool) console.log('Cancellata',key);
+     else console.log('Non cancellata',key);
+     return Promise.resolve();
+    });
+   } else return Promise.resolve();
+  }));
+ })
+ .then(function(){
+  return caches.has(nomeCache)
+  .then(function(bool){
+   console.log('Check se',nomeCache,'esiste',bool);
+   if (!bool){
+    aggiornati=true;
+    return caches.open(nomeCache)
+    .then(function(cache){
+     cacheProperties.totalFiles=cacheProperties.fileNames.length;
+     return Promise.all(cacheProperties.fileNames.map(function(fileName){
+      return fetch(fileName)
+      .then(function(response){
+       console.log('Aggiungo',response.url);
+       return cache.put(response.url,response)
+       .then(function(){
+        displayProgress();
+        console.log('Aggiunto',response.url);
+        return Promise.resolve();
+       });
+      });
+     }));
+    });
+   } else return Promise.resolve();
+  });
+ })
+ .then(function(){
+  if (aggiornati){
+   offlineReady(true);
+   if (eliminati){
+    displayProgress('Nuovi files disponibili');
+    displayProgress('Pagina in ricaricamento...');
+    setTimeout(function(){
+     window.location.reload();
+    },5000);
+   } else displayProgress('Caricati tutti i files');
+  } else if (!eliminati){
+   displayProgress('Nessun aggiornamento');
+   offlineReady(true);
+  }
+  checkOL();
+ });
+}
+</script>
+</body>
+</html>
