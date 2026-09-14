@@ -1191,18 +1191,12 @@ function chiudifallisq(s,t,r){//s=squadra(0 o 1), t=tempo di gioco (1..4), r=rig
 }
 
 function chiudiparz(sq,nome,tempo){
- var c,cella,h,l,img,p,t,w;
+ var c,cella,h,img;
  cella=$('#'+nome+tempo+sq);
- c=(cella.hasClass('blu'))?'b':'r';
- t=cella.position().top;
- l=cella.position().left+2;
- w=cella.width();
- p=cella.closest('div').width()+8;
- img='<img src="lineao'+c+'.png" style="position:absolute;height:1px;left:'+(100*l/p)+'%;';
- img+='width:'+(100*w/p)+'%;';
-// h=img+'top:'+(t+4)+'px;">';
-// h+=img+'top:'+(t+8.5)+'px;">';
- h=img+'top:'+(t+6.25)+'px;">';
+ c=(cella.hasClass('rosso'))?'r':'b';
+ h='<div class="c-rel h100">';
+ img='<img src="lineao'+c+'.png" style="position:absolute;height:1px;left:0;width:100%;top:6.25px;">';
+ h+=img+'</div>';
  cella.html(h);
 }
 
@@ -1450,12 +1444,12 @@ function interprete(testo){
         if (p<5){
          gara.fallisq=[0,0];
         }
-        if (p==1){//inizio gara
-         //cerchiare le entrate iniziali
-         for (s=0;s<=1;s++){
+        for (s=0;s<=1;s++){
+         sq='ab'.charAt(s);
+         if (p==1){//inizio gara
+          //cerchiare le entrate iniziali
           //annulla righe vuote
           annullarighesq(s);
-          sq='ab'.charAt(s);
           for (i=0;i<=4;i++){
            v=gara.numerimaglia[s].indexOf(gara.entiniz[s][i]);
            if (v>=0){
@@ -1463,6 +1457,10 @@ function interprete(testo){
             cella.append('<img src="cerchior.png" style="position:absolute;top:'+cella.position().top+'px;left:'+(100*15/22)+'%;width:'+(100/22)+'%;height:13.5px;">');
            }
           }
+         }
+         if ((p==5)&&(gara.fallisq[s]<4)){//chiude i falli di squadra verticalmente quando comincia il supplementare
+          cella=$('#sq'+sq+'t4f'+(gara.fallisq[s]+1));
+          cella.append('<img src="lineavb.png" style="position:absolute;top:'+cella.position().top+'px;left:'+(100*(17+gara.fallisq[s])/22)+'%;width:2px;height:13.5px;">');
          }
         }
        } else {//dato==1
@@ -1569,14 +1567,17 @@ function interprete(testo){
           sq='ab'.charAt(s);
           annullarighesq(s);
           //chiude i falli
-          for (i=0;i<gara.numerimaglia[s].length;i++) chiudifalli(s,''+(i+1),'b');
-          for (i=0;i<gara.staff[s].length;i++) if (gara.staff[s][i].charAt(0)!='-') chiudifalli(s,gara.staff[s][i].substring(1).toLowerCase(),'b');
-          //chiude falli sq 2 righe
-          for (i=1;i<=4;i++){
-           chiudifallisq(s,i,2);
-          }
+          for (i=0;i<gara.numerimaglia[s].length;i++)
+           chiudifalli(s,''+(i+1),'b');
+          for (i=0;i<gara.staff[s].length;i++)
+           if (gara.staff[s][i].charAt(0)!='-')
+            chiudifalli(s,gara.staff[s][i].substring(1).toLowerCase(),'b');
+          //chiude falli sq 1 riga
+          for (i=1;i<=4;i++)
+           chiudifallisq(s,i,1);
           //chiude timeout 1 riga
-          for (i=0;i<sosp.length;i++) chiudito(sq,p.charAt(2),parseInt(p.charAt(3),10),1);
+          for (i=0;i<sosp.length;i++)
+           chiudito(sq,p.charAt(2),parseInt(p.charAt(3),10),1);
          }
          break;
 
@@ -1584,10 +1585,13 @@ function interprete(testo){
          // gara terminata prima del normale epilogo
          //registra l'orario finale
          h=(gara.tempo>5)?5:gara.tempo;
-         i=new Date();
-         v=i.getHours()+':'+('0'+i.getMinutes()).slice(-2);
-         $('#dora'+h+'f').text(v);
-         voceset('dora'+h+'f',v);
+         cella=$('#dora'+h+'f');
+         if (cella.text().length==0){
+          i=new Date();
+          v=i.getHours()+':'+('0'+i.getMinutes()).slice(-2);
+          cella.text(v);
+          voceset('dora'+h+'f',v);
+         }
          for (s=0;s<=1;s++){
           sq='ab'.charAt(s);
           //registra parziale
@@ -1609,11 +1613,14 @@ function interprete(testo){
           sq='ab'.charAt(s);
           //squadre nel risultato, noris nosqvin
           $('#nrsq'+sq).text($('#nsq'+sq).text());
-          //hcc una riga se c'era
-          if ((gara.hcc==1)&&($('#hcc1'+sq).text().length==0)) for (i=8;i<=9;i++) chiudito(sq,'c',i-7,1);
+          //hcc due righe se c'era
+          if ((gara.hcc==1)&&($('#hcc1'+sq).text().length==0)) for (i=8;i<=9;i++) chiudito(sq,'c',i-7,2);
           //chiude i falli individuali
-          for (i=0;i<gara.numerimaglia[s].length;i++) chiudifalli(s,''+(i+1),'b');
-          for (i=0;i<gara.staff[s].length;i++) if (gara.staff[s][i].charAt(0)!='-') chiudifalli(s,gara.staff[s][i].substring(1).toLowerCase(),'b');
+          for (i=0;i<gara.numerimaglia[s].length;i++)
+           chiudifalli(s,''+(i+1),'b');
+          for (i=0;i<gara.staff[s].length;i++)
+           if (gara.staff[s][i].charAt(0)!='-')
+            chiudifalli(s,gara.staff[s][i].substring(1).toLowerCase(),'b');
           //chiusura del non giocato
           //chiude timeout 1 riga
           for (i=2+3*(gara.tempo>=3)+(gara.tempo-4)*((gara.tempo>=5)&&(gara.tempo<=7+2*(gara.hcc!=1)));
@@ -1621,8 +1628,8 @@ function interprete(testo){
            i++){
            chiudito(sq,sosp[i].charAt(2),parseInt(sosp[i].charAt(3),10),1);
           }
-          //falli di squadra 2 righe
-          for(i=gara.tempo+1;i<=4;i++) chiudifallisq(s,i,2);
+          //falli di squadra 1 riga
+          for(i=gara.tempo+1;i<=4;i++) chiudifallisq(s,i,1);
           //chiude ris parz
           for(i=gara.tempo+1;i<=5;i++) chiudiparz(sq,'nrq',i);
           //orario finale lo metti quando premi il bottone stop
@@ -1646,11 +1653,14 @@ function interprete(testo){
           $('#nrsq'+sq).text($('#nsq'+sq).text());
           //punti nel risultato
           $('#npsq'+sq).text(gara.ris[s]);
-          //hcc una riga se c'era
-          if ((gara.hcc==1)&&($('#hcc1'+sq).text().length==0)) for (i=8;i<=9;i++) chiudito(sq,'c',i-7,1);
+          //hcc due righe se c'era
+          if ((gara.hcc==1)&&($('#hcc1'+sq).text().length==0)) for (i=8;i<=9;i++) chiudito(sq,'c',i-7,2);
           //chiude i falli individuali
-          for (i=0;i<gara.numerimaglia[s].length;i++) chiudifalli(s,''+(i+1),'b');
-          for (i=0;i<gara.staff[s].length;i++) if (gara.staff[s][i].charAt(0)!='-') chiudifalli(s,gara.staff[s][i].substring(1).toLowerCase(),'b');
+          for (i=0;i<gara.numerimaglia[s].length;i++)
+           chiudifalli(s,''+(i+1),'b');
+          for (i=0;i<gara.staff[s].length;i++)
+           if (gara.staff[s][i].charAt(0)!='-')
+            chiudifalli(s,gara.staff[s][i].substring(1).toLowerCase(),'b');
           //chiusura del non giocato
           //chiudi punteggio seconda riga
           chiudipun(s,2);
