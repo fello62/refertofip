@@ -8,8 +8,8 @@ $(document).ready(function(){
  }
  refiniz();
  if (localStorage.ricarica){//sicuramente esiste anche localStorage.refertofip
-  localStorage.removeItem('ricarica');
   refload();
+  localStorage.removeItem('ricarica');
  } else {
   openMod('modPres');
   if (localStorage.refertofip){
@@ -1312,7 +1312,7 @@ function interprete(testo){
         p=gara.ris[selsq]+=dato+1;
         if (p>=160){//dobbiamo usare l'estensione oltre 160 punti
          if ($('#estens').hasClass('hidden')){//prima volta che si usa
-          alert('Attivata l\'estensione oltre 160 punti.');
+          if (!localStorage.ricarica) alert('Attivata l\'estensione oltre 160 punti.');
           ctrlpagina2(2);//mostra l'estensione
           m=161;
          } else {
