@@ -1475,8 +1475,8 @@ function interprete(testo){
          //chiusura tempo
          //punteggio fine quarto una riga e cerchiare il punteggio
          chiudipun(s,1);
-         //falli di squadra non commessi una riga ma aspetta per il q4
-         if (gara.tempo<4) chiudifallisq(s,gara.tempo,1);
+         //falli di squadra non commessi due righe ma aspetta per il q4
+         if (gara.tempo<4) chiudifallisq(s,gara.tempo,2);
          //chiusura quarto 2
          //linea greca
          if (gara.tempo==2) chiudifallilg(s);
@@ -1598,8 +1598,8 @@ function interprete(testo){
           $('#nrq'+h+sq).text(gara.ris[s]-gara.ultimoris[s]);
           //chiudi punteggio 2 righe
           chiudipun(s,3);
-          //falli di squadra non commessi una riga
-          chiudifallisq(s,(gara.tempo>4)?4:gara.tempo,1);
+          //falli di squadra non commessi due righe
+          chiudifallisq(s,(gara.tempo>4)?4:gara.tempo,2);
           //chiusura timeout due righe
           for (i=1*(gara.tempo<=2)+4*(gara.tempo<=4)+gara.tempo*((gara.tempo>=5)&&(gara.tempo<=7+2*(gara.hcc!=1)));
            i>=1-1*(gara.tempo<=2)+1*(gara.tempo<=4)+(gara.tempo-1)*(gara.tempo>=5);
@@ -1670,8 +1670,8 @@ function interprete(testo){
            i++){
            chiudito(sq,sosp[i].charAt(2),parseInt(sosp[i].charAt(3),10),1);
           }
-          //falli di squadra q4 1 riga
-          chiudifallisq(s,4,1);
+          //falli di squadra q4 2 righe
+          chiudifallisq(s,4,2);
           //chiude ris parz
           for(i=gara.tempo+1;i<=5;i++) chiudiparz(sq,'nrq',i);
           //orario finale lo metti quando premi il bottone stop
