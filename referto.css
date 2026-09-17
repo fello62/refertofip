@@ -230,7 +230,7 @@ small {
 .colsq {
  width: 4.545454%;}
 .tess {
- display: inline-block;
+ display: block;
  float: right;
  text-align: right;}
 .sqa, .sqb, .enta, .entb, .udc, .fudc, .farb, .tarb, .tora, .punt, .fa, .timeout,
