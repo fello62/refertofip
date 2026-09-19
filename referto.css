@@ -53,7 +53,7 @@ table.squadre {
  table-layout: fixed;}
 table.squadre tbody > tr > td {
  border: 1px solid black;
- height: 13.5px;
+ height: 14.5px;
  /*width: 4.545454%;*/
  text-align: center;
  /*padding: 1px 1px 0 1px;*/
@@ -219,7 +219,7 @@ small {
  bottom: 0;
  padding: 0 4px 2px 0;}
 .colore {
- height: 19px;}
+ height: 20.5px;}
 .corporef {
  width: 100%;
  height: 764.5px;}

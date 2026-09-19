@@ -1,4 +1,4 @@
-const sosp=['to11','to12','to21','to22','to23','tos1','tos2','tos3','hcc1','hcc2'];
+const sosp=['to11','to12','to21','to22','to23','tos1','tos2','tos3'];
 
 var gara,modEl;
 
@@ -94,7 +94,8 @@ function modentinizsave(){
   for (i=0;i<5;i++){
    e=gara.numerimaglia[s].indexOf(ar[i]);
    cella=$('#n'+sq+(e+1)+'ent');
-   cella.html('<img src="croceb.png" style="position:absolute;top:'+cella.position().top+'px;left:'+(100*15/22)+'%;width:'+(100/22)+'%;height:13.5px;">');
+   cella.html('<img src="croceb.png" style="position:absolute;top:'+
+    cella.position().top+'px;left:'+(100*15/22)+'%;width:'+(100/22)+'%;height:14.5px;">');
   }
  } else alert('Entrate '+((ar.length>5)?'maggiori':'minori')+' di 5!');
  return false;
@@ -488,13 +489,12 @@ function modheader2open(){
   e.value=$('#'+s).text();
  }
  document.hea2.inpaga.checked=$('#paga_no').hasClass('fondonero');
- document.hea2.idhcc.checked=(gara.hcc==1);
  openMod('modHeader2');
 }
 function modheader2save(){
- var e,i,img,n,s,v;
+ var e,i,n,s,v;
  clsMod();
- for (i=0;i<document.hea2.elements.length-3;i++){
+ for (i=0;i<document.hea2.elements.length-2;i++){
   e=document.hea2.elements[i];
   switch (i){
    case 2:
@@ -520,8 +520,6 @@ function modheader2save(){
   $('#paga_si').addClass('fondonero');
   voceset('dpaga',0);
  }
- gara.hcc=(document.hea2.idhcc.checked)?1:0;
- voceset('dhcc',gara.hcc);
  refsaveall();
  return false;
 }
@@ -953,7 +951,7 @@ $('.frecl1').on('click',function(){
 });
 //fine eventi reclami
 
-// inizio eventi timeout hcc
+// inizio eventi timeout
 $('#modTO .imi').on('blur',function(){
  solonumeri(this);
  ctrlnumero(this,0,((gara.tempo<5)?10:5));
@@ -972,15 +970,11 @@ function modtoopen(t){
   return;
  }
  e=$('#'+t);
- if ((gara.hcc==1)&&(e.hasClass('hcc'))){
-  modhccopen(t);
-  return;
- }
  sq=t.slice(-1);
  //elabora tempo gara per trovare un timeout vuoto
  trovato='';
- for (i=2*(gara.tempo>=2)+(gara.tempo-2)*((gara.tempo>=5)&&(gara.tempo<=7+2*(gara.hcc!=1)));
-  i<=1*(gara.tempo<=2)+4*(gara.tempo<=4)+gara.tempo*((gara.tempo>=5)&&(gara.tempo<=7+2*(gara.hcc!=1)));
+ for (i=2*(gara.tempo>=2)+(gara.tempo-2)*((gara.tempo>=5)&&(gara.tempo<=7));
+  i<=1*(gara.tempo<=2)+4*(gara.tempo<=4)+gara.tempo*((gara.tempo>=5)&&(gara.tempo<=7));
   i++){
   n=sosp[i]+sq
   e=$('#'+n);
@@ -998,38 +992,15 @@ function modtoopen(t){
  document.toform.tosq.value=sq;
  openMod('modTO');
 }
-function modhccopen(t){
- var n,sq;
- sq=t.slice(-1);
- n='hcc1'+sq;
- if ($('#'+n).text().length>0){
-  alert('HCC già usato!');
-  return;
- }
- //chiedi il minuto
- $('#mtoord').text('HCC '+sq.toUpperCase());
- document.toform.tosq.value=sq;
- openMod('modTO');
-}
 function modtosave(){
  var m,sq;
  clsMod();
- if ($('#mtoord').text().charAt(0)=='H'){
-  modhccsave();
-  return false;
- }
  m=document.toform.tomin.value;
  sq=document.toform.tosq.value;
  interprete('TO '+sq.toUpperCase()+','+m);
  return false;
 }
-function modhccsave(){
- m=document.toform.tomin.value;
- sq=document.toform.tosq.value;
- interprete('HCC '+sq.toUpperCase()+','+m);
- return false;
-}
-// fine eventi timeout hcc
+// fine eventi timeout
 
 // inizio eventi generali
 $('input.ima').on('blur',function(){
@@ -1055,7 +1026,7 @@ function annullarighesq(s){//s = squadra 0..1
   if (cella.text().length==0){
    cella=cella.closest('td');
    h='<img src="'+img+'" style="position:absolute;height:1px;';
-   h+='top:'+(cella.position().top+8.5)+'px;left:0;width:+'+(100*16/22)+'%">';
+   h+='top:'+(cella.position().top+9.75)+'px;left:0;width:+'+(100*16/22)+'%">';
    cella.append(h);
   }
  }
@@ -1063,7 +1034,7 @@ function annullarighesq(s){//s = squadra 0..1
   riga='r'+sq+(g+1);
   cella=$('#'+riga+' td').first();
   h='<img src="'+img+'" style="position:absolute;height:1px;';
-  h+='top:'+(cella.position().top+6.25)+'px;left:0;width:100%">';
+  h+='top:'+(cella.position().top+6.75)+'px;left:0;width:100%">';
   cella.append(h);
  }
  for (g=0;g<gara.staff[s].length;g++){
@@ -1071,7 +1042,7 @@ function annullarighesq(s){//s = squadra 0..1
   if (riga.charAt(0)=='-'){
    cella=$('#r'+riga.substring(1).toLowerCase()+ ' td').first();
    h='<img src="'+img+'" style="position:absolute;height:1px;';
-   h+='top:'+(cella.position().top+6.25)+'px;left:0;width:100%">';
+   h+='top:'+(cella.position().top+6.75)+'px;left:0;width:100%">';
    cella.append(h);
   }
  }
@@ -1097,7 +1068,7 @@ function chiudifallilg(s){//linea greca del Q2 s = squadra 0..1
   cella=$(n);
   //lineav
   img='lineavb.png';
-  h+='<img src="'+img+'" style="position:absolute;width:2px;height:13.5px;';
+  h+='<img src="'+img+'" style="position:absolute;width:2px;height:14.5px;';
   h+='top:'+cella.position().top+'px;left:'+(100*(16+f)/22)+'%;">';
   //lineao sopra
   img='lineaob.png';
@@ -1108,7 +1079,7 @@ function chiudifallilg(s){//linea greca del Q2 s = squadra 0..1
   //lineao sotto per l'ultimo
   if ((f>0)&&(g==gara.numerimaglia[s].length-1)){
    h+='<img src="'+img+'" style="position:absolute;height:2px;';
-   h+='top:'+(cella.position().top+13.5)+'px;left:'+(100*16/22)+'%;width:'+(100*f/22)+'%">';
+   h+='top:'+(cella.position().top+14.5)+'px;left:'+(100*16/22)+'%;width:'+(100*f/22)+'%">';
   }
   frp=f;
  }
@@ -1133,7 +1104,7 @@ function chiudifallilg(s){//linea greca del Q2 s = squadra 0..1
   //lineav
   if (riga.charAt(0)!='-'){
    img='lineavb.png';
-   h+='<img src="'+img+'" style="position:absolute;width:2px;height:13.5px;';
+   h+='<img src="'+img+'" style="position:absolute;width:2px;height:14.5px;';
    h+='top:'+cella.position().top+'px;left:'+(100*(18+3*(g>1)+f)/22)+'%;">';
   }
   //lineao sopra
@@ -1145,7 +1116,7 @@ function chiudifallilg(s){//linea greca del Q2 s = squadra 0..1
   //lineao sotto per l'ultimo
   if ((f>0)&&(g==gara.staff[s].length-1)){
    h+='<img src="'+img+'" style="position:absolute;height:2px;';
-   h+='top:'+(cella.position().top+13.5)+'px;left:'+(100*(18+3*(g>1))/22)+'%;width:'+(100*f/22)+'%">';
+   h+='top:'+(cella.position().top+14.5)+'px;left:'+(100*(18+3*(g>1))/22)+'%;width:'+(100*f/22)+'%">';
   }
   frp=f-3*(g==1);
  }
@@ -1169,7 +1140,7 @@ function chiudifalli(s,t,c){//s=squadra(0 o 1), t=riga dei falli (num o all aall
   for (i=v;i<=m;i++){
    cella=$(nome+i);
    img='<img src="lineao'+c+'.png" style="position:absolute;height:1px;'+
-    'top:'+(cella.position().top+6.25)+'px;width:'+(100/22)+'%;right:'+(100*(m-i)/22)+'%;">';
+    'top:'+(cella.position().top+6.75)+'px;width:'+(100/22)+'%;right:'+(100*(m-i)/22)+'%;">';
    cella.html(img);
   }
  }
@@ -1182,12 +1153,22 @@ function chiudifallisq(s,t,r){//s=squadra(0 o 1), t=tempo di gioco (1..4), r=rig
   cella=$('#sq'+('ab'.charAt(s))+'t'+t+'f4');
   top=cella.position().top;
   c=gara.colore.charAt(0);
-  img='<img src="lineao'+c+'.png" style="position:absolute;height:1px;right:'+(100/22)+'%;';
+  img='<img src="lineao'+c+'.png" style="position:absolute;height:1px;right:'+((900+(t&1)*700)/22)+'%;';
   img+='width:'+(d*20*5/22)+'%;';
-  h='4'+img+'top:'+(top+6.25-2.25*(r==2))+'px;">';
-  if (r==2) h+=img+'top:'+(top+8.5)+'px;">';
+  h='4'+img+'top:'+(top+27/4*(r==1)+13/3*(r==2))+'px;">';
+  if (r==2) h+=img+'top:'+(top+55/6)+'px;">';
   cella.html(h);
  }
+}
+
+function chiudifallosq(s,t){//s=squadra(0 o 1), t=tempo di gioco (1..4)
+ var cella,h,img;
+ cella=$('#sq'+('ab'.charAt(s))+'t'+t+'f'+gara.fallisq[s]);
+ img='croce'+gara.colore.charAt(0)+'.png';
+ h='<img src="'+img+'" style="position:absolute;';
+ h+='top:'+cella.position().top+'px;';
+ h+='right:'+(100*(8+5-gara.fallisq[s]+(t&1)*7)/22)+'%;width:'+(100/22)+'%; height: 14.5px;">';
+ cella.append(h);
 }
 
 function chiudiparz(sq,nome,tempo){
@@ -1195,7 +1176,7 @@ function chiudiparz(sq,nome,tempo){
  cella=$('#'+nome+tempo+sq);
  c=(cella.hasClass('rosso'))?'r':'b';
  h='<div class="c-rel h100">';
- img='<img src="lineao'+c+'.png" style="position:absolute;height:1px;left:0;width:100%;top:6.25px;">';
+ img='<img src="lineao'+c+'.png" style="position:absolute;height:1px;left:0;width:100%;top:6.75px;">';
  h+=img+'</div>';
  cella.html(h);
 }
@@ -1229,20 +1210,19 @@ function chiudipun(s,r){//s=squadra(1..2), r=righe(&1rigacherchio,&2seconda riga
  }
 }
 
-function chiudito(sq,t,n,r){//sq=squadra(a o b), t=tempo di gioco (1,2,s,c), n=numsuppl, r=righe (1,2)
+function chiudito(sq,t,n,r){//sq=squadra(a o b), t=tempo di gioco (1,2,s), n=numsuppl, r=righe (1,2)
  var c,d,cella,h,img,left,nome,top;
- d=['1','2','s','c'].indexOf(t);
- left=n+1+4*(d>0)+5*(d>1)+3*(d>2);
- if (t=='c') nome='hcc'+n+sq;
- else nome='to'+t+n+sq;
+ d=['1','2','s'].indexOf(t);
+ left=n+13+2*(d>0)+3*(d>1);
+ nome='to'+t+n+sq;
  if (t=='s') nome=$('#'+nome).closest('td').attr('id');
  cella=$('#'+nome);
  top=cella.position().top;
  c=gara.colore.charAt(0);
  img='<img src="lineao'+c+'.png" style="position:absolute;height:1px;left:'+(100*left/22)+'%;';
  img+='width:'+(100/22)+'%;';
- h=img+'top:'+(top+6.25-2.25*(r==2))+'px;">';
- if (r==2) h+=img+'top:'+(top+8.5)+'px;">';
+ h=img+'top:'+(top+27/4*(r==1)+13/3*(r==2))+'px;">';
+ if (r==2) h+=img+'top:'+(top+55/6)+'px;">';
  cella.append(h);
 }
 
@@ -1376,7 +1356,7 @@ function interprete(testo){
         img='cerchio'+gara.colore.charAt(0)+'.png';
         h+='<img src="'+img+'" style="position:absolute;';
         h+='top:'+cella.position().top+'px;';
-        h+='right:'+(100*(m-v)/22)+'%;width:'+(100/22)+'%;height: 13.5px;">';
+        h+='right:'+(100*(m-v)/22)+'%;width:'+(100/22)+'%;height: 14.5px;">';
        }
        cella.addClass(gara.colore);
        cella.html(h);
@@ -1395,15 +1375,7 @@ function interprete(testo){
        //fallo di squadra
        if (p[5]=='SQ'){
         gara.fallisq[selsq]++;
-        if (gara.fallisq[selsq]<=4){
-         h=(gara.tempo>4)?4:gara.tempo;
-         cella=$('#sq'+('ab'.charAt(selsq))+'t'+h+'f'+gara.fallisq[selsq]);
-         img='croce'+gara.colore.charAt(0)+'.png';
-         h='<img src="'+img+'" style="position:absolute;';
-         h+='top:'+cella.position().top+'px;';
-         h+='right:'+(100*(5-gara.fallisq[selsq])/22)+'%;width:'+(100/22)+'%; height: 13.5px;">';
-         cella.append(h);
-        }
+        if (gara.fallisq[selsq]<=4) chiudifallosq(selsq,(gara.tempo>4)?4:gara.tempo);
        }
        break;
 
@@ -1413,7 +1385,7 @@ function interprete(testo){
         img='croce'+gara.colore.charAt(0)+'.png';
         h='<img src="'+img+'" style="position:absolute;';
         h+='top:'+cella.position().top+'px;';
-        h+='left:'+(100*15/22)+'%;width:'+(100/22)+'%; height: 13.5px;">';
+        h+='left:'+(100*15/22)+'%;width:'+(100/22)+'%; height: 14.5px;">';
         cella.html(h);
        }
        break;
@@ -1424,7 +1396,7 @@ function interprete(testo){
 
    //altri dati
    if (sint==-1){
-    v=('INIZFINETO  HCC STOPNOTA').indexOf((tdc+'    ').substring(0,4));
+    v=('INIZFINETO  STOPNOTA').indexOf((tdc+'    ').substring(0,4));
     dato=Math.floor(v/4);
     if ((v%4)==0){
      sint=0;
@@ -1454,13 +1426,15 @@ function interprete(testo){
            v=gara.numerimaglia[s].indexOf(gara.entiniz[s][i]);
            if (v>=0){
             cella=$('#n'+sq+(v+1)+'ent');
-            cella.append('<img src="cerchior.png" style="position:absolute;top:'+cella.position().top+'px;left:'+(100*15/22)+'%;width:'+(100/22)+'%;height:13.5px;">');
+            cella.append('<img src="cerchior.png" style="position:absolute;top:'+cella.position().top+
+             'px;left:'+(100*15/22)+'%;width:'+(100/22)+'%;height:14.5px;">');
            }
           }
          }
          if ((p==5)&&(gara.fallisq[s]<4)){//chiude i falli di squadra verticalmente quando comincia il supplementare
           cella=$('#sq'+sq+'t4f'+(gara.fallisq[s]+1));
-          cella.append('<img src="lineavb.png" style="position:absolute;top:'+cella.position().top+'px;left:'+(100*(17+gara.fallisq[s])/22)+'%;width:2px;height:13.5px;">');
+          cella.append('<img src="lineavb.png" style="position:absolute;top:'+cella.position().top+
+           'px;left:'+(100*(17+gara.fallisq[s])/22)+'%;width:2px;height:14.5px;">');
          }
         }
        } else {//dato==1
@@ -1481,7 +1455,7 @@ function interprete(testo){
          //linea greca
          if (gara.tempo==2) chiudifallilg(s);
          //chiusura timeout due righe
-         for (i=1*(gara.tempo==2)+4*(gara.tempo==4)+gara.tempo*((gara.tempo>=5)&&(gara.tempo<=7+2*(gara.hcc!=1)));
+         for (i=1*(gara.tempo==2)+4*(gara.tempo==4)+gara.tempo*((gara.tempo>=5)&&(gara.tempo<=7));
           i>=1-1*(gara.tempo==2)+1*(gara.tempo==4)+(gara.tempo-1)*(gara.tempo>=5);
           i--){
           if ($('#'+sosp[i]+sq).text().length==0) chiudito(sq,sosp[i].charAt(2),parseInt(sosp[i].charAt(3),10),2);
@@ -1504,13 +1478,13 @@ function interprete(testo){
        } else {
         p[1]=parseInt(p[1],10)||0;
         sq=p[0].toLowerCase();
-        if (gara.tempo>7+2*(gara.hcc!=1)){
+        if (gara.tempo>7){
          alert('Dato accettato ma impossibile scriverlo per mancanza di spazio!\nAggiungere una nota.');
          break;
         }
         m='';
         for (i=2*(gara.tempo>=3)+(gara.tempo-2)*(gara.tempo>=5);
-         i<=1*(gara.tempo<=2)+4*(gara.tempo<=4)+gara.tempo*(gara.tempo<=7+2*(gara.hcc!=1));
+         i<=1*(gara.tempo<=2)+4*(gara.tempo<=4)+gara.tempo*(gara.tempo<=7);
          i++){
          h=sosp[i]+sq;
          cella=$('#'+h);
@@ -1530,36 +1504,12 @@ function interprete(testo){
         if (m.length>0){
          cella=$('#'+m);
          if ('12c'.indexOf(m.charAt(2))>=0) cella.addClass(gara.colore);
-         if (m.charAt(2)=='c'){
-          if (($('#hcc1'+sq).text().length==0)&&($('#hcc2'+sq).text().length==0)){
-           //riga su HCC
-           i=$('td.chcc').eq('ab'.indexOf(sq));
-           h='HCC';
-           h+='<img src="lineaob.png" style="position:absolute;height:2px;width:'+(200/22)+'%;';
-           h+='left:'+(1400/22)+'%;top:'+(i.position().top+5.75)+'px;">';
-           i.html(h);
-          }
-         }
          cella.text(p[1]);
         }
        }
        break;
 
-      case 3://hcc
-       s=riga.slice(sep+1);
-       sp=riga.indexOf(' ',sp+1);
-       p=s.split(',');
-       sq=p[0].toLowerCase();
-       h=(gara.tempo<5)?''+gara.tempo+'Q':'S'+(gara.tempo-4);
-       cella=$('#hcc1'+sq);
-       cella.addClass(gara.colore);
-       cella.text(h);
-       cella=$('#hcc2'+sq);
-       cella.addClass(gara.colore);
-       cella.text(p[1]);
-       break;
-
-      case 4://stop
+      case 3://stop
        switch (gara.stato){
 
         case 0:
@@ -1601,7 +1551,7 @@ function interprete(testo){
           //falli di squadra non commessi due righe
           chiudifallisq(s,(gara.tempo>4)?4:gara.tempo,2);
           //chiusura timeout due righe
-          for (i=1*(gara.tempo<=2)+4*(gara.tempo<=4)+gara.tempo*((gara.tempo>=5)&&(gara.tempo<=7+2*(gara.hcc!=1)));
+          for (i=1*(gara.tempo<=2)+4*(gara.tempo<=4)+gara.tempo*((gara.tempo>=5)&&(gara.tempo<=7));
            i>=1-1*(gara.tempo<=2)+1*(gara.tempo<=4)+(gara.tempo-1)*(gara.tempo>=5);
            i--){
            if ($('#'+sosp[i]+sq).text().length==0) chiudito(sq,sosp[i].charAt(2),parseInt(sosp[i].charAt(3),10),2);
@@ -1613,8 +1563,6 @@ function interprete(testo){
           sq='ab'.charAt(s);
           //squadre nel risultato, noris nosqvin
           $('#nrsq'+sq).text($('#nsq'+sq).text());
-          //hcc due righe se c'era
-          if ((gara.hcc==1)&&($('#hcc1'+sq).text().length==0)) for (i=8;i<=9;i++) chiudito(sq,'c',i-7,2);
           //chiude i falli individuali
           for (i=0;i<gara.numerimaglia[s].length;i++)
            chiudifalli(s,''+(i+1),'b');
@@ -1623,8 +1571,8 @@ function interprete(testo){
             chiudifalli(s,gara.staff[s][i].substring(1).toLowerCase(),'b');
           //chiusura del non giocato
           //chiude timeout 1 riga
-          for (i=2+3*(gara.tempo>=3)+(gara.tempo-4)*((gara.tempo>=5)&&(gara.tempo<=7+2*(gara.hcc!=1)));
-           i<=7+2*(gara.hcc!=1);
+          for (i=2+3*(gara.tempo>=3)+(gara.tempo-4)*((gara.tempo>=5)&&(gara.tempo<=7));
+           i<=7;
            i++){
            chiudito(sq,sosp[i].charAt(2),parseInt(sosp[i].charAt(3),10),1);
           }
@@ -1653,8 +1601,6 @@ function interprete(testo){
           $('#nrsq'+sq).text($('#nsq'+sq).text());
           //punti nel risultato
           $('#npsq'+sq).text(gara.ris[s]);
-          //hcc due righe se c'era
-          if ((gara.hcc==1)&&($('#hcc1'+sq).text().length==0)) for (i=8;i<=9;i++) chiudito(sq,'c',i-7,2);
           //chiude i falli individuali
           for (i=0;i<gara.numerimaglia[s].length;i++)
            chiudifalli(s,''+(i+1),'b');
@@ -1665,8 +1611,8 @@ function interprete(testo){
           //chiudi punteggio seconda riga
           chiudipun(s,2);
           //chiude timeout 1 riga
-          for (i=2+3*(gara.tempo>=3)+(gara.tempo-4)*((gara.tempo>=5)&&(gara.tempo<=7+2*(gara.hcc!=1)));
-           i<=7+2*(gara.hcc!=1);
+          for (i=2+3*(gara.tempo>=3)+(gara.tempo-4)*((gara.tempo>=5)&&(gara.tempo<=7));
+           i<=7;
            i++){
            chiudito(sq,sosp[i].charAt(2),parseInt(sosp[i].charAt(3),10),1);
           }
@@ -1685,7 +1631,7 @@ function interprete(testo){
        gara.stato=3;
        break;
 
-      case 5://nota
+      case 4://nota
        sp=riga.lastIndexOf(' ');
        $('#npnote ul').append('<li class="'+gara.colore+'">'+trim(riga.substring(4))+'</li>');
        ctrlpagina2(1);
@@ -1724,7 +1670,6 @@ function refiniz(){
   fallisq:[0,0],
   tempo:0,
   stato:0,
-  hcc:0,
   colore:'rosso',
   numerimaglia:[[],[]],
   staff:[[],[]],
@@ -1749,7 +1694,6 @@ function refiniz(){
  s+='narb2='+n;
  s+='narb3='+n;
  s+='dpaga='+n;
- s+='dhcc='+n;
  s+='nsqrecl='+n;
  s+='dora1i='+n;
  s+='dora1f='+n;
@@ -1790,10 +1734,8 @@ function refiniz(){
  s+='zaacc='+n;
  s+='zamed='+n;
  s+='zaadd='+n;
- s+='za2dir='+n;
  s+='zamass='+n;
  s+='ya2aall='+n;
- s+='ya3aall='+n;
  s+='yaprep='+n;
  s+='nsqb='+n;
  s+='ncolsqb='+n;
@@ -1813,10 +1755,8 @@ function refiniz(){
  s+='ybaall='+n;
  s+='zbacc='+n;
  s+='zbmed='+n;
- s+='zb2dir='+n;
  s+='zbmass='+n;
  s+='yb2aall='+n;
- s+='yb3aall='+n;
  s+='ybprep='+n;
  s+='falla='+n;
  s+='fallb='+n;
@@ -1844,7 +1784,7 @@ function refload(){
   t=ar[i].slice(0,1);
   voce=ar[i].substring(1,d);
   v=ar[i].slice(d+1);
-  voceset(t+voce,v);
+  if (!voceset(t+voce,v)) continue;
   switch (t){
    case 'f':
     if (v.length>0){
@@ -1876,21 +1816,6 @@ function refload(){
       $('.no-si').removeClass('fondonero');
       if (v=='1') $('#paga_no').addClass('fondonero');
       else $('#paga_si').addClass('fondonero');
-      break;
-     case 'hcc':
-      gara.hcc=parseInt(v,10)||0;
-      /*
-      $('td.chcc').each(function(index){
-       var h,t;
-       t=$(this);
-       h='HCC';
-       if (gara.hcc==0){
-        h+='<img src="lineaob.png" style="position:absolute;height:2px;width:'+(200/22)+'%;';
-        h+='left:'+(1400/22)+'%;top:'+(t.position().top+5.75)+'px;">';
-       }
-       t.html(h);
-      });
-      */
       break;
      case 'ora':
       if (v.length>0){
@@ -1939,7 +1864,8 @@ function refload(){
     gara.numerimaglia[s].push(sqm+v);
     if (gara.entiniz[s].indexOf(sqm+v)>=0){
      cella=$('#n'+sq+i+'ent');
-     cella.html('<img src="croceb.png" style="position:absolute;top:'+cella.position().top+'px;left:'+(100*15/22)+'%;width:'+(100/22)+'%;height:13.5px;">');
+     cella.html('<img src="croceb.png" style="position:absolute;top:'+cella.position().top+
+      'px;left:'+(100*15/22)+'%;width:'+(100/22)+'%;height:14.5px;">');
     }
    }
   }
@@ -2004,6 +1930,7 @@ function voceset(voce,valore){
   r=d.indexOf('\n',p+v);
   d=d.substring(0,p+v)+valore+d.substring(r);
   gara.ref=d+gara.ref.substring(foot);
- }
+  return true;
+ } else return false;
 }
 //fine funzioni generali
