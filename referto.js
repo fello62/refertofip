@@ -1434,7 +1434,7 @@ function interprete(testo){
          if ((p==5)&&(gara.fallisq[s]<4)){//chiude i falli di squadra verticalmente quando comincia il supplementare
           cella=$('#sq'+sq+'t4f'+(gara.fallisq[s]+1));
           cella.append('<img src="lineavb.png" style="position:absolute;top:'+cella.position().top+
-           'px;left:'+(100*(17+gara.fallisq[s])/22)+'%;width:2px;height:14.5px;">');
+           'px;left:'+(100*(9+gara.fallisq[s])/22)+'%;width:2px;height:14.5px;">');
          }
         }
        } else {//dato==1
