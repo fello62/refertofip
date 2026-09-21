@@ -401,6 +401,9 @@ $('#modMenu p button').on('click',function(){
     rileggi();
    }
    break;
+  case 'menu90':
+   modpdfopen();
+   break;
  }
 });
 function modmenuopen(){
@@ -625,6 +628,134 @@ function modorariosave(){
  return false;
 }
 // fine eventi modOrario
+
+// inizio eventi modPDF
+$(document.pdfform).on('submit',function(){
+ return modpdfsave();
+});
+function modpdfopen(){
+ openMod('modPDF');
+}
+function modpdfsave(){
+ var anno,ar,c,car,cap,cogn,cf,g,gioc,i,m,n,nome,num,p,panca,r,riga,ris,s,sq,tes,txt,v;
+ clsMod();
+ //mettere sicura
+ sq=document.pdfform.squad.value;
+ s='ab'.indexOf(sq);
+ if (gara.numerimaglia[s].length>0)
+  if (!confirm('Esistono già dei dati di questa squadra.\nSei sicuro di voler continuare?'))
+   return false;
+ n='\n';
+ txt=document.pdfform.txt.value;
+ ar=txt.split(n);
+ for (i=0; i<ar.length;i++)
+  if (ar[i].substring(0,7)=='Società') break;
+ i--;
+ ris='nsoc'+sq+'='+trim(ar[i])+n;
+ for (i=i+2; i<ar.length;i++)
+  if (ar[i].substring(0,7)=='gara n.') break;
+ r=ltrim(ar[i].substring(7));
+ p=r.indexOf(' ');
+ ris+='ngara='+parseInt(r,10)+n;
+ r=ltrim(r.substring(p));
+ if (r.substring(0,4)=='data'){
+  r=ltrim(r.substring(4));
+  p=r.indexOf(' ');
+  ris+='ndata='+r.substring(0,p)+n;
+  r=ltrim(r.substring(p));
+ }
+ if (r.substring(0,13)=='colore maglia'){
+  r=trim(r.substring(13));
+  ris+='ncolsq'+sq+'='+r.toUpperCase()+n;
+ }
+ for (i=i+1; i<ar.length;i++)
+  if (ar[i].substring(0,7)=='squadre') break;
+ r=ltrim(ar[i].substring(7));
+ p=r.indexOf('  ');
+ ris+='nsqa='+r.substring(0,p)+n;
+ r=ltrim(r.substring(p));
+ if (r.substring(0,2)=='vs') ris+='nsqb='+trim(r.substring(2))+n;
+ for (i=i+1; i<ar.length;i++)
+  if (trim(ar[i]).substring(0,14)=='codice fiscale') break;
+ //cicla i giocatori
+ g=0;
+ panca=false;
+ for (i=i+1;i<ar.length-2;i++){
+  if (trim(ar[i]).substring(0,14)=='codice fiscale') panca=true;;
+  r=trim(ar[i]);
+  if (r.length==0) continue;
+  p=r.indexOf(' ');
+  if (p==16){//trovato cf
+   g++;
+   cf=r.substring(0,16);
+   anno=r.substring(6,8);
+   r=ltrim(r.substring(16));
+   p=r.indexOf('  ');
+   num=r.substring(0,p);
+   r=ltrim(r.substring(p));
+   p=r.indexOf('  ');
+   gioc=r.substring(0,p);
+   if (gioc.indexOf('(Cap.)')>=0){
+    gioc=gioc.slice(0,-7);
+    cap=1;
+   } else cap=0;
+   //segue natoil che non ci serve
+   r=ltrim(r.substring(p));
+   p=r.indexOf('  ');
+   //segue il documento che non ci serve
+   r=ltrim(r.substring(p));
+   p=r.indexOf('  ');
+   //tessera
+   if (p>=0){
+    r=ltrim(r.substring(p));
+    tes=parseInt(r.substring(1),10);
+   } else tes='';
+   //controlla il cf per trovare il nome   
+   s='';
+   m=gioc.split(' ');
+   if (m.length>2){
+    for (p=m.length-1;p>=1;p--){
+     s=m[p]+s;
+     c=v='';
+     for (r=0;r<s.length;r++){
+      car=s.charAt(r);
+      if ((car>='A')&&(car<='Z')){
+       if (String('AEIOU').indexOf(car)>=0) v+=car;
+       else c+=car;
+      }
+     }
+     if (c.length>3) c=c.charAt(0)+c.substring(2);
+     if (cf.substring(3,6)==(c+v+'XXX').substring(0,3)){//m[p] è l'inizio del nome
+      break;
+     }
+    }
+   } else p=1;
+   cogn='';
+   for (r=0;r<p;r++) cogn+=m[r]+' ';
+   cogn=rtrim(cogn);
+   nome='';
+   for (r=p;r<m.length;r++) nome+=m[r].charAt(0)+'.';
+   if (panca){
+    riga=['CAPO ALL.','1° ASS.','2° ASS.','PREP. FISICO','MEDICO','MASSAGG.RE','ACCOMP.RE','2° DIR.','ADD. ARBITRI'].indexOf(num);
+    p=(riga<4)?'y':'z';
+    riga=['all','aall','2aall','prep','med','mass','acc','2dir','add'][riga];
+    riga=p+sq+riga+'='+cogn+','+nome;
+    if (p=='y') riga+=','+tes;
+    riga+=n;
+   } else riga='x'+sq+g+'='+anno+','+cogn+','+cap+','+nome+','+num+n;
+   ris+=riga;
+  }
+ }
+ ar=ris.split(n);
+ for (i=0;i<ar.length-1;i++){
+  p=ar[i].indexOf('=');
+  voceset(ar[i].substring(0,p),ar[i].substring(p+1));
+ }
+ refsaveall();
+ rileggi();
+ return false;
+}
+// fine eventi modPDF
 
 // inizio eventi modPunti
 $('table.punti').on('click','td.punt',function(){

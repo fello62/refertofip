@@ -563,7 +563,13 @@
         <td id="naallf4" class="f9i fa"></td>
        </tr>
        <tr id="raaall">
-        <td colspan="12" class="tal nobr sqa">1°ass.all.re <span id="yaaallcogn" class="blu f9i"></span></td>
+        <td colspan="12" class="tal nobr sqa">
+         <table style="border-collapse: collapse;">
+          <tr>
+           <td class="tal nob">1°ass.all.re</td>
+           <td id="yaaallcogn" class="tal nob w100 blu f9i"></td>
+          </tr>
+         </table>
         <td colspan="2" class="nobl sqa"><span id="yaaallnome" class="blu f9i"></span></td>
         <td colspan="4" class="tal sqa">Tess. <span id="yaaalltess" class="tess blu f9i"></span></td>
         <td id="naaallf1" class="f9i fa"></td>
@@ -880,7 +886,13 @@
         <td id="nballf4" class="f9i fa"></td>
        </tr>
        <tr id="rbaall">
-        <td colspan="12" class="tal nobr sqb">1°ass.all.re <span id="ybaallcogn" class="blu f9i"></span></td>
+        <td colspan="12" class="tal nobr sqb">
+         <table style="border-collapse: collapse;">
+          <tr>
+           <td class="tal nob">1°ass.all.re</td>
+           <td id="ybaallcogn" class="tal nob w100 blu f9i"></td>
+          </tr>
+         </table>
         <td colspan="2" class="nobl sqb"><span id="ybaallnome" class="blu f9i"></span></td>
         <td colspan="4" class="tal sqb">Tess. <span id="ybaalltess" class="tess blu f9i"></span></td>
         <td id="nbaallf1" class="f9i fa"></td>
@@ -1586,6 +1598,7 @@
       <button id="menu70">Gialla</button>
      </p>
      <p><button id="menu80">Nuova gara</button></p>
+     <p><button id="menu90">Importa testo ListaR</button></p>
     </div>
   </div>
  </div>
@@ -1875,6 +1888,33 @@
   </div>
  </div>
  <!-- fine modulo Orario -->
+
+ <!-- inizio modulo PDF -->
+ <div id="modPDF" class="mod-ol f12">
+  <div class="mod-box w60">
+   <button class="mod-cls">×</button>
+   <h3>Importazione testo da ListaR dopo pdftotext</h3>
+   <form name="pdfform">
+    <div class="responsive">
+     <label>
+      <input type="radio" name="squad" value="a" checked>
+      Squadra A
+     </label><br>
+     <label>
+      <input type="radio" name="squad" value="b" checked>
+      Squadra B
+     </label><br>
+     <label>
+      Testo<br>
+      <textarea name="txt" rows="10" class="w100"></textarea>
+     </label><br>
+     <input type="submit" value="INVIO">
+    </div>
+   </form>
+  </div>
+ </div>
+
+ <!-- fine modulo PDF -->
 
  <!-- inizio modulo Presenta -->
  <div id="modPres" class="mod-ol f12">
