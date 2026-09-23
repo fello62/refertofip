@@ -4,7 +4,9 @@ Bisogna disporre dell'utility a riga di comando "pdftotext", molto comune nelle 
 Inoltre occorre avere a disposizione i file PDF contenenti le liste R.
 
 Usando la linea di comando, occorre digitare:
+
   pdftotext -layout file.pdf
+
 Il risultato sarà un "file.txt" contenente il testo della lista R di una delle due squadre.
 
 A questo punto, nella pagina referto.html, cliccare il logo FIP per accedere al menù principale, e premere il bottone "Importa teso ListaR".
