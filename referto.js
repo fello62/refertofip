@@ -639,17 +639,24 @@ function modpdfopen(){
 function modpdfsave(){
  var anno,ar,c,car,cap,cogn,cf,g,gioc,i,m,n,nome,num,p,panca,r,riga,ris,s,sq,tes,txt,v;
  clsMod();
- //mettere sicura
+ txt=trim(document.pdfform.txt.value);
+ if (txt.length==0){
+  alert('Il testo era vuoto!');
+  return false;
+ }
  sq=document.pdfform.squad.value;
  s='ab'.indexOf(sq);
  if (gara.numerimaglia[s].length>0)
   if (!confirm('Esistono già dei dati di questa squadra.\nSei sicuro di voler continuare?'))
    return false;
  n='\n';
- txt=document.pdfform.txt.value;
  ar=txt.split(n);
  for (i=0; i<ar.length;i++)
   if (ar[i].substring(0,7)=='Società') break;
+ if (i>=ar.length){
+  alert('Non ci sono dati recuperabili!');
+  return false;
+ }
  i--;
  ris='nsoc'+sq+'='+trim(ar[i])+n;
  for (i=i+2; i<ar.length;i++)
@@ -1157,7 +1164,7 @@ function annullarighesq(s){//s = squadra 0..1
   if (cella.text().length==0){
    cella=cella.closest('td');
    h='<img src="'+img+'" style="position:absolute;height:1px;';
-   h+='top:'+(cella.position().top+9.75)+'px;left:0;width:+'+(100*16/22)+'%">';
+   h+='top:'+(cella.position().top+9.75)+'px;left:0;width:+'+(100*14/22)+'%">';
    cella.append(h);
   }
  }
@@ -1658,7 +1665,11 @@ function interprete(testo){
            chiudifallisq(s,i,1);
           //chiude timeout 1 riga
           for (i=0;i<sosp.length;i++)
-           chiudito(sq,p.charAt(2),parseInt(p.charAt(3),10),1);
+           chiudito(sq,sosp[i].charAt(2),parseInt(sosp[i].charAt(3),10),1);
+          //chiude ris parz
+          for(i=gara.tempo+1;i<=5;i++) chiudiparz(sq,'nrq',i);
+          //chiude orari
+          for(i=gara.tempo+1;i<=5;i++) chiudiparz('if'.charAt(s),'dora',i);
          }
          break;
 
@@ -1682,10 +1693,11 @@ function interprete(testo){
           //falli di squadra non commessi due righe
           chiudifallisq(s,(gara.tempo>4)?4:gara.tempo,2);
           //chiusura timeout due righe
-          for (i=1*(gara.tempo<=2)+4*(gara.tempo<=4)+gara.tempo*((gara.tempo>=5)&&(gara.tempo<=7));
-           i>=1-1*(gara.tempo<=2)+1*(gara.tempo<=4)+(gara.tempo-1)*(gara.tempo>=5);
+          for (i=1*(gara.tempo<=2)+4*(gara.tempo>2)+(gara.tempo-4)*((gara.tempo>=5)&&(gara.tempo<=7));
+           i>=1-1*(gara.tempo<=2)+1*(gara.tempo>2)+(gara.tempo-2)*(gara.tempo>=5);
            i--){
-           if ($('#'+sosp[i]+sq).text().length==0) chiudito(sq,sosp[i].charAt(2),parseInt(sosp[i].charAt(3),10),2);
+           if ($('#'+sosp[i]+sq).text().length==0)
+            chiudito(sq,sosp[i].charAt(2),parseInt(sosp[i].charAt(3),10),2);
            else break;
           }
          }
@@ -1702,12 +1714,13 @@ function interprete(testo){
             chiudifalli(s,gara.staff[s][i].substring(1).toLowerCase(),'b');
           //chiusura del non giocato
           //chiude timeout 1 riga
-          for (i=2+3*(gara.tempo>=3)+(gara.tempo-4)*((gara.tempo>=5)&&(gara.tempo<=7));
+          for (i=2+3*(gara.tempo>2)+(gara.tempo-4)*((gara.tempo>=5)&&(gara.tempo<=7));
            i<=7;
            i++){
            chiudito(sq,sosp[i].charAt(2),parseInt(sosp[i].charAt(3),10),1);
           }
           //falli di squadra 1 riga
+          gara.fallisq[s]=0;
           for(i=gara.tempo+1;i<=4;i++) chiudifallisq(s,i,1);
           //chiude ris parz
           for(i=gara.tempo+1;i<=5;i++) chiudiparz(sq,'nrq',i);
@@ -1801,9 +1814,10 @@ function refiniz(){
   fallisq:[0,0],
   tempo:0,
   stato:0,
-  colore:'rosso',
+  colore:'blu',
   numerimaglia:[[],[]],
-  staff:[[],[]],
+  staff:[['-AALL','-AAALL','-AACC','-AMED','-AADD','-AMASS','-A2AALL','-APREP'],
+   ['-BALL','-BAALL','-BACC','-BMED','-BMASS','-B2AALL','-BPREP']],
   entiniz:[new Array(5),new Array(5)]
  };
  n='\n';
@@ -1824,8 +1838,16 @@ function refiniz(){
  s+='narb1='+n;
  s+='narb2='+n;
  s+='narb3='+n;
+ s+='ncrono='+n;
+ s+='nsegna='+n;
+ s+='nadd24='+n;
+ s+='ntcrono='+n;
+ s+='ntsegna='+n;
+ s+='ntadd24='+n;
+ s+='ntarb1='+n;
+ s+='ntarb2='+n;
+ s+='ntarb3='+n;
  s+='dpaga='+n;
- s+='nsqrecl='+n;
  s+='dora1i='+n;
  s+='dora1f='+n;
  s+='dora2i='+n;
@@ -1836,15 +1858,7 @@ function refiniz(){
  s+='dora4f='+n;
  s+='dora5i='+n;
  s+='dora5f='+n;
- s+='ncrono='+n;
- s+='nsegna='+n;
- s+='nadd24='+n;
- s+='ntcrono='+n;
- s+='ntsegna='+n;
- s+='ntadd24='+n;
- s+='ntarb1='+n;
- s+='ntarb2='+n;
- s+='ntarb3='+n;
+ s+='nsqrecl='+n;
  s+='dentiniz='+n;
  s+='nsqa='+n;
  s+='ncolsqa='+n;
@@ -1910,6 +1924,7 @@ function refload(){
  d=ref.substring('<voci>\n'.length,foot);
  refprog=ref.substring(foot+i.length);
  ar=d.split('\n');
+ gara.staff=[[],[]];
  for (i=0;i<ar.length;i++){
   d=ar[i].indexOf('=');
   t=ar[i].slice(0,1);
@@ -1960,7 +1975,7 @@ function refload(){
     }
     break;
    case 'x':
-    r=v.split(',');
+    r=(v+',,,,').split(',');
     $('#x'+voce+'anno').text(r[0]);
     $('#x'+voce+'cogn').text(r[1]);
     $('#x'+voce+'cap').text((r[2]==1)?'CAP':'');
@@ -1968,7 +1983,7 @@ function refload(){
     $('#x'+voce+'num').text(r[4]);
     break;
    case 'y':
-    r=v.split(',');
+    r=(v+',,').split(',');
     $('#y'+voce+'cogn').text(r[0]);
     $('#y'+voce+'nome').text(r[1]);
     $('#y'+voce+'tess').text(r[2]);
@@ -1976,7 +1991,7 @@ function refload(){
     gara.staff[s].push((((r[0]+r[1]).length>0)?'':'-')+voce.toUpperCase());
     break;
    case 'z':
-    r=v.split(',');
+    r=(v+',').split(',');
     $('#z'+voce+'cogn').text(r[0]);
     $('#z'+voce+'nome').text(r[1]);
     s='ab'.indexOf(voce.charAt(0));
