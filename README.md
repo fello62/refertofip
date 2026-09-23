@@ -9,7 +9,7 @@ Usando la linea di comando, occorre digitare:
 
 Il risultato sarà un "file.txt" contenente il testo della lista R di una delle due squadre.
 
-A questo punto, nella pagina referto.html, cliccare il logo FIP per accedere al menù principale, e premere il bottone "Importa teso ListaR".
+A questo punto, nella pagina referto.html, cliccare il logo FIP per accedere al menù principale, e premere il bottone "Importa testo ListaR".
 Si aprirà una finestra con due "radio buttons" per scegliere tra squadra A e B di chi è la lista; poi c'è una casella in cui va incollato il testo contenuto nel "file.txt" ricavato con pdftotext.
 Premendo il bottone "INVIO" si conclude l'importazione.
 
