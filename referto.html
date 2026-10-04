@@ -554,7 +554,7 @@
        </tr>
        <tr id="raall">
         <td colspan="12" class="tal nobr sqa">All.re
-         <span id="yaallcogn" class="blu f9i"></span><div class="tess"></div></td>
+         <span id="yaallcogn" class="blu f9i"></span></td>
         <td colspan="2" class="nobl sqa"><span id="yaallnome" class="blu f9i"></span></td>
         <td colspan="4" class="tal sqa">Tess. <span id="yaalltess" class="tess blu f9i"></span></td>
         <td id="naallf1" class="f9i fa"></td>
@@ -563,13 +563,8 @@
         <td id="naallf4" class="f9i fa"></td>
        </tr>
        <tr id="raaall">
-        <td colspan="12" class="tal nobr sqa">
-         <table style="border-collapse: collapse;">
-          <tr>
-           <td class="tal nob">1°ass.all.re</td>
-           <td id="yaaallcogn" class="tal nob w100 blu f9i"></td>
-          </tr>
-         </table>
+        <td colspan="12" class="tal nobr sqa">1°ass.all.re
+         <span id="yaaallcogn" class="blu f9i"></span></td>
         <td colspan="2" class="nobl sqa"><span id="yaaallnome" class="blu f9i"></span></td>
         <td colspan="4" class="tal sqa">Tess. <span id="yaaalltess" class="tess blu f9i"></span></td>
         <td id="naaallf1" class="f9i fa"></td>
@@ -877,7 +872,7 @@
        </tr>
        <tr id="rball">
         <td colspan="12" class="tal nobr sqb">All.re
-         <span id="yballcogn" class="blu f9i"></span><div class="tess"></div></td>
+         <span id="yballcogn" class="blu f9i"></span></td>
         <td colspan="2" class="nobl sqb"><span id="yballnome" class="blu f9i"></span></td>
         <td colspan="4" class="tal sqb">Tess. <span id="yballtess" class="tess blu f9i"></span></td>
         <td id="nballf1" class="f9i fa"></td>
@@ -886,13 +881,8 @@
         <td id="nballf4" class="f9i fa"></td>
        </tr>
        <tr id="rbaall">
-        <td colspan="12" class="tal nobr sqb">
-         <table style="border-collapse: collapse;">
-          <tr>
-           <td class="tal nob">1°ass.all.re</td>
-           <td id="ybaallcogn" class="tal nob w100 blu f9i"></td>
-          </tr>
-         </table>
+        <td colspan="12" class="tal nobr sqb">1°ass.all.re
+         <span id="ybaallcogn" class="blu f9i"></span></td>
         <td colspan="2" class="nobl sqb"><span id="ybaallnome" class="blu f9i"></span></td>
         <td colspan="4" class="tal sqb">Tess. <span id="ybaalltess" class="tess blu f9i"></span></td>
         <td id="nbaallf1" class="f9i fa"></td>
@@ -1576,7 +1566,7 @@
  <!-- inizio moduli -->
 
  <!-- inizio modulo menu principale -->
- <div id="modMenu" class="mod-ol f12">
+ <div id="modMenu" class="mod-ol">
   <div class="mod-box w50">
    <button class="mod-cls">×</button>
    <h3>Menù principale</h3>
@@ -1587,8 +1577,8 @@
      <p><button id="menu20">Fine tempo supplementare oltre il primo</button></p>
      <p><button id="menu25">Aggiungi nota</button></p>
      <p><button id="menu30">Chiusura gara</button></p>
-     <p><button id="menu35">Salva gara</button></p>
-     <p><button id="menu40">Carica gara salvata</button></p>
+     <p><button id="menu35">Salva/Esporta gara</button></p>
+     <p><button id="menu40">Carica/Importa gara</button></p>
      <p><button id="menu45">Stampa referto</button></p>
      <p><button id="menu50">Lista/Modifica gara</button></p>
      <p>Copia
@@ -1599,25 +1589,14 @@
      </p>
      <p><button id="menu80">Nuova gara</button></p>
      <p><button id="menu90">Importa testo ListaR</button></p>
+     <p><button id="menu95">Carica gara DEMO</button></p>
     </div>
   </div>
  </div>
  <!-- fine modulo menu principale -->
 
- <!-- inizio modulo carica gara salvata -->
- <div id="modCaricaGS" class="mod-ol f12">
-  <div class="mod-box w30">
-   <button class="mod-cls">×</button>
-   <h3>Carica Gara Salvata</h3>
-    <div class="responsive">
-     <input type="file" id="fileInput">
-    </div>
-  </div>
- </div>
- <!-- fine modulo carica gara salvata -->
-
  <!-- inizio modulo entrate iniziali -->
- <div id="modEntIniz" class="mod-ol f12">
+ <div id="modEntIniz" class="mod-ol">
   <div class="mod-box w30">
    <button class="mod-cls">×</button>
    <h3>Entrate Iniziali Squadra <span id="meiord">A</span></h3>
@@ -1633,7 +1612,7 @@
  <!-- fine modulo entrate iniziali -->
 
  <!-- inizio modulo falli -->
- <div id="modFalli" class="mod-ol f12">
+ <div id="modFalli" class="mod-ol">
   <div class="mod-box w60">
    <button class="mod-cls">×</button>
    <h3><span id="mfagioc"></span> squadra <span id="mfasq">A</span> <span id="mfaord">1</span>&ordm;FALLO</h3>
@@ -1734,7 +1713,7 @@
  <!-- fine modulo falli -->
 
  <!-- inizio modulo firma grafometrica -->
- <div id="modFirmaG" class="mod-ol f12">
+ <div id="modFirmaG" class="mod-ol">
   <div class="mod-box w80">
    <button class="mod-cls">×</button>
    <h3>Firma <span id="mfgord">Allenatore A</span></h3>
@@ -1753,8 +1732,47 @@
  </div>
  <!-- fine modulo firma grafometrica -->
 
+ <!-- inizio modulo gara load -->
+ <div id="modGaraLoad" class="mod-ol">
+  <div class="mod-box w50">
+   <button class="mod-cls">×</button>
+   <h3>Carica/Importa Gara</h3>
+   <form name="impform">
+    <div class="responsive">
+     <label>File locale
+      <input type="file" id="fileInput">
+     </label><br>
+     <label>
+      Testo<br>
+      <textarea name="imptxt" rows="10" class="w100"></textarea>
+     </label><br>
+     <input type="submit" value="CARICA">
+    </div>
+   </form>
+  </div>
+ </div>
+ <!-- fine modulo gara load -->
+
+ <!-- inizio modulo gara save -->
+ <div id="modGaraSave" class="mod-ol">
+  <div class="mod-box w50">
+   <button class="mod-cls">×</button>
+   <h3>Salva/Esporta Gara</h3>
+   <form name="expform">
+    <div class="responsive">
+     <label>
+      Testo<br>
+      <textarea name="exptxt" rows="10" class="w100"></textarea>
+     </label><br>
+     <input type="submit" value="SALVA">
+    </div>
+   </form>
+  </div>
+ </div>
+ <!-- fine modulo gara save -->
+
  <!-- inizio modulo prima intestazione -->
- <div id="modHeader1" class="mod-ol f12">
+ <div id="modHeader1" class="mod-ol">
   <div class="mod-box w50">
    <button class="mod-cls">×</button>
    <h3>Dati Prima Intestazione</h3>
@@ -1795,7 +1813,7 @@
  <!-- fine modulo prima intestazione -->
 
  <!-- inizio modulo seconda intestazione -->
- <div id="modHeader2" class="mod-ol f12">
+ <div id="modHeader2" class="mod-ol">
   <div class="mod-box w50">
    <button class="mod-cls">×</button>
    <h3>Dati Seconda Intestazione</h3>
@@ -1857,7 +1875,7 @@
  <!-- fine modulo seconda intestazione -->
 
  <!-- inizio modulo ListaN -->
- <div id="modListaN" class="mod-ol f12">
+ <div id="modListaN" class="mod-ol">
   <div class="mod-box w40">
    <button class="mod-cls">×</button>
    <h3><span id="mlnord">Lista Righe Referto</span></h3>
@@ -1868,7 +1886,7 @@
  <!-- fine modulo ListaN -->
 
  <!-- inizio modulo Orario -->
- <div id="modOrario" class="mod-ol f12">
+ <div id="modOrario" class="mod-ol">
   <div class="mod-box w40">
    <button class="mod-cls">×</button>
    <h3><span class="oratipo">Inizio</span> Tempo <span id="morario"></span></h3>
@@ -1890,7 +1908,7 @@
  <!-- fine modulo Orario -->
 
  <!-- inizio modulo PDF -->
- <div id="modPDF" class="mod-ol f12">
+ <div id="modPDF" class="mod-ol">
   <div class="mod-box w60">
    <button class="mod-cls">×</button>
    <h3>Importazione testo da ListaR dopo pdftotext</h3>
@@ -1916,19 +1934,18 @@
  <!-- fine modulo PDF -->
 
  <!-- inizio modulo Presenta -->
- <div id="modPres" class="mod-ol f12">
+ <div id="modPres" class="mod-ol">
   <div class="mod-box w60">
    <button class="mod-cls">×</button>
    <h3>Referto digitale in stile FIP<br><span class="f8">Autore: Fabrizio Fellini</span></h3>
     <div class="responsive">
      <p>Per il menù cliccare l'immagine del logo FIP.</p>
      <p>Qualsiasi altro elemento cliccato permetterà di modificarne il contenuto.</p>
-     <p>Una volta preparate le intestazioni (basta cliccarci sopra), e poi immessi i dati delle squadre,
-      per iniziare ad immettere falli, punti, ecc.,
-      cliccare la casella dell'orario d'inizio del tempo.</p>
-     <p>Alla fine di un tempo di gioco, cliccare la casella dell'orario di fine tempo per chiuderlo.</p>
+     <p>Una volta preparate le intestazioni (basta cliccarci sopra), e poi immessi i dati delle squadre e le entrate,
+      cliccare la casella dell'orario d'inizio del tempo per permettere l'inserimento dei dati di gioco (falli, punti, ecc.).</p>
+     <p>Alla fine di un tempo di gioco, cliccare la casella dell'orario di fine tempo per chiuderlo e bloccare temporaneamente l'inserimento dei dati.</p>
      <p>Per chiudere la gara, usare l'apposita voce del menù principale dopo la chiusura di un tempo.
-      &Egrave; possibile utilizzarla anche prima dell'inizio del primo tempo (mancato arrivo di una squadra),
+      &Egrave; possibile utilizzarla anche prima dell'inizio del primo tempo (mancato arrivo di una squadra o del medico),
       oppure prima di chiudere un tempo di gioco (in caso di gara sospesa):
       le chiusure varieranno di conseguenza.</p>
      <p>Le annotazioni verranno elencate al di sotto del referto e poi stampate in una seconda pagina.</p>
@@ -1940,8 +1957,8 @@
  <!-- fine modulo Presenta -->
 
  <!-- inizio modulo Punti -->
- <div id="modPunti" class="mod-ol f12">
-  <div class="mod-box w40">
+ <div id="modPunti" class="mod-ol">
+  <div class="mod-box w50">
    <button class="mod-cls">×</button>
    <h3>Punti per Squadra <span id="mpuord">A</span></h3>
    <form name="punform">
@@ -1956,7 +1973,7 @@
  <!-- fine modulo Punti -->
 
  <!-- inizio modulo squadra -->
- <div id="modSq" class="mod-ol f12">
+ <div id="modSq" class="mod-ol">
   <div class="mod-box w60">
    <button class="mod-cls">×</button>
    <h3>Dati Squadra <span id="msord">A</span></h3>
@@ -2145,7 +2162,7 @@
  <!-- fine modulo squadra -->
 
  <!-- inizio modulo TessArb -->
- <div id="modTessArb" class="mod-ol f12">
+ <div id="modTessArb" class="mod-ol">
   <div class="mod-box w20">
    <button class="mod-cls">×</button>
    <h3>Tessere Arbitri</h3>
@@ -2177,7 +2194,7 @@
  <!-- fine modulo TessArb -->
 
  <!-- inizio modulo Timeout -->
- <div id="modTO" class="mod-ol f12">
+ <div id="modTO" class="mod-ol">
   <div class="mod-box w40">
    <button class="mod-cls">×</button>
    <h3><span id="mtoord">Timeout</span>: minuto</h3>
@@ -2195,7 +2212,7 @@
  <!-- fine modulo Timeout -->
 
  <!-- inizio modulo UdC -->
- <div id="modUdC" class="mod-ol f12">
+ <div id="modUdC" class="mod-ol">
   <div class="mod-box w60">
    <button class="mod-cls">×</button>
    <h3>Ufficiali di Campo</h3>

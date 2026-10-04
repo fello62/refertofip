@@ -7,6 +7,11 @@ $(document).ready(function(){
   $('div.corporef').height($('table.squadre').height());
  }
  refiniz();
+ if (sessionStorage.refertofip){//carica gara demo
+  localStorage.refertofip=sessionStorage.refertofip;
+  sessionStorage.removeItem('refertofip');
+  localStorage.ricarica='1';
+ }
  if (localStorage.ricarica){//sicuramente esiste anche localStorage.refertofip
   refload();
   localStorage.removeItem('ricarica');
@@ -19,7 +24,7 @@ $(document).ready(function(){
  }
 });
 
-// inizio gestione moduli
+//  inizio gestione moduli
 $('.mod-ol').on('click',function(ev){
 	if ($(ev.target).is(modEl)) clsMod();
 });
@@ -124,32 +129,60 @@ function entgest(t){
 }
 // fine eventi entrate
 
-// inizio eventi modCaricaGS
+// inizio eventi modGaraLoad
 $('#fileInput').on('change',function(event){
- modcargssave(event);
+ modgaraloadlocal(event);
 });
-function modcargsopen(){
- openMod('modCaricaGS');
+$(document.impform).on('submit',function(){
+ clsMod();
+ gara.ref=document.impform.imptxt.value;
+ refsaveall();
+ rileggi();
+ return false;
+});
+function modgaraloadopen(){
+ document.impform.imptxt.value='';
+ openMod('modGaraLoad');
 }
-function modcargssave(event){
+function modgaraloadlocal(event){
  var file,reader;
  file=event.target.files[0];
  if (!file) return;
  reader=new FileReader();
  reader.onload=function(e){
   var t=e.target.result;
-  clsMod();
   if (t.substring(0,7)!='<voci>\n'){
    alert('Questo non è un file referto fip valido!');
   } else {
-   gara.ref=t;
-   refsaveall();
-   rileggi();
+   document.impform.imptxt.value=t;
   }
  };
- reader.readAsText(file); // Legge il file come testo
+ reader.readAsText(file);// Legge il file come testo
 }
-// fine eventi modCaricaGS
+// fine eventi modGaraLoad
+
+// inizio eventi modGaraSave
+$(document.expform).on('submit',function(){
+ modgarasavesave();
+ return false;
+});
+function modgarasaveopen(){
+ document.expform.exptxt.value=gara.ref;
+ openMod('modGaraSave');
+}
+function modgarasavesave(){
+ var ar,v;
+ clsMod();
+ ar='data:application/octet-stream,'+encodeURIComponent(gara.ref);
+ v=document.createElement('a');
+ v.href=ar;
+ v.download='refertofip'+$('#ngara').text()+'.txt';
+ document.body.appendChild(v);
+ v.click();
+ document.body.removeChild(v);
+ return false;
+}
+// fine eventi modGaraSave
 
 // inizio eventi modFalli
 $('.fa').on('click',function(){
@@ -181,7 +214,7 @@ function modfalopen(t){
   return;
  }
  document.falform.giocref.value=giocnum;
- $('#mfasq').text(giocnum.charAt(s));
+ $('#mfasq').text(giocnum.charAt(0));
  $('#mfagioc').text(giocnum.substring(1));
  numf=parseInt(t.slice(-1),10)||0;
  //controlla se quel numero di fallo è accettabile
@@ -365,17 +398,11 @@ $('#modMenu p button').on('click',function(){
    }
    interprete('STOP');
    break;
-  case 'menu35'://salva
-   ar='data:application/octet-stream,'+encodeURIComponent(gara.ref);
-   v=document.createElement("a");
-   v.href=ar;
-   v.download='refertofip'+$('#ngara').text()+'.txt';
-   document.body.appendChild(v);
-   v.click();
-   document.body.removeChild(v);
+  case 'menu35'://salva gara
+   modgarasaveopen();
    break;
-  case 'menu40'://carica gara salvata
-   modcargsopen();
+  case 'menu40'://carica gara
+   modgaraloadopen();
    break;
   case 'menu45'://stampa
    setTimeout(function(){window.print();},500);
@@ -403,6 +430,11 @@ $('#modMenu p button').on('click',function(){
    break;
   case 'menu90':
    modpdfopen();
+   break;
+  case 'menu95':
+   if (confirm('Sei sicuro di voler caricare la gara dimostrativa?')){
+    location.href='demo.html';
+   }
    break;
  }
 });
