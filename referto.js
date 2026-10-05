@@ -24,7 +24,7 @@ $(document).ready(function(){
  }
 });
 
-//  inizio gestione moduli
+// inizio gestione moduli
 $('.mod-ol').on('click',function(ev){
 	if ($(ev.target).is(modEl)) clsMod();
 });
