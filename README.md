@@ -1,3 +1,8 @@
+SALVATAGGIO E CARICAMENTO GARE
+Il salvataggio ed il caricamento delle gare, con dispositivi Apple con versione IOS minore di 11, sono problematici per l'assenza dell'applicazione "File".
+Negli appositi riquadri sono state quindi aggiunte delle aree di testo in cui poter eventualmente eseguire operazioni di copia/incolla col testo delle gare come modalità alternativa.
+
+LISTE R
 Per accelerare la scrittura delle liste R nel referto, è possibile importarne il testo.
 
 Bisogna disporre dell'utility a riga di comando "pdftotext", molto comune nelle macchine Linux ma disponibile come servizio online anche al sito https://pdftotext.com/.
