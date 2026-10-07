@@ -24,7 +24,7 @@ $(document).ready(function(){
  }
 });
 
-// inizio gestione moduli
+//  inizio gestione moduli
 $('.mod-ol').on('click',function(ev){
 	if ($(ev.target).is(modEl)) clsMod();
 });
@@ -1161,6 +1161,7 @@ function modtoopen(t){
  $('#mtoord').text('Timeout '+sq.toUpperCase());
  document.toform.tosq.value=sq;
  openMod('modTO');
+ document.toform.tomin.focus();
 }
 function modtosave(){
  var m,sq;
