@@ -26,6 +26,33 @@
  <div id="cacheProgress"><i>Caricamento pagina</i><br></div>
 </div>
 
+<div>
+ <h4>SALVATAGGIO E CARICAMENTO GARE</h4>
+ <p>Il salvataggio ed il caricamento delle gare, con dispositivi Apple e
+ versione IOS minore di 11, sono problematici per l'assenza dell'applicazione "File".
+ Negli appositi riquadri sono state quindi aggiunte delle aree di testo in
+ cui poter eventualmente eseguire operazioni di copia/incolla col testo delle gare
+ come modalità alternativa.</p>
+ 
+ <h4>LISTE R</h4>
+ <p>Per accelerare la scrittura delle liste R nel referto, è possibile importarne il testo.</p>
+ <p>Bisogna disporre dell'utility a riga di comando "pdftotext", molto comune nelle macchine
+ Linux ma disponibile come servizio online anche al sito
+ <a href="https://pdftotext.com/" target="_blank">https://pdftotext.com/</a>.
+ Inoltre occorre avere a disposizione i file PDF contenenti le liste R.</p>
+ <p>Usando la linea di comando, occorre digitare:</p>
+ <code>pdftotext -layout file.pdf</code>
+ <p>Il risultato sarà un "file.txt" contenente il testo della lista R di una delle due squadre.</p>
+ <p>A questo punto, nella pagina referto.html, cliccare il logo FIP per accedere
+ al menù principale, e premere il bottone "Importa testo ListaR". Si aprirà
+ una finestra con due "radio buttons" per scegliere tra squadra A e B di chi è la lista;
+ poi c'è una casella in cui va incollato il testo contenuto nel "file.txt"
+ ricavato con pdftotext. Premendo il bottone "INVIO" si conclude l'importazione.</p>
+ <p>Queste operazioni vanno ripetute in modo identico per la seconda squadra,
+ anche se di solito è difficile avere a disposizione entrambi i file PDF;
+ in questo caso la seconda squadra andrà digitata manualmente.</p>
+</div>
+
 <script src="jquery.min.js"></script>
 <script>
 const
