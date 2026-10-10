@@ -1,5 +1,5 @@
 ### SALVATAGGIO E CARICAMENTO GARE
-Il salvataggio ed il caricamento delle gare, con dispositivi Apple con versione IOS minore di 11, sono problematici per l'assenza dell'applicazione "File".
+Il salvataggio ed il caricamento delle gare, con dispositivi Apple e versione IOS minore di 11, sono problematici per l'assenza dell'applicazione "File".
 Negli appositi riquadri sono state quindi aggiunte delle aree di testo in cui poter eventualmente eseguire operazioni di copia/incolla col testo delle gare come modalità alternativa.
 
 ### LISTE R
