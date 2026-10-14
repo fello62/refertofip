@@ -10,7 +10,7 @@ Ricordo che un autocanestro vale SEMPRE 2 punti, mai 1 o 3.
 ### PROBLEMI STAMPA CON IOS
 Nella stampa del referto nei dispositivi Apple con IOS si riscontra il problema dei margini che, con Safari e qualsiasi altro browser, non sono impostabili.
 
-Questo comporta che la stampa del referto venga spezzata nella parte bassa, a meno che non si applichi uno zoom per ridurre la pagina a circa l'84%. Questa cosa però non è possibile con le versioni IOS più vecchie (ad esempio IOS9 oppure IOS10).
+Questo comporta che la stampa del referto venga spezzata nella parte bassa, a meno che non si applichi uno zoom per ridurre la pagina a circa l'83%. Questa cosa però non è possibile con le versioni IOS più vecchie (ad esempio IOS9 oppure IOS10).
 
 Inoltre ricordo che, per stampare un PDF sotto IOS, una volta aperta l'anteprima di stampa (aprire il menù cliccando il logo FIP, poi il bottone "Stampa referto"), occorre fare il movimento "pinch" (due dita sull'immagine cercando di allargarla).
 
