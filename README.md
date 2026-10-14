@@ -1,3 +1,12 @@
+### IMMISSIONE PUNTI
+Nella finestra d'immissione dei punti, a destra della lista dei numeri maglia dei giocatori per scegliere il realizzatore, compare una "T". Questa sta per TEAM, e il suo uso rappresenta un mio "sogno" che ha una sua utilità anche adesso.
+
+Serve come numero di giocatore temporaneo non sapendo chi sia il capitano in campo nel momento in cui capita un autocanestro: si mette come numero la T, si va avanti col referto, poi, alla prima palla morta, si chiede chi fosse il capitano in campo, si fa la correzione e quindi si prosegue.
+
+Il mio sogno sarebbe che la FIBA rendesse ciò una regola, smettendo quindi di regalare dei punti al capitano, in maniera simile a quanto avviene nell'NCAA, dove addirittura non si mette una T ma si lascia vuoto lo spazio per il numero del giocatore, mettendo poi un'annotazione al referto.
+
+Ricordo che un autocanestro vale SEMPRE 2 punti, mai 1 o 3.
+
 ### PROBLEMI STAMPA CON IOS
 Nella stampa del referto nei dispositivi Apple con IOS si riscontra il problema dei margini che, con Safari e qualsiasi altro browser, non sono impostabili.
 
