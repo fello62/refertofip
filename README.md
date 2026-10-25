@@ -5,7 +5,7 @@ Si può utilizzare qualsiasi browser reletivamente moderno. Il codice Javascript
 
 È possibile usare l'applicazione su PC (Windows, Linux o Mac) o su tablet: si potrebbe usarla anche su smartphone, ma le dimensioni limitate degli schermi ne ostacolerebbero il corretto utilizzo.
 
-L'app è nata come risposta più semplice nell'uso rispetto alla CRITICABILE soluzione adottata dalla FIP come referto elettronico, tornando ad un modo d'uso molto più simile a quello del tradizionale referto cartaceo.
+L'app è nata come risposta più semplice nell'uso rispetto alla CRITICABILE soluzione adottata dalla FIP come referto elettronico, tornando ad un utilizzo molto più simile a quello del tradizionale referto cartaceo.
 
 ### IMMISSIONE PUNTI
 Nella finestra d'immissione dei punti, a destra della lista dei numeri maglia dei giocatori per scegliere il realizzatore, compare una "T". Questa sta per TEAM, e il suo uso rappresenta un mio "sogno" che ha una sua utilità anche adesso.
