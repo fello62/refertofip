@@ -1,3 +1,8 @@
+#### DESCRIZIONE
+RefertoFIP è una "web app", cioè un'applicazione in grado di girare con il supporto di un navigatore web; grazie alle caratteristiche dei browser moderni, è in grado di lavorare anche offline, senza avere il bisogno di essere connessi ad Internet. Tutti i dati memorizzati dall'applicazione risiedono e vengono mantenuti all'interno del dispositivo che la utilizza.
+Si può utilizzare qualsiasi browser reletivamente moderno. Il codice Javascript usato è stato volutamente mantenuto compatibile il più possibile con le vecchie specifiche ECMA5, anche con librerie esterne non aggiornate all'ultima versione; questo per fare in modo che anche vecchi dispositivi possano utilizzare l'app. L'unica eccezione al riguardo è l'installazione offline con service worker, dove, per forza di cose, si devono usare le Promises di ECMA6.
+È possibile usare l'applicazione su PC (Windows, Linux o Mac) o su tablet: si potrebbe usarla anche su smartphone, ma le dimensioni limitate degli schermi ne ostacolerebbero il corretto utilizzo.
+
 ### IMMISSIONE PUNTI
 Nella finestra d'immissione dei punti, a destra della lista dei numeri maglia dei giocatori per scegliere il realizzatore, compare una "T". Questa sta per TEAM, e il suo uso rappresenta un mio "sogno" che ha una sua utilità anche adesso.
 
