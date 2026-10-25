@@ -129,61 +129,6 @@ function entgest(t){
 }
 // fine eventi entrate
 
-// inizio eventi modGaraLoad
-$('#fileInput').on('change',function(event){
- modgaraloadlocal(event);
-});
-$(document.impform).on('submit',function(){
- clsMod();
- gara.ref=document.impform.imptxt.value;
- refsaveall();
- rileggi();
- return false;
-});
-function modgaraloadopen(){
- document.impform.imptxt.value='';
- openMod('modGaraLoad');
-}
-function modgaraloadlocal(event){
- var file,reader;
- file=event.target.files[0];
- if (!file) return;
- reader=new FileReader();
- reader.onload=function(e){
-  var t=e.target.result;
-  if (t.substring(0,7)!='<voci>\n'){
-   alert('Questo non è un file referto fip valido!');
-  } else {
-   document.impform.imptxt.value=t;
-  }
- };
- reader.readAsText(file);// Legge il file come testo
-}
-// fine eventi modGaraLoad
-
-// inizio eventi modGaraSave
-$(document.expform).on('submit',function(){
- modgarasavesave();
- return false;
-});
-function modgarasaveopen(){
- document.expform.exptxt.value=gara.ref;
- openMod('modGaraSave');
-}
-function modgarasavesave(){
- var ar,v;
- clsMod();
- ar='data:application/octet-stream,'+encodeURIComponent(gara.ref);
- v=document.createElement('a');
- v.href=ar;
- v.download='refertofip'+$('#ngara').text()+'.txt';
- document.body.appendChild(v);
- v.click();
- document.body.removeChild(v);
- return false;
-}
-// fine eventi modGaraSave
-
 // inizio eventi modFalli
 $('.fa').on('click',function(){
  modfalopen(this.id);
@@ -293,6 +238,10 @@ function modfalsave(){
    disq=true;
   }
  }
+ if ((tipof='T')&&(['1','C'].indexOf(pedice)<0)){
+  alert('(T) può avere 1 libero o essere compensato:\nmetto 1 libero!');
+  pedice='1';
+ }
  fallo=giocref+' F,'+tipof+','+pedice+',';
  fallo+=(tiporis?'F':'')+',';
  fallo+=(cerchiato?'C':'')+','+(disq?'SQ':'');
@@ -353,6 +302,61 @@ function apriFirma(e){
  openMod('modFirmaG');
 }
 // fine eventi modFirmaG
+
+// inizio eventi modGaraLoad
+$('#fileInput').on('change',function(event){
+ modgaraloadlocal(event);
+});
+$(document.impform).on('submit',function(){
+ clsMod();
+ gara.ref=document.impform.imptxt.value;
+ refsaveall();
+ rileggi();
+ return false;
+});
+function modgaraloadopen(){
+ document.impform.imptxt.value='';
+ openMod('modGaraLoad');
+}
+function modgaraloadlocal(event){
+ var file,reader;
+ file=event.target.files[0];
+ if (!file) return;
+ reader=new FileReader();
+ reader.onload=function(e){
+  var t=e.target.result;
+  if (t.substring(0,7)!='<voci>\n'){
+   alert('Questo non è un file referto fip valido!');
+  } else {
+   document.impform.imptxt.value=t;
+  }
+ };
+ reader.readAsText(file);// Legge il file come testo
+}
+// fine eventi modGaraLoad
+
+// inizio eventi modGaraSave
+$(document.expform).on('submit',function(){
+ modgarasavesave();
+ return false;
+});
+function modgarasaveopen(){
+ document.expform.exptxt.value=gara.ref;
+ openMod('modGaraSave');
+}
+function modgarasavesave(){
+ var ar,v;
+ clsMod();
+ ar='data:application/octet-stream,'+encodeURIComponent(gara.ref);
+ v=document.createElement('a');
+ v.href=ar;
+ v.download='refertofip'+$('#ngara').text()+'.txt';
+ document.body.appendChild(v);
+ v.click();
+ document.body.removeChild(v);
+ return false;
+}
+// fine eventi modGaraSave
 
 // inizio eventi modMenu
 $('#logofip').on('click',function(){
