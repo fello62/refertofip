@@ -238,7 +238,7 @@ function modfalsave(){
    disq=true;
   }
  }
- if ((tipof='T')&&(['1','C'].indexOf(pedice)<0)){
+ if ((tipof=='T')&&(['1','C'].indexOf(pedice)<0)){
   alert('(T) può avere 1 libero o essere compensato:\nmetto 1 libero!');
   pedice='1';
  }
