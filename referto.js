@@ -274,7 +274,6 @@ $(document.fg).on('submit',function(){
     p.x=o.y;
     p.y=600-o.x;
     p.t=o.t;
-    p.m=o.m;
     return p;
    });
   } else puntic=JSON.parse(dovesalvo.value);
@@ -695,7 +694,13 @@ function modpdfsave(){
  }
  i--;
  ris='nsoc'+sq+'='+trim(ar[i])+n;
- for (i=i+2; i<ar.length;i++)
+ i++;
+ r=ar[i].indexOf('_codice ');
+ r=ltrim(ar[i].substring(r+8));
+ p=r.indexOf(' ');
+ ris+='ncodice'+sq+'='+r.substring(0,p)+n;
+ ris+='ncampio='+ltrim(r.substring(p))+n;
+ for (i=i+1; i<ar.length;i++)
   if (ar[i].substring(0,7)=='gara n.') break;
  r=ltrim(ar[i].substring(7));
  p=r.indexOf(' ');
@@ -1970,8 +1975,8 @@ function refload(){
   if (!voceset(t+voce,v)) continue;
   switch (t){
    case 'f':
+    document.getElementById(t+voce).value=v;
     if (v.length>0){
-     document.getElementById(t+voce).value=v;
      disegnoset($('#c'+t+voce));
      if (voce.slice(0,3)=='all'){
       puntic=(JSON.parse(v)).map(function(o){
@@ -1979,7 +1984,6 @@ function refload(){
        p.x=o.y;
        p.y=600-o.x;
        p.t=o.t;
-       p.m=o.m;
        return p;
       });
      } else puntic=JSON.parse(v);
