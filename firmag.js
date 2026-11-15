@@ -1,5 +1,5 @@
-const spessoremax=10,spessoremin=2,velmolti=.7;
-var bordo,ctx,dis,dovesalvo,mouseX,mouseY,puntic,scrive,spessore,toccoidx,velox;
+const spessoremax=7,spessoremin=1,velmolti=.7;
+var bordo,ctx,dis,dovesalvo,mouseX,mouseY,puntic,scrive,spessore,tempoi,toccoidx,velox;
 
 bordo=mouseX=mouseY=spessore=toccoidx=velox=0;
 
@@ -68,7 +68,7 @@ function bottoneindietro(){
  var d,i,l;
  d=dis.get(0);
  ctx.clearRect(0,0,d.width,d.height);
- l=(puntic.map(function(o){return o.m;})).lastIndexOf('m');
+ l=(puntic.map(function(o){return o.t;})).lastIndexOf(0);
  if (l>=0){
   i=puntic;
   puntic=i.slice(0,l);
@@ -91,13 +91,14 @@ function orienta(){
 function toccostart(x,y){
  var p;
  velox=0;
- x-=bordo.left;
- y-=bordo.top;
+ x=~~(x-bordo.left);
+ y=~~(y-bordo.top);
  mouseX=x;
  mouseY=y;
  toccoidx=puntic.length;
  if (scrive<0){
-  puntic.push({x:x,y:y,t:Date.now(),m:'m'});
+  tempoi=Date.now();
+  puntic.push({x:x,y:y,t:0});
   scrive=toccoidx;//indice di inizio tocco
   dispunto(toccoidx);
  }
@@ -105,8 +106,8 @@ function toccostart(x,y){
 
 function toccomove(x,y){
  var dx,dy;
- x-=bordo.left;
- y-=bordo.top;
+ x=~~(x-bordo.left);
+ y=~~(y-bordo.top);
  dx=x-mouseX;
  dy=y-mouseY;
  if (Math.sqrt(dx*dx+dy*dy)<4){
@@ -114,7 +115,7 @@ function toccomove(x,y){
  }
  if (scrive>-1){
   toccoidx=puntic.length;
-  puntic.push({x:x,y:y,t:Date.now(),m:'l'});
+  puntic.push({x:x,y:y,t:(Date.now()-tempoi)});
   if (toccoidx-scrive>1){//se è maggiore di inizio tocco
    discurva(toccoidx-1);
   }
@@ -124,8 +125,8 @@ function toccomove(x,y){
 }
 
 function toccoend(x,y){
- x-=bordo.left;
- y-=bordo.top;
+ x=~~(x-bordo.left);
+ y=~~(y-bordo.top);
  if ((scrive>-1)&&(toccoidx>scrive)){//se è maggiore di inizio tocco
   discurva(toccoidx);
  }
@@ -147,7 +148,7 @@ function discurva(idx){
  var l01,l12,l23,r012,r123;
  var p=new Array(4);
  var s,v;
- var nofine=(idx+1<puntic.length)&&(puntic[idx+1].m=='l');
+ var nofine=(idx+1<puntic.length)&&(puntic[idx+1].t>0);
  if (idx-scrive<2){
   p[1]=puntic[scrive];
   p[2]=puntic[idx];
@@ -210,7 +211,7 @@ function discurva(idx){
 function ridisegna(){
  var i;
  for (i=0;i<puntic.length;i++){
-  if (puntic[i].m=='m'){
+  if (puntic[i].t==0){
    spessore=(spessoremax+spessoremin)/2;
    dispunto(i);
    scrive=i;
