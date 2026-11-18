@@ -24,7 +24,7 @@ $(document).ready(function(){
  }
 });
 
-//  inizio gestione moduli
+// inizio gestione moduli
 $('.mod-ol').on('click',function(ev){
 	if ($(ev.target).is(modEl)) clsMod();
 });
@@ -665,9 +665,48 @@ function modorariosave(){
 // fine eventi modOrario
 
 // inizio eventi modPDF
+$('#fileInputPDF').on('change',function(event){
+ modpdfloadlocal(event);
+});
 $(document.pdfform).on('submit',function(){
  return modpdfsave();
 });
+function modpdfctrl(){
+ var ar,com,i,num,p,sq,t;
+ ar=trim(document.pdfform.txt.value).split('\n');
+ t=ar[3];
+ if (t.substring(0,5)=='Id e '){
+  p=t.indexOf('  ');
+  t=ltrim(t.substring(p));
+  p=t.indexOf('  ');
+  t=t.substring(0,p);
+  num=com='';
+  for (i=0;i<t.length;i++){
+   if ((t.charAt(i)>='0')&&(t.charAt(i)<='9')) break;
+   else com+=t.charAt(i);
+  }
+  for (i=i;i<t.length;i++){
+   if ((t.charAt(i)>='0')&&(t.charAt(i)<='9')) num+=t.charAt(i);
+   else break;
+  }
+  sq=('CF').indexOf(t.charAt(i));
+  document.pdfform.squad[sq].checked=true;
+  alert('Questa è la Lista della squadra '+('AB').charAt(sq)+'\nnella gara '+com+num+'!');
+ } else {
+  alert('Il file non è un testo estratto da una Lista in PDF!');
+ }
+}
+function modpdfloadlocal(event){
+ var file,reader;
+ file=event.target.files[0];
+ if (!file) return;
+ reader=new FileReader();
+ reader.onload=function(e){
+  document.pdfform.txt.value=e.target.result;
+  modpdfctrl();
+ };
+ reader.readAsText(file);// Legge il file come testo
+}
 function modpdfopen(){
  openMod('modPDF');
 }
@@ -1195,7 +1234,7 @@ $('input.ior').on('blur',function(){
 });
 // fine eventi generali
 
-//inizio funzioni generali
+// inizio funzioni generali
 function annullarighesq(s){//s = squadra 0..1
  var cella,g,h,img,riga,sq;
  sq='ab'.charAt(s);
@@ -2120,4 +2159,4 @@ function voceset(voce,valore){
   return true;
  } else return false;
 }
-//fine funzioni generali
+// fine funzioni generali
