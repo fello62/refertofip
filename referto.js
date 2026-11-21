@@ -852,13 +852,14 @@ $(document.punform).on('submit',function(){
  return modpunsave();
 });
 function modpunopen(t){
- var d,h,i,n,p,s,selsq,sq,v;
+ var d,h,i,l,n,p,s,selsq,sq,v;
  if (gara.stato!=1){
   if (gara.stato==3) alert('Gara chiusa!');
   else alert('Iniziare un tempo di gioco!');
   return;
  }
  sq=t.charAt(1+1*(t.charAt(0)=='g'));
+ l=$('#lastp'+sq).val();
  selsq='ab'.indexOf(sq);
  $('#mpuord').text(sq.toUpperCase());
  p=parseInt(t.substring(2+1*(t.charAt(0)=='g')),10);
@@ -870,7 +871,7 @@ function modpunopen(t){
   if (i<n) v=gara.numerimaglia[selsq][i];
   else v=(sq+'t').toUpperCase();
   h+='<td><label>'+v.substring(1)+'<br>';
-  h+='<input type="radio" name="giocp" value="'+v+'">';
+  h+='<input type="radio" name="giocp" value="'+v+'"'+((v==l)?' checked':'')+'>';
   h+='</label><br>&nbsp;</td>';
  }
  h+='</tr>';
@@ -893,6 +894,7 @@ function modpunsave(){
   alert('Giocatore non immesso!');
   return false;
  }
+ $('#lastp'+g.toLowerCase().charAt(0)).val(g);
  interprete(g+' '+v);
  return false;
 }
