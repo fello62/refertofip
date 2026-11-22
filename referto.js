@@ -654,6 +654,7 @@ function modorarioopen(t){
  }
  document.oraform.iorario.value=v;
  openMod('modOrario');
+ document.oraform.iorario.focus();
 }
 function modorariosave(){
  var inizio,r,t,tempo,v;
