@@ -199,7 +199,7 @@ function modfalopen(t){
   document.falform.tipof.value='P';
   document.falform.disq.checked=true;
   document.falform.tiporis.checked=false;
-  document.falform.pedice.value=(gara.fallisq[s]>=4)?'2':'';
+  document.falform.pedice.value=(gara.fallisq[s]>=gara.bonus)?'2':'';
   document.falform.cerchiato.checked=false;
  }
  openMod('modFalli');
@@ -468,6 +468,10 @@ function modmenuopen(){
 // fine eventi modMenu
 
 // inizio eventi modHeader1
+$(document.hea1.idbonus).on('blur',function(){
+ solonumeri(this);
+ ctrlnumero(this,4,5);
+});
 $(document.hea1.ingara).on('blur',function(){
  solonumeri(this);
  ctrlnumero(this,1,999999);
@@ -480,7 +484,8 @@ $(document.hea1).on('submit',function(){
 });
 function modheader1open(){
  var e,i,n,s;
- for(i=0;i<document.hea1.elements.length-1;i++){
+ document.hea1.idbonus.value=gara.bonus;
+ for(i=1;i<document.hea1.elements.length-1;i++){
   e=document.hea1.elements[i];
   n=e.name;
   s=n.substring(1);
@@ -494,6 +499,9 @@ function modheader1save(){
  for (i=0;i<document.hea1.elements.length-1;i++){
   e=document.hea1.elements[i];
   if (i==0){
+   ctrlnumero(e,4,5);
+   gara.bonus=parseInt(e.value,10);
+  } else if (i==1){
    ctrlnumero(e,1,999999);
    document.title='RefertoFIP'+e.value;
   } else maiusc(e);
@@ -504,6 +512,7 @@ function modheader1save(){
   voceset(s,v);
  }
  refsaveall();
+ rileggi();
  return false;
 }
 // fine eventi modHeader1
@@ -851,6 +860,13 @@ $('table.punti').on('click','td.punt',function(){
 $(document.punform).on('submit',function(){
  return modpunsave();
 });
+$(document.punform).on('change','input[name="puntp"]',function(){
+ modchangepun(parseInt(($(this).val()).substring(1),10));
+});
+function modchangepun(d){
+ var selsq='AB'.indexOf($('#mpuord').text());
+ $('#totpun').html(''+gara.ris[selsq]+' + '+d+' = <b>'+(1*gara.ris[selsq]+1*d)+'</b>');
+}
 function modpunopen(t){
  var d,h,i,l,n,p,s,selsq,sq,v;
  if (gara.stato!=1){
@@ -865,6 +881,7 @@ function modpunopen(t){
  p=parseInt(t.substring(2+1*(t.charAt(0)=='g')),10);
  d=p-gara.ris[selsq];
  d=(d>3)?3:((d<1)?d=1:d);
+ modchangepun(d);
  n=gara.numerimaglia[selsq].length;
  h='<tr class="tac"><th>Gioc.</th>';
  for (i=0;i<=n;i++){
@@ -1369,14 +1386,14 @@ function chiudifalli(s,t,c){//s=squadra(0 o 1), t=riga dei falli (num o all aall
 
 function chiudifallisq(s,t,r){//s=squadra(0 o 1), t=tempo di gioco (1..4), r=righe (1..2)
  var c,cella,d,h,img,top;
- d=4-gara.fallisq[s];
+ d=gara.bonus-gara.fallisq[s];
  if (d>0){
-  cella=$('#sq'+('ab'.charAt(s))+'t'+t+'f4');
+  cella=$('#sq'+('ab'.charAt(s))+'t'+t+'f'+gara.bonus);
   top=cella.position().top;
   c=gara.colore.charAt(0);
-  img='<img src="lineao'+c+'.png" style="position:absolute;height:1px;right:'+((900+(t&1)*700)/22)+'%;';
+  img='<img src="lineao'+c+'.png" style="position:absolute;height:1px;right:'+((-100*(gara.bonus==5)+900+(t&1)*700)/22)+'%;';
   img+='width:'+(d*20*5/22)+'%;';
-  h='4'+img+'top:'+(top+27/4*(r==1)+13/3*(r==2))+'px;">';
+  h=(gara.bonus>4?'':'4')+img+'top:'+(top+27/4*(r==1)+13/3*(r==2))+'px;">';
   if (r==2) h+=img+'top:'+(top+55/6)+'px;">';
   cella.html(h);
  }
@@ -1596,7 +1613,7 @@ function interprete(testo){
        //fallo di squadra
        if (p[5]=='SQ'){
         gara.fallisq[selsq]++;
-        if (gara.fallisq[selsq]<=4) chiudifallosq(selsq,(gara.tempo>4)?4:gara.tempo);
+        if (gara.fallisq[selsq]<=gara.bonus) chiudifallosq(selsq,(gara.tempo>4)?4:gara.tempo);
        }
        break;
 
@@ -1652,8 +1669,8 @@ function interprete(testo){
            }
           }
          }
-         if ((p==5)&&(gara.fallisq[s]<4)){//chiude i falli di squadra verticalmente quando comincia il supplementare
-          cella=$('#sq'+sq+'t4f'+(gara.fallisq[s]+1));
+         if ((p==5)&&(gara.fallisq[s]<gara.bonus)){//chiude i falli di squadra verticalmente quando comincia il supplementare
+          cella=$('#sq'+sq+'t'+gara.bonus+'f'+(gara.fallisq[s]+1));
           cella.append('<img src="lineavb.png" style="position:absolute;top:'+cella.position().top+
            'px;left:'+(100*(9+gara.fallisq[s])/22)+'%;width:2px;height:14.5px;">');
          }
@@ -1744,7 +1761,7 @@ function interprete(testo){
            if (gara.staff[s][i].charAt(0)!='-')
             chiudifalli(s,gara.staff[s][i].substring(1).toLowerCase(),'b');
           //chiude falli sq 1 riga
-          for (i=1;i<=4;i++)
+          for (i=1;i<=gara.bonus;i++)
            chiudifallisq(s,i,1);
           //chiude timeout 1 riga
           for (i=0;i<sosp.length;i++)
@@ -1804,7 +1821,7 @@ function interprete(testo){
           }
           //falli di squadra 1 riga
           gara.fallisq[s]=0;
-          for(i=gara.tempo+1;i<=4;i++) chiudifallisq(s,i,1);
+          for(i=gara.tempo+1;i<=gara.bonus;i++) chiudifallisq(s,i,1);
           //chiude ris parz
           for(i=gara.tempo+1;i<=5;i++) chiudiparz(sq,'nrq',i);
           //orario finale lo metti quando premi il bottone stop
@@ -1897,6 +1914,7 @@ function refiniz(){
   fallisq:[0,0],
   tempo:0,
   stato:0,
+  bonus:4,
   colore:'blu',
   numerimaglia:[[],[]],
   staff:[['-AALL','-AAALL','-AACC','-AMED','-AADD','-AMASS','-A2AALL','-APREP'],
@@ -1905,6 +1923,7 @@ function refiniz(){
  };
  n='\n';
  s='<voci>'+n;
+ s+='dbonus=4'+n;
  s+='ngara='+n;
  s+='nsoca='+n;
  s+='nsponsora='+n;
@@ -2037,6 +2056,9 @@ function refload(){
     break;
    case 'd':
     switch (voce.substring(0,3)){
+     case 'bon'://bonus
+      if (v.length>0) gara.bonus=parseInt(v,10)||4;
+      break;
      case 'ent'://entiniz
       if (v.length>0) gara.entiniz=JSON.parse(v);
       break;
